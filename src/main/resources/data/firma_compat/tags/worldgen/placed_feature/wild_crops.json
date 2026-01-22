@@ -1,0 +1,13 @@
+{
+  "values": [
+    "firma_compat:crops/beet_patch",
+    "firma_compat:crops/carrot_patch",
+    "firma_compat:crops/jute_patch",
+    "firma_compat:crops/melon_patch",
+    "firma_compat:crops/papyrus_patch",
+    "firma_compat:crops/potato_patch",
+    "firma_compat:crops/pumpkin_patch",
+    "firma_compat:crops/sugarcane_patch",
+    "firma_compat:crops/wheat_patch"
+  ]
+}

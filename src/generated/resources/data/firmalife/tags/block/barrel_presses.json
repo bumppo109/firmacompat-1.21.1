@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:acacia_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:birch_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:cherry_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:dark_oak_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:jungle_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:mangrove_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:oak_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:spruce_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:crimson_barrel_press",
+      "required": false
+    },
+    {
+      "id": "firma_compat:warped_barrel_press",
+      "required": false
+    }
+  ]
+}

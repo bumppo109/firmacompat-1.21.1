@@ -1,0 +1,18 @@
+{
+  "feature": "tfc:seaweed_patch",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 6
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "firma_compat:climate",
+      "min_temp": -20,
+      "max_temp": 50,
+      "min_groundwater": 300
+    }
+  ]
+}

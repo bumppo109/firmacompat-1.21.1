@@ -1,0 +1,5 @@
+{
+  "type": "firma_compat:item_remover",
+  "conditions": [],
+  "item_to_remove": "minecraft:wheat_seeds"
+}

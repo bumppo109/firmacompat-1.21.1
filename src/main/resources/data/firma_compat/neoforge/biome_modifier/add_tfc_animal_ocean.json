@@ -1,0 +1,78 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_ocean",
+  "spawners": [
+    {
+      "type": "firma_compat:compat_isopod",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_cod",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_tropical_fish",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_pufferfish",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_lobster",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
+      "type": "firma_compat:compat_horseshoe_crab",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_jellyfish",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 8
+    },
+    {
+      "type": "firma_compat:compat_orca",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_dolphin",
+      "weight": 1,
+      "minCount": 3,
+      "maxCount": 10
+    },
+    {
+      "type": "firma_compat:compat_leopard_seal",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 3
+    },
+    {
+      "type": "firma_compat:compat_squid",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_octopoteuthis",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 3
+    }
+  ]
+}

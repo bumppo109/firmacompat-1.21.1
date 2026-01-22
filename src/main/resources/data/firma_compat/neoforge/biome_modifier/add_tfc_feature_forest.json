@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#firma_compat:forested_biomes",
+  "features": [
+    "firma_compat:humus_patch",
+    "firma_compat:pinecone_patch"
+  ],
+  "step": "vegetal_decoration"
+}

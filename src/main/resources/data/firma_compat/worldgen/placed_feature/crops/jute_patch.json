@@ -1,0 +1,18 @@
+{
+  "feature": "tfc:plant/wild_crop/jute_patch",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 90
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "firma_compat:climate",
+      "min_temperature": 0,
+      "max_temperature": 25,
+      "min_groundwater": 275
+    }
+  ]
+}

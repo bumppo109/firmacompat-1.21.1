@@ -1,0 +1,6 @@
+{
+  "type": "firma_compat:item_swap",
+  "conditions": [],
+  "from": "minecraft:diamond",
+  "to": "tfc:gem/diamond"
+}

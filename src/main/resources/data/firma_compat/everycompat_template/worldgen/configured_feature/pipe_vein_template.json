@@ -1,0 +1,18 @@
+{
+  "type": "tfc:pipe_vein",
+  "config": {
+    "blocks": $blocks_array$,
+    "density": $density$,
+    "max_y": $max_y$,
+    "min_y": $min_y$,
+    "min_skew": $min_skew$,
+    "max_skew": $max_skew$,
+    "min_slant": $min_slant$,
+    "max_slant": $max_slant$,
+    "sign": $sign$,
+    "pipe_height": $pipe_height$,
+    "radius": $radius$,
+    "random_name": $random_name$,
+    "rarity": $rarity$
+  }
+}

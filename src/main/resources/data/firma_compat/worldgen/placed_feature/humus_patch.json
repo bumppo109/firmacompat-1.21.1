@@ -1,0 +1,18 @@
+{
+  "feature": "firma_compat:humus_patch",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 15
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "firma_compat:climate",
+      "min_temp": 0,
+      "max_temp": 30,
+      "min_groundwater": 300
+    }
+  ]
+}

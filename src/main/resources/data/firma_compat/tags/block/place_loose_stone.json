@@ -1,0 +1,14 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:loose_placer/regions_unexplored_stone_loose",
+      "required": false
+    },
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:rooted_dirt",
+    "minecraft:podzol",
+    "minecraft:mycelium"
+  ]
+}

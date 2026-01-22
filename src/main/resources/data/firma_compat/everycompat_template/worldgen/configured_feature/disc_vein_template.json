@@ -1,0 +1,15 @@
+{
+  "type": "tfc:disc_vein",
+  "config": {
+    "blocks": $blocks_array$,
+    "density": $density$,
+    "height": $height$,
+    "max_y": $max_y$,
+    "min_y": $min_y$,
+    "project": $project$,
+    "project_offset": $project_offset$,
+    "random_name": $random_name$,
+    "rarity": $rarity$,
+    "size": $size$
+  }
+}

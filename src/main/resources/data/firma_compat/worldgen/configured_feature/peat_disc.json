@@ -1,0 +1,30 @@
+{
+  "type": "tfc:soil_disc",
+  "config": {
+    "min_radius": 3,
+    "max_radius": 5,
+    "height": 3,
+    "states": [
+      {
+        "replace": "minecraft:dirt",
+        "with": "tfc:peat"
+      },
+      {
+        "replace": "minecraft:mud",
+        "with": "tfc:peat"
+      },
+      {
+        "replace": "minecraft:grass_block",
+        "with": "tfc:peat"
+      },
+      {
+        "replace": "minecraft:podzol",
+        "with": "tfc:peat"
+      },
+      {
+        "replace": "minecraft:mycelium",
+        "with": "tfc:peat"
+      }
+    ]
+  }
+}

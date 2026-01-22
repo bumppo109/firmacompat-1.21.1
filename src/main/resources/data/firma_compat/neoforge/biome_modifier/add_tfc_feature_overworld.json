@@ -1,0 +1,24 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_overworld",
+  "features": [
+    "firma_compat:guano_patch",
+    "firma_compat:clay_disc_with_indicator",
+    "firma_compat:peat_disc",
+
+    "firma_compat:clam_patch",
+    "firma_compat:mussel_patch",
+    "firma_compat:mollusk_patch",
+
+    "firma_compat:crops/beet_patch",
+    "firma_compat:crops/carrot_patch",
+    "firma_compat:crops/jute_patch",
+    "firma_compat:crops/melon_patch",
+    "firma_compat:crops/papyrus_patch",
+    "firma_compat:crops/potato_patch",
+    "firma_compat:crops/pumpkin_patch",
+    "firma_compat:crops/sugarcane_patch",
+    "firma_compat:crops/wheat_patch"
+  ],
+  "step": "vegetal_decoration"
+}

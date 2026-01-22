@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:acacia_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:birch_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:cherry_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:dark_oak_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:jungle_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:mangrove_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:oak_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:spruce_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:crimson_jarbnet",
+      "required": false
+    },
+    {
+      "id": "firma_compat:warped_jarbnet",
+      "required": false
+    }
+  ]
+}

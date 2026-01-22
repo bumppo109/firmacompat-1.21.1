@@ -1,0 +1,23 @@
+{
+  "feature": "firma_compat:$vein_name$_configured",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": $rarity$
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": { "absolute": $min_y$ },
+        "max_inclusive": { "absolute": $max_y$ }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

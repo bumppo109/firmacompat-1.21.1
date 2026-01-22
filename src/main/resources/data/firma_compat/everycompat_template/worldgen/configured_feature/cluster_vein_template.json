@@ -1,0 +1,12 @@
+{
+  "type": "tfc:cluster_vein",
+  "config": {
+    "blocks": $blocks_array$,
+    "density": $density$,
+    "max_y": $max_y$,
+    "min_y": $min_y$,
+    "random_name": $random_name$,
+    "rarity": $rarity$,
+    "size": $size$
+  }
+}

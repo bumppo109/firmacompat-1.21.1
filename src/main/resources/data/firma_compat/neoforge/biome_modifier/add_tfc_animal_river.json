@@ -1,0 +1,54 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_river",
+  "spawners": [
+    {
+      "type": "firma_compat:compat_crayfish",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 5
+    },
+    {
+      "type": "firma_compat:compat_bluegill",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_crappie",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    },
+    {
+      "type": "firma_compat:compat_lake_trout",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_largemouth_bass",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_smallmouth_bass",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_rainbow_trout",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 4
+    },
+    {
+      "type": "firma_compat:compat_salmon",
+      "weight": 1,
+      "minCount": 2,
+      "maxCount": 6
+    }
+  ]
+}

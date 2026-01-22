@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:acacia_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:birch_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:cherry_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:dark_oak_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:jungle_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:mangrove_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:oak_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:spruce_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:crimson_food_shelf",
+      "required": false
+    },
+    {
+      "id": "firma_compat:warped_food_shelf",
+      "required": false
+    }
+  ]
+}

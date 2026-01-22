@@ -1,0 +1,27 @@
+{
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "minecraft:short_grass",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:tall_grass",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:fern",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:large_fern",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    }
+  ],
+  "table": "firma_compat:blocks/straw_modifier"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "firma_compat:item_swap",
+  "conditions": [],
+  "from": "minecraft:magenta_candle",
+  "to": "tfc:candle/magenta"
+}

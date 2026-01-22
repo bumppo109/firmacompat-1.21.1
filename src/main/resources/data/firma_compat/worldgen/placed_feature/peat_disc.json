@@ -1,0 +1,21 @@
+{
+  "feature": "firma_compat:peat_disc",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 80
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "firma_compat:climate",
+      "min_temp": 30,
+      "min_groundwater": 300
+    }
+  ]
+}

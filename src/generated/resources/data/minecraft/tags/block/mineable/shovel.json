@@ -1,0 +1,14 @@
+{
+  "values": [
+    "firma_compat:cassiterite_gravel_deposit",
+    "firma_compat:native_gold_gravel_deposit",
+    "firma_compat:native_silver_gravel_deposit",
+    "firma_compat:native_copper_gravel_deposit",
+    "firma_compat:clay_dirt",
+    "firma_compat:clay_grass_block",
+    "firma_compat:kaolin_clay_dirt",
+    "firma_compat:kaolin_clay_podzol",
+    "firma_compat:kaolin_clay_grass_block",
+    "firma_compat:compat_farmland"
+  ]
+}

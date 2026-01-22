@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "firma_compat:overworld/vein/normal_tetrahedrite"
+      },
+      {
+        "chance": 0.2,
+        "feature": "firma_compat:overworld/vein/surface_tetrahedrite"
+      },
+      {
+        "chance": 0.2,
+        "feature": "firma_compat:overworld/vein/surface_malachite"
+      },
+      {
+        "chance": 0.2,
+        "feature": "firma_compat:overworld/vein/normal_malachite"
+      }
+    ],
+    "default": "firma_compat:overworld/vein/surface_native_copper"
+  }
+}

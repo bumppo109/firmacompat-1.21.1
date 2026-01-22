@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:acacia_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:birch_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:cherry_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:dark_oak_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:jungle_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:mangrove_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:oak_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:spruce_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:crimson_stomping_barrel",
+      "required": false
+    },
+    {
+      "id": "firma_compat:warped_stomping_barrel",
+      "required": false
+    }
+  ]
+}

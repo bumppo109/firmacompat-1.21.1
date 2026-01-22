@@ -1,0 +1,22 @@
+{
+  "targets": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:frozen_ocean"
+  ],
+  "fog": {
+    "color": "#0F2A3F",
+    "start": 0.0,
+    "end": 12.0,
+    "radius": 0.7,
+    "fade": 0.85
+  },
+  "water": {
+    "color": "#1A3A5A",
+    "fog_color": "#0F2A3F"
+  },
+  "sky": "#2A4A6A"
+}

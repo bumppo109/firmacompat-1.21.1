@@ -1,0 +1,6 @@
+{
+  "type": "firma_compat:item_swap",
+  "conditions": [],
+  "from": "minecraft:iron_ingot",
+  "to": "tfc:metal/ingot/wrought_iron"
+}

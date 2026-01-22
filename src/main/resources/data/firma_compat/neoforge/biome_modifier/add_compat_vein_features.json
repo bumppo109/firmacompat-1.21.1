@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "stonezone"
+      }
+    }
+  ],
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_overworld",
+  "features": "#firma_compat:compat_veins",
+  "step": "underground_decoration"
+}

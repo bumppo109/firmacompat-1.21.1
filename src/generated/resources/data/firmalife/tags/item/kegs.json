@@ -1,0 +1,44 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:acacia_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:birch_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:cherry_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:dark_oak_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:jungle_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:mangrove_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:oak_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:spruce_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:crimson_keg",
+      "required": false
+    },
+    {
+      "id": "firma_compat:warped_keg",
+      "required": false
+    }
+  ]
+}

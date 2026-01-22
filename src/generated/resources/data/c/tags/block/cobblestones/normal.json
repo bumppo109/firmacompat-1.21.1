@@ -1,0 +1,28 @@
+{
+  "values": [
+    "firma_compat:loose_granite_cobble",
+    "firma_compat:hardened_granite_cobble",
+    "firma_compat:loose_diorite_cobble",
+    "firma_compat:hardened_diorite_cobble",
+    "firma_compat:loose_deepslate_cobble",
+    "firma_compat:hardened_deepslate_cobble",
+    "firma_compat:loose_andesite_cobble",
+    "firma_compat:hardened_andesite_cobble",
+    "firma_compat:loose_basalt_cobble",
+    "firma_compat:hardened_basalt_cobble",
+    "firma_compat:loose_calcite_cobble",
+    "firma_compat:hardened_calcite_cobble",
+    "firma_compat:loose_tuff_cobble",
+    "firma_compat:hardened_tuff_cobble",
+    "firma_compat:loose_dripstone_cobble",
+    "firma_compat:hardened_dripstone_cobble",
+    "firma_compat:loose_stone_cobble",
+    "firma_compat:hardened_stone_cobble",
+    "firma_compat:loose_blackstone_cobble",
+    "firma_compat:hardened_blackstone_cobble",
+    "firma_compat:loose_netherrack_cobble",
+    "firma_compat:hardened_netherrack_cobble",
+    "firma_compat:loose_end_stone_cobble",
+    "firma_compat:hardened_end_stone_cobble"
+  ]
+}

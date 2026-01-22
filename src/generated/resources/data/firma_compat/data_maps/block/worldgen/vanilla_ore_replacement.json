@@ -1,0 +1,20 @@
+{
+  "values": {
+    "minecraft:coal_ore": "minecraft:stone",
+    "minecraft:copper_ore": "minecraft:stone",
+    "minecraft:deepslate_coal_ore": "minecraft:deepslate",
+    "minecraft:deepslate_copper_ore": "minecraft:deepslate",
+    "minecraft:deepslate_diamond_ore": "minecraft:deepslate",
+    "minecraft:deepslate_emerald_ore": "minecraft:deepslate",
+    "minecraft:deepslate_gold_ore": "minecraft:deepslate",
+    "minecraft:deepslate_iron_ore": "minecraft:deepslate",
+    "minecraft:deepslate_lapis_ore": "minecraft:deepslate",
+    "minecraft:deepslate_redstone_ore": "minecraft:deepslate",
+    "minecraft:diamond_ore": "minecraft:stone",
+    "minecraft:emerald_ore": "minecraft:stone",
+    "minecraft:gold_ore": "minecraft:stone",
+    "minecraft:iron_ore": "minecraft:stone",
+    "minecraft:lapis_ore": "minecraft:stone",
+    "minecraft:redstone_ore": "minecraft:stone"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "type": "neoforge:remove_spawns",
+  "biomes": "#c:is_overworld",
+  "entity_types": "#firma_compat:remove_vanilla_mobs"
+}

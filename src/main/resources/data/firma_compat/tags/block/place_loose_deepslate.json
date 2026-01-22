@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "firma_compat:loose_placer/regions_unexplored_deepslate_loose",
+      "required": false
+    },
+    "minecraft:deepslate"
+  ]
+}

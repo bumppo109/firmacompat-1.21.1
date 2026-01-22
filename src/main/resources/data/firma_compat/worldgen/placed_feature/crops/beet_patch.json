@@ -1,0 +1,18 @@
+{
+  "feature": "tfc:plant/wild_crop/beet_patch",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 90
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "firma_compat:climate",
+      "min_temperature": -10,
+      "max_temperature": 24,
+      "min_groundwater": 275
+    }
+  ]
+}
