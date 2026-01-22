@@ -2,6 +2,7 @@ package com.bumppo109.firma_compat.tfcaddon.rnr;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;
+import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.item.ModItems;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistryHolder;
@@ -21,6 +22,8 @@ public class RNRCompatItems {
     public static final ModItems.ItemId GRAVEL_FILL = register("gravel_fill");
 
     public static final Map<CompatRock, ModItems.ItemId> FLAGSTONE = Helpers.mapOf(CompatRock.class, rock -> register(rock.getSerializedName() + "_flagstone"));
+
+    public static final Map<CompatWood, ModItems.ItemId> SHINGLE = Helpers.mapOf(CompatWood.class, wood -> register(wood.name() + "_shingle"));
 
     private static ModItems.ItemId register(String name)
     {

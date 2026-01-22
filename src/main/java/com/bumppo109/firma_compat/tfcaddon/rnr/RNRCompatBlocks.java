@@ -2,17 +2,21 @@ package com.bumppo109.firma_compat.tfcaddon.rnr;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;
+import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.therighthon.rnr.common.block.*;
+import net.dries007.tfc.common.blocks.ExtendedProperties;
+import net.dries007.tfc.common.blocks.TFCBlocks;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistrationHelpers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +35,17 @@ public class RNRCompatBlocks {
 
     public static final ModBlocks.Id<Block> TAMPED_MUD = register("tamped_mud",
             () -> new TampedMudBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD)));
+
+    //Wood
+    public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOFS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingles",
+            () -> new Block(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
+
+    public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOF_SLABS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingle_stairs",
+            () -> new SlabBlock(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
+
+    public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOF_STAIRS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingle_slab",
+            () -> new StairBlock(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get().defaultBlockState(), ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
+
 
     //Flagstone, Sett, Cobbled
     public static final Map<CompatRock, Map<CompatRNR, ModBlocks.Id<Block>>> ROCK_BLOCKS = Helpers.mapOf(CompatRock.class, (rock) ->

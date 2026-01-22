@@ -7,6 +7,8 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.datagen.ModAccessors;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
 import com.google.common.base.Preconditions;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.DecorationBlockHolder;
@@ -44,6 +46,7 @@ import java.util.stream.Stream;
 import static com.bumppo109.firma_compat.util.ModTags.Blocks.MAKES_PRIMITIVE_ANVIL;
 import static com.bumppo109.firma_compat.util.ModTags.Blocks.PREVENT_INTERACTION;
 import static com.eerussianguy.firmalife.common.FLTags.Blocks.*;
+import static com.therighthon.rnr.common.RNRTags.Blocks.*;
 import static net.dries007.tfc.common.TFCTags.Blocks.*;
 import static net.dries007.tfc.common.TFCTags.Blocks.DIRT;
 import static net.minecraft.tags.BlockTags.*;
@@ -260,6 +263,153 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
                 tag(CAN_TRIGGER_COLLAPSE).addOptional(oreRes);
             }
         }
+
+        //RNR
+        for (CompatRock rock : CompatRock.VALUES) {
+            // Helper to get the block's ResourceLocation safely (adjust if your map returns RegistryObject)
+            Function<CompatRNR, ResourceLocation> getId = variant ->
+                    BuiltInRegistries.BLOCK.getKey(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(variant).get());
+
+            Function<CompatRNR, ResourceLocation> getStairId = variant ->
+                    BuiltInRegistries.BLOCK.getKey(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(variant).get());
+
+            Function<CompatRNR, ResourceLocation> getSlabId = variant ->
+                    BuiltInRegistries.BLOCK.getKey(RNRCompatBlocks.ROCK_SLABS.get(rock).get(variant).get());
+
+            // ───────────────────────────────────────────────────────
+            // Tags that should include the blocks only if they exist
+            // ───────────────────────────────────────────────────────
+
+            tag(MINEABLE_WITH_PICKAXE)
+                    .addOptional(getId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getStairId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getSlabId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.SETT_ROAD));
+
+            tag(CAN_LANDSLIDE)
+                    .addOptional(getId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getStairId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getSlabId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.SETT_ROAD));
+
+            tag(SUPPORTS_LANDSLIDE)
+                    .addOptional(getId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getStairId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getSlabId.apply(CompatRNR.FLAGSTONE))
+                    .addOptional(getId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.COBBLED_ROAD))
+                    .addOptional(getId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getStairId.apply(CompatRNR.SETT_ROAD))
+                    .addOptional(getSlabId.apply(CompatRNR.SETT_ROAD));
+
+            // ───────────────────────────────────────────────────────
+            // Specialized road tags — only the base block matters here
+            // ───────────────────────────────────────────────────────
+
+            tag(FLAGSTONE_ROAD_BLOCKS)
+                    .addOptional(getId.apply(CompatRNR.FLAGSTONE));
+
+            tag(FLAGSTONE_ROAD_STAIRS)
+                    .addOptional(getStairId.apply(CompatRNR.FLAGSTONE));
+
+            tag(FLAGSTONE_ROAD_SLABS)
+                    .addOptional(getSlabId.apply(CompatRNR.FLAGSTONE));
+
+            tag(COBBLED_ROAD_BLOCKS)
+                    .addOptional(getId.apply(CompatRNR.COBBLED_ROAD));
+
+            tag(COBBLED_ROAD_STAIRS)
+                    .addOptional(getStairId.apply(CompatRNR.COBBLED_ROAD));
+
+            tag(COBBLED_ROAD_SLABS)
+                    .addOptional(getSlabId.apply(CompatRNR.COBBLED_ROAD));
+
+            tag(SETT_ROAD_BLOCKS)
+                    .addOptional(getId.apply(CompatRNR.SETT_ROAD));
+
+            tag(SETT_ROAD_STAIRS)
+                    .addOptional(getStairId.apply(CompatRNR.SETT_ROAD));
+
+            tag(SETT_ROAD_SLABS)
+                    .addOptional(getSlabId.apply(CompatRNR.SETT_ROAD));
+        }
+
+        Function<Block, ResourceLocation> getBlockId = block ->
+                BuiltInRegistries.BLOCK.getKey(block);
+
+// ───────────────────────────────────────────────────────
+// Tags that should include these blocks only if they exist
+// ───────────────────────────────────────────────────────
+
+        tag(MINEABLE_WITH_SHOVEL)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_DIRT.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_MUD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_SLAB.get()));
+
+        tag(CAN_LANDSLIDE)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_DIRT.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_MUD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_SLAB.get()));
+
+        tag(SUPPORTS_LANDSLIDE)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_DIRT.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_MUD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_SLAB.get()));
+
+// ───────────────────────────────────────────────────────
+// Specialized tags — only the base block or variant
+// ───────────────────────────────────────────────────────
+
+        tag(TAMPED_BLOCKS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_DIRT.get()))
+                .addOptional(getBlockId.apply(RNRCompatBlocks.TAMPED_MUD.get()));
+
+        tag(GRAVEL_ROAD_BLOCKS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD.get()));
+
+        tag(GRAVEL_ROAD_STAIRS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get()));
+
+        tag(GRAVEL_ROAD_SLABS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get()));
+
+        tag(MACADAM_ROAD_BLOCKS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD.get()));
+
+        tag(MACADAM_ROAD_STAIRS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get()));
+
+        tag(MACADAM_ROAD_SLABS)
+                .addOptional(getBlockId.apply(RNRCompatBlocks.MACADAM_ROAD_SLAB.get()));
 
     }
 

@@ -2,12 +2,17 @@ package com.bumppo109.firma_compat.item;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.*;
+import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -94,6 +99,46 @@ public class ModCreativeModeTab {
             var bucket = ModItems.METAL_FLUID_BUCKETS.get(metal);
             if (bucket != null) {
                 accept(out, bucket);
+            }
+        }
+
+        if(ModList.get().isLoaded("firmalife")){
+            for(CompatWood wood : CompatWood.VALUES){
+                accept(out, CompatFLBlocks.FOOD_SHELVES, wood);
+                accept(out, CompatFLBlocks.HANGERS, wood);
+                accept(out, CompatFLBlocks.JARBNETS, wood);
+                accept(out, CompatFLBlocks.WINE_SHELVES, wood);
+                accept(out, CompatFLBlocks.KEGS, wood);
+                accept(out, CompatFLBlocks.STOMPING_BARRELS, wood);
+                accept(out, CompatFLBlocks.BARREL_PRESSES, wood);
+            }
+        }
+
+        if(ModList.get().isLoaded("rnr")){
+            accept(out, RNRCompatBlocks.TAMPED_DIRT);
+            accept(out, RNRCompatBlocks.TAMPED_MUD);
+            accept(out, RNRCompatBlocks.OVER_HEIGHT_GRAVEL);
+            accept(out, RNRCompatItems.GRAVEL_FILL);
+            accept(out, RNRCompatBlocks.GRAVEL_ROAD);
+            accept(out, RNRCompatBlocks.GRAVEL_ROAD_STAIRS);
+            accept(out, RNRCompatBlocks.GRAVEL_ROAD_SLAB);
+            accept(out, RNRCompatBlocks.MACADAM_ROAD);
+            accept(out, RNRCompatBlocks.MACADAM_ROAD_STAIRS);
+            accept(out, RNRCompatBlocks.MACADAM_ROAD_SLAB);
+
+            for(CompatRock rock : CompatRock.VALUES){
+                if(rock != CompatRock.NETHERRACK){
+                    accept(out, RNRCompatItems.FLAGSTONE.get(rock));
+                    accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE));
+                    accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE));
+                    accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE));
+                    accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD));
+                    accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD));
+                    accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD));
+                }
+                accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD));
+                accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD));
+                accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD));
             }
         }
     }

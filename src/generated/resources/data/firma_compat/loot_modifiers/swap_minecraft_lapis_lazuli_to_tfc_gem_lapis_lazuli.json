@@ -1,6 +1,0 @@
-{
-  "type": "firma_compat:item_swap",
-  "conditions": [],
-  "from": "minecraft:lapis_lazuli",
-  "to": "tfc:gem/lapis_lazuli"
-}

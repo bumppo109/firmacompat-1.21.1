@@ -8,6 +8,9 @@ import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.datagen.ModAccessors;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import com.bumppo109.firma_compat.util.ModTags;
 import com.eerussianguy.firmalife.common.FLTags;
 import com.google.common.base.Preconditions;
@@ -53,6 +56,7 @@ import static com.eerussianguy.firmalife.common.FLTags.Items.BARREL_PRESSES;
 import static com.eerussianguy.firmalife.common.FLTags.Items.KEGS;
 import static com.eerussianguy.firmalife.common.FLTags.Items.STOMPING_BARRELS;
 import static com.eerussianguy.firmalife.common.FLTags.Items.WINE_SHELVES;
+import static com.therighthon.rnr.common.RNRTags.Items.FLAGSTONE_ROAD_ITEMS;
 import static net.dries007.tfc.common.TFCTags.Items.*;
 import static net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE;
 import static net.minecraft.tags.ItemTags.*;
@@ -243,6 +247,7 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.SMALL_DRIPLEAF)
                 .add(Items.LILY_PAD);
 
+        //Firmalife
         for(CompatWood wood : CompatWood.VALUES){
             ResourceLocation foodShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_food_shelf");
             ResourceLocation hanger = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_hanger");
@@ -257,6 +262,13 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
             tag(FLTags.Items.STOMPING_BARRELS).addOptional(stompBarrel);
             tag(FLTags.Items.BARREL_PRESSES).addOptional(barrelPress);
             tag(FLTags.Items.KEGS).addOptional(keg);
+        }
+
+        //RNR
+        for(CompatRock rock : CompatRock.VALUES){
+            ResourceLocation flagstoneItem = ResourceLocation.fromNamespaceAndPath("firma_compat", rock.getSerializedName() + "_flagstone");
+            tag(FLAGSTONE_ROAD_ITEMS)
+                    .addOptional(flagstoneItem);
         }
     }
 

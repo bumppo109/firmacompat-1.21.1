@@ -1,6 +1,0 @@
-{
-  "type": "firma_compat:item_swap",
-  "conditions": [],
-  "from": "minecraft:pink_candle",
-  "to": "tfc:candle/pink"
-}

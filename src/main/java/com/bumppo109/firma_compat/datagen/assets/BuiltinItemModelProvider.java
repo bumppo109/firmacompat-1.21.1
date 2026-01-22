@@ -111,59 +111,8 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
                 withExistingParent(blockPathName(kegBlock), modLoc("block/big_barrel/" + woodName + "_item"));
                 withExistingParent(blockPathName(stompBarrelBlock), modLoc("block/stomping_barrel/" + woodName));
                 withExistingParent(blockPathName(wineShelfBlock), modLoc("block/wine_shelf/" + woodName));
-
-
-            //RNR
-                for(CompatRock rock : CompatRock.VALUES){
-                    Block flagstoneBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE).get();
-                    Block flagstoneStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE).get();
-                    Block flagstoneSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE).get();
-                    Block cobbledBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
-                    Block cobbledStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
-                    Block cobbledSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
-                    Block settBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD).get();
-                    Block settStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD).get();
-                    Block settSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD).get();
-
-                    simpleBlockItem(flagstoneBlock);
-                    simpleBlockItem(flagstoneStair);
-                    simpleBlockItem(flagstoneSlab);
-                    simpleBlockItem(cobbledBlock);
-                    simpleBlockItem(cobbledStair);
-                    simpleBlockItem(cobbledSlab);
-                    simpleBlockItem(settBlock);
-                    simpleBlockItem(settStair);
-                    simpleBlockItem(settSlab);
-
-                    basicItem(RNRCompatItems.FLAGSTONE.get(rock).get());
-                }
-                Block overheightGravelBlock = RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get();
-                Block tampedDirtBlock = RNRCompatBlocks.TAMPED_DIRT.get();
-                Block tampedMudBlock = RNRCompatBlocks.TAMPED_MUD.get();
-
-                Block gravelBlock = RNRCompatBlocks.GRAVEL_ROAD.get();
-                Block gravelStair = RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get();
-                Block gravelSlab = RNRCompatBlocks.GRAVEL_ROAD_SLAB.get();
-
-                Block macadamBlock = RNRCompatBlocks.MACADAM_ROAD.get();
-                Block macadamStair = RNRCompatBlocks.MACADAM_ROAD_STAIRS.get();
-                Block macadamSlab = RNRCompatBlocks.MACADAM_ROAD_SLAB.get();
-
-                simpleBlockItem(overheightGravelBlock);
-                simpleBlockItem(tampedDirtBlock);
-                simpleBlockItem(tampedMudBlock);
-
-                simpleBlockItem(gravelBlock);
-                simpleBlockItem(gravelStair);
-                simpleBlockItem(gravelSlab);
-
-                simpleBlockItem(macadamBlock);
-                simpleBlockItem(macadamStair);
-                simpleBlockItem(macadamSlab);
-
-                basicItem(RNRCompatItems.GRAVEL_FILL.get());
-
         }
+
 
         basicItem(ModItems.BAMBOO_LUMBER.get());
         withExistingParent(blockPathName(ModBlocks.PRIMITIVE_ANVIL.get()), modLoc("block/primitive_anvil"));
@@ -297,6 +246,68 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
                     basicItem(metalItem);
                 }
             }
+        }
+
+        //RNR
+        for(CompatRock rock : CompatRock.VALUES){
+            Block flagstoneBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE).get();
+            Block flagstoneStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE).get();
+            Block flagstoneSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE).get();
+            Block cobbledBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
+            Block cobbledStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
+            Block cobbledSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD).get();
+            Block settBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD).get();
+            Block settStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD).get();
+            Block settSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD).get();
+
+            simpleBlockItem(flagstoneBlock);
+            simpleBlockItem(flagstoneStair);
+            simpleBlockItem(flagstoneSlab);
+            simpleBlockItem(cobbledBlock);
+            simpleBlockItem(cobbledStair);
+            simpleBlockItem(cobbledSlab);
+            simpleBlockItem(settBlock);
+            simpleBlockItem(settStair);
+            simpleBlockItem(settSlab);
+
+            basicItem(RNRCompatItems.FLAGSTONE.get(rock).get());
+        }
+        Block overheightGravelBlock = RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get();
+        Block tampedDirtBlock = RNRCompatBlocks.TAMPED_DIRT.get();
+        Block tampedMudBlock = RNRCompatBlocks.TAMPED_MUD.get();
+
+        Block gravelBlock = RNRCompatBlocks.GRAVEL_ROAD.get();
+        Block gravelStair = RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get();
+        Block gravelSlab = RNRCompatBlocks.GRAVEL_ROAD_SLAB.get();
+
+        Block macadamBlock = RNRCompatBlocks.MACADAM_ROAD.get();
+        Block macadamStair = RNRCompatBlocks.MACADAM_ROAD_STAIRS.get();
+        Block macadamSlab = RNRCompatBlocks.MACADAM_ROAD_SLAB.get();
+
+        simpleBlockItem(overheightGravelBlock);
+        simpleBlockItem(tampedDirtBlock);
+        simpleBlockItem(tampedMudBlock);
+
+        simpleBlockItem(gravelBlock);
+        simpleBlockItem(gravelStair);
+        simpleBlockItem(gravelSlab);
+
+        simpleBlockItem(macadamBlock);
+        simpleBlockItem(macadamStair);
+        simpleBlockItem(macadamSlab);
+
+        basicItem(RNRCompatItems.GRAVEL_FILL.get());
+
+        for(CompatWood wood : CompatWood.VALUES){
+            Block shingleBlock = RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get();
+            Block shingleStair = RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get();
+            Block shingleSlab = RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get();
+            Item shingleItem = RNRCompatItems.SHINGLE.get(wood).get();
+
+            simpleBlockItem(shingleBlock);
+            simpleBlockItem(shingleStair);
+            simpleBlockItem(shingleSlab);
+            basicItem(shingleItem);
         }
     }
 

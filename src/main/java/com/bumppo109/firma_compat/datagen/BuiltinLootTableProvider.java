@@ -7,6 +7,8 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
 import com.eerussianguy.firmalife.common.items.FLItems;
 import net.dries007.tfc.common.blocks.TFCBlockStateProperties;
 import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
@@ -238,7 +240,7 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                 });
             });
 
-            if(ModList.get().isLoaded("firmalife")){
+            //Firmalife
                 for(CompatWood wood : CompatWood.VALUES){
                     dropSelf(CompatFLBlocks.FOOD_SHELVES.get(wood).get());
                     dropSelf(CompatFLBlocks.HANGERS.get(wood).get());
@@ -256,7 +258,49 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                         addSimpleOreDrop(chromiteOreBlock, chromiteItem);
                     }
                 }
+
+            //RNR
+            // Tamped blocks
+            dropSelf(RNRCompatBlocks.TAMPED_DIRT.get());
+            dropSelf(RNRCompatBlocks.TAMPED_MUD.get());
+
+// Over-height gravel (special gravel variant)
+            dropSelf(RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get());
+
+// Gravel road set
+            dropSelf(RNRCompatBlocks.GRAVEL_ROAD.get());
+            dropSelf(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get());
+            dropSelf(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get());
+
+// Macadam road set
+            dropSelf(RNRCompatBlocks.MACADAM_ROAD.get());
+            dropSelf(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get());
+            dropSelf(RNRCompatBlocks.MACADAM_ROAD_SLAB.get());
+
+// Flagstone, Cobbled Road, Sett Road — per rock variant
+            for (CompatRock rock : CompatRock.VALUES) {
+                // Flagstone
+                dropSelf(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE).get());
+                dropSelf(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE).get());
+                dropSelf(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE).get());
+
+                // Cobbled Road
+                dropSelf(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+                dropSelf(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+                dropSelf(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+
+                // Sett Road
+                dropSelf(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD).get());
+                dropSelf(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD).get());
+                dropSelf(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD).get());
             }
+
+            for(CompatWood wood : CompatWood.VALUES){
+                dropSelf(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
+                dropSelf(RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
+                dropSelf(RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
+            }
+
         }
 
         private void addSimpleOreDrop(Block oreBlock, ResourceLocation oreItemId) {
@@ -492,11 +536,53 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                 knownBlocks.add(CompatFLBlocks.STOMPING_BARRELS.get(wood).get());
                 knownBlocks.add(CompatFLBlocks.BARREL_PRESSES.get(wood).get());
             }
-
             for(CompatRock rock : CompatRock.VALUES){
                 for(Ore.Grade grade : Ore.Grade.values()){
-                    knownBlocks.add(CompatFLBlocks.CHROMITE_ORES.get(rock).get(grade).get());
+                    Block chromiteOreBlock = CompatFLBlocks.CHROMITE_ORES.get(rock).get(grade).get();
+
+                    knownBlocks.add(chromiteOreBlock);
                 }
+            }
+
+            // Tamped blocks
+            knownBlocks.add(RNRCompatBlocks.TAMPED_DIRT.get());
+            knownBlocks.add(RNRCompatBlocks.TAMPED_MUD.get());
+
+            // Over-height gravel
+            knownBlocks.add(RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get());
+
+            // Gravel road set
+            knownBlocks.add(RNRCompatBlocks.GRAVEL_ROAD.get());
+            knownBlocks.add(RNRCompatBlocks.GRAVEL_ROAD_STAIRS.get());
+            knownBlocks.add(RNRCompatBlocks.GRAVEL_ROAD_SLAB.get());
+
+            // Macadam road set
+            knownBlocks.add(RNRCompatBlocks.MACADAM_ROAD.get());
+            knownBlocks.add(RNRCompatBlocks.MACADAM_ROAD_STAIRS.get());
+            knownBlocks.add(RNRCompatBlocks.MACADAM_ROAD_SLAB.get());
+
+            // Per-rock variants: Flagstone, Cobbled Road, Sett Road
+            for (CompatRock rock : CompatRock.VALUES) {
+                // Flagstone
+                knownBlocks.add(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE).get());
+
+                // Cobbled Road
+                knownBlocks.add(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD).get());
+
+                // Sett Road
+                knownBlocks.add(RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD).get());
+                knownBlocks.add(RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD).get());
+            }
+
+            for (CompatWood wood : CompatWood.VALUES) {
+                knownBlocks.add(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get());
+                knownBlocks.add(RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get());
+                knownBlocks.add(RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get());
             }
 
             knownBlocks.add(Blocks.BARREL);
@@ -504,37 +590,5 @@ public class BuiltinLootTableProvider extends LootTableProvider {
             // Return the combined list
             return knownBlocks;
         }
-
-        /*
-        @Override
-        protected Iterable<Block> getKnownBlocks() {
-            // Wood blocks - only those with defined loot behavior
-            Stream<Block> woodStream = Stream.of(CompatWood.VALUES)
-                    .flatMap(wood -> ModBlocks.WOODS.get(wood).entrySet().stream())
-                    .filter(entry -> {
-                        CompatWood.BlockType type = entry.getKey();
-                        return type.needsItem()
-                                || type == CompatWood.BlockType.WINDMILL
-                                || type == CompatWood.BlockType.BARREL;
-                        // add more conditions later when you implement loot for other types
-                    })
-                    .map(entry -> entry.getValue().get());
-
-            // Rock blocks
-            Stream<Block> rockStream = Stream.of(CompatRock.VALUES)
-                    .flatMap(rock -> ModBlocks.ROCK_BLOCKS.get(rock).entrySet().stream())
-                    .filter(entry -> {
-                        CompatRock.BlockType type = entry.getKey();
-                        return type == CompatRock.BlockType.LOOSE
-                         || type == CompatRock.BlockType.HARDENED;
-                    })
-                    .map(entry -> entry.getValue().get());
-
-            // Combine → collect to List → return as Iterable
-            return Stream.concat(woodStream, rockStream)
-                    .collect(Collectors.toList());
-        }
-
-         */
     }
 }

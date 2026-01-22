@@ -1524,6 +1524,19 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
             macadamBuilder.partialState().with(StairBlock.FACING, Direction.NORTH).with(StairBlock.SHAPE, StairsShape.INNER_LEFT)
                     .modelForState().modelFile(macadamStairsInnerModel).rotationY(180).uvLock(true).addModel();
 
+        //Wood
+        for(CompatWood wood : CompatWood.VALUES){
+            Block shingleBlock = RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get();
+            StairBlock shingleStair = (StairBlock) RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get();
+            SlabBlock shingleSlab = (SlabBlock) RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get();
+
+            ResourceLocation woodShingleTexture = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "block/" + wood.getSerializedName() + "_shingles");
+
+            simpleBlock(shingleBlock);
+            stairsBlock(shingleStair, woodShingleTexture);
+            slabBlock(shingleSlab, woodShingleTexture, woodShingleTexture);
+        }
+
     }
 
     private void pillarBlock(Block block, ResourceLocation modelPath) {

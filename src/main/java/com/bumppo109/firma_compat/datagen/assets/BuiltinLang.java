@@ -6,6 +6,7 @@ import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -230,13 +231,17 @@ public class BuiltinLang extends LanguageProvider {
                 Block settBlock = RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD).get();
                 Block settStair = RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD).get();
                 Block settSlab = RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD).get();
+                Item flagstoneItem = RNRCompatItems.FLAGSTONE.get(rock).get();
 
-                add(flagstoneBlock.getDescriptionId(), getBlockDisplayName(flagstoneBlock));
-                add(flagstoneStair.getDescriptionId(), getBlockDisplayName(flagstoneStair));
-                add(flagstoneSlab.getDescriptionId(), getBlockDisplayName(flagstoneSlab));
                 add(cobbledBlock.getDescriptionId(), getBlockDisplayName(cobbledBlock));
                 add(cobbledStair.getDescriptionId(), getBlockDisplayName(cobbledStair));
                 add(cobbledSlab.getDescriptionId(), getBlockDisplayName(cobbledSlab));
+                if(rock.equals(CompatRock.NETHERRACK)) continue;
+
+                add(flagstoneItem.getDescriptionId(), getItemDisplayName(flagstoneItem));
+                add(flagstoneBlock.getDescriptionId(), getBlockDisplayName(flagstoneBlock));
+                add(flagstoneStair.getDescriptionId(), getBlockDisplayName(flagstoneStair));
+                add(flagstoneSlab.getDescriptionId(), getBlockDisplayName(flagstoneSlab));
                 add(settBlock.getDescriptionId(), getBlockDisplayName(settBlock));
                 add(settStair.getDescriptionId(), getBlockDisplayName(settStair));
                 add(settSlab.getDescriptionId(), getBlockDisplayName(settSlab));
@@ -262,6 +267,18 @@ public class BuiltinLang extends LanguageProvider {
             add(macadamBlock.getDescriptionId(), getBlockDisplayName(macadamBlock));
             add(macadamStairsBlock.getDescriptionId(), getBlockDisplayName(macadamStairsBlock));
             add(macadamSlabBlock.getDescriptionId(), getBlockDisplayName(macadamSlabBlock));
+
+            for(CompatWood wood : CompatWood.VALUES){
+                Block shingleBlock = RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get();
+                Block shingleStair = RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get();
+                Block shingleSlab = RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get();
+                Item shingleItem = RNRCompatItems.SHINGLE.get(wood).get();
+
+                add(shingleBlock.getDescriptionId(), getBlockDisplayName(shingleBlock));
+                add(shingleStair.getDescriptionId(), getBlockDisplayName(shingleStair));
+                add(shingleSlab.getDescriptionId(), getBlockDisplayName(shingleSlab));
+                add(shingleItem.getDescriptionId(), getItemDisplayName(shingleItem));
+            }
 
     }
 

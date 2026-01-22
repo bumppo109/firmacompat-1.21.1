@@ -163,6 +163,9 @@ dependencies {
     implementation("curse.maven:block-runner-442842:6215039")
     implementation("curse.maven:puzzles-lib-495476:7140307")
 
+    //ArborFirma afc-2.0.5-1.21.1
+    implementation "curse.maven:arborfirmacraft-877545:7314761"
+
     //TODO - testing with Regions Unexplored
     implementation "curse.maven:regions-unexplored-659110:6273893"
 

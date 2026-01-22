@@ -1,8 +1,0 @@
-{
-  "forging_temperature": 0.21000001,
-  "heat_capacity": 720000.0,
-  "ingredient": {
-    "item": "minecraft:copper_door"
-  },
-  "welding_temperature": 0.28
-}
