@@ -3,6 +3,7 @@ package com.bumppo109.firma_compat;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.data.ModDataMaps;
 import com.bumppo109.firma_compat.dynamic.*;
+import com.bumppo109.firma_compat.dynamic.dynamicpack.FirmaCompatDynamicPack;
 import com.bumppo109.firma_compat.entity.CompatFaunas;
 import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.event.ModEvents;
@@ -66,47 +67,16 @@ public class FirmaCompat {
 
         modEventBus.addListener(ModDataMaps::register);
 
-        if(ModList.get().isLoaded("everycomp")){
-            CompatWoodGoodModule woodModule = new CompatWoodGoodModule();
-            EveryCompatAPI.registerModule(woodModule);
-        }
-        if(ModList.get().isLoaded("stonezone")){
-            CompatStoneZoneModule stoneModule = new CompatStoneZoneModule();
-            EveryCompatAPI.registerModule(stoneModule);
-        }
         if(ModList.get().isLoaded("firmalife")){
-            FLWoodGoodModule flWoodGoodModule = new FLWoodGoodModule();
-            FLStoneZoneModule flStoneZoneModule = new FLStoneZoneModule();
-
             CompatFLBlocks.BLOCKS.register(modEventBus);
             CompatFLItems.ITEMS.register(modEventBus);
-            EveryCompatAPI.registerModule(flWoodGoodModule);
-            EveryCompatAPI.registerModule(flStoneZoneModule);
         }
         if(ModList.get().isLoaded("rnr")){
-            RNRWoodGoodModule rnrWoodGoodModule = new RNRWoodGoodModule();
-            RNRStoneZoneModule rnrStoneZoneModule = new RNRStoneZoneModule();
-
             RNRCompatBlocks.BLOCKS.register(modEventBus);
             RNRCompatItems.ITEMS.register(modEventBus);
-            EveryCompatAPI.registerModule(rnrWoodGoodModule);
-            EveryCompatAPI.registerModule(rnrStoneZoneModule);
-
-            /*
-            WoodTypeRegistry woodReg = WoodTypeRegistry.INSTANCE;
-            woodReg.addSimpleFinder("minecraft", "acacia").log("acacia_log");
-            woodReg.addSimpleFinder("minecraft", "birch").log("birch_log");
-            woodReg.addSimpleFinder("minecraft", "cherry").log("cherry_log");
-            woodReg.addSimpleFinder("minecraft", "dark_oak").log("dark_oak_log");
-            woodReg.addSimpleFinder("minecraft", "jungle").log("jungle_log");
-            woodReg.addSimpleFinder("minecraft", "mangrove").log("mangrove_log");
-            woodReg.addSimpleFinder("minecraft", "oak").log("oak_log");
-            woodReg.addSimpleFinder("minecraft", "spruce").log("spruce_log");
-            woodReg.addSimpleFinder("minecraft", "warped").log("warped_log");
-            woodReg.addSimpleFinder("minecraft", "crimson").log("crimson_log");
-
-             */
         }
+
+        //FirmaCompatDynamicPack.init();
 
         NeoForge.EVENT_BUS.register(this);
 

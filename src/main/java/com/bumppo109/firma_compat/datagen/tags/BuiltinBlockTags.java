@@ -10,12 +10,14 @@ import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
 import com.google.common.base.Preconditions;
+import com.therighthon.rnr.common.RNRTags;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.DecorationBlockHolder;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
+import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -343,6 +345,16 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
 
             tag(SETT_ROAD_SLABS)
                     .addOptional(getSlabId.apply(CompatRNR.SETT_ROAD));
+        }
+
+        for(CompatWood wood : CompatWood.VALUES){
+            Function<Block, ResourceLocation> getBlockId = block ->
+                    BuiltInRegistries.BLOCK.getKey(block);
+
+            tag(MINEABLE_WITH_AXE)
+                    .addOptional(getBlockId.apply(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get()))
+                    .addOptional(getBlockId.apply(RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood).get()))
+                    .addOptional(getBlockId.apply(RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood).get()));
         }
 
         Function<Block, ResourceLocation> getBlockId = block ->

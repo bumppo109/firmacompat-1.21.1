@@ -140,6 +140,12 @@ public class ModCreativeModeTab {
                 accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD));
                 accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD));
             }
+            for(CompatWood wood : CompatWood.VALUES){
+                accept(out, RNRCompatItems.SHINGLE.get(wood));
+                accept(out, RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood));
+                accept(out, RNRCompatBlocks.WOOD_SHINGLE_ROOF_STAIRS.get(wood));
+                accept(out, RNRCompatBlocks.WOOD_SHINGLE_ROOF_SLABS.get(wood));
+            }
         }
     }
 

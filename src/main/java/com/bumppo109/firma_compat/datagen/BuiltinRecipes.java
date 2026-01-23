@@ -447,9 +447,9 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
             add(new BlockModRecipe(Ingredient.of(shingleItem), BlockIngredient.of(RNRBlocks.ROOF_FRAME_STAIRS.get()), shingleStair.defaultBlockState(), true), rnrLoaded);
             add(new BlockModRecipe(Ingredient.of(shingleItem), BlockIngredient.of(RNRBlocks.ROOF_FRAME_SLAB.get()), shingleSlab.defaultBlockState(), true), rnrLoaded);
 
-            mattock(BlockIngredient.of(shingleBlock), shingleStair.defaultBlockState(),
+            chisel(BlockIngredient.of(shingleBlock), shingleStair.defaultBlockState(),
                     ChiselMode.STAIR, "stair", rnrLoaded);
-            mattock(BlockIngredient.of(shingleBlock), shingleSlab.defaultBlockState(),
+            chisel(BlockIngredient.of(shingleBlock), shingleSlab.defaultBlockState(),
                     ChiselMode.SLAB, "slab", rnrLoaded);
 
             //shingle Items
