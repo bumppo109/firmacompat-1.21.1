@@ -6,6 +6,7 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.fluid.ModFluids;
+import net.dries007.tfc.common.Lore;
 import net.dries007.tfc.common.entities.TFCEntities;
 import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
@@ -27,6 +28,20 @@ import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, FirmaCompat.MODID);
+
+    //Food
+    public static final ItemId SWEET_BERRIES_JAR = register("sweet_berries_jar",
+            () -> new Item((new Item.Properties()).component(Lore.TYPE, Lore.SEALED)));
+    public static final ItemId SWEET_BERRIES_JAR_UNSEALED = register("sweet_berries_jar_unsealed",
+            () -> new Item((new Item.Properties()).component(Lore.TYPE, Lore.UNSEALED).craftRemainder(TFCItems.EMPTY_JAR.get())));
+    public static final ItemId SWEET_BERRIES_JAM = register("sweet_berries_jam",
+            () -> new Item((new Item.Properties())));
+    public static final ItemId GLOW_BERRIES_JAR = register("glow_berries_jar",
+            () -> new Item((new Item.Properties()).component(Lore.TYPE, Lore.SEALED)));
+    public static final ItemId GLOW_BERRIES_JAR_UNSEALED = register("glow_berries_jar_unsealed",
+            () -> new Item((new Item.Properties()).component(Lore.TYPE, Lore.UNSEALED).craftRemainder(TFCItems.EMPTY_JAR.get())));
+    public static final ItemId GLOW_BERRIES_JAM = register("glow_berries_jam",
+            () -> new Item((new Item.Properties())));
 
     //Wood
     public static final Map<CompatWood, ItemId> LUMBER = Helpers.mapOf(CompatWood.class, wood -> register(wood.name() + "_lumber"));

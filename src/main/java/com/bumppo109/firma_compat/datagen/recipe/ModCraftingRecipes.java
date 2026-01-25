@@ -23,6 +23,7 @@ import net.dries007.tfc.common.recipes.ingredients.NotRottenIngredient;
 import net.dries007.tfc.common.recipes.outputs.MealModifier;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -274,7 +275,17 @@ public interface ModCraftingRecipes extends ModRecipes
                 "magenta_dye_from_lilac",
                 "pink_dye_from_pink_petals",
                 "pink_dye_from_peony",
-                "pink_dye_from_pink_tulip"
+                "pink_dye_from_pink_tulip",
+                "acacia_chest_boat",
+                "birch_chest_boat",
+                "cherry_chest_boat",
+                "dark_oak_chest_boat",
+                "jungle_chest_boat",
+                "mangrove_chest_boat",
+                "oak_chest_boat",
+                "spruce_chest_boat",
+                "crimson_chest_boat",
+                "warped_chest_boat"
         );
 
         for (String material : List.of("netherite")){
@@ -375,6 +386,19 @@ public interface ModCraftingRecipes extends ModRecipes
                 .input('G', Items.BOWL)
                 .pattern("MM ", "G  ")
                 .shaped(Items.MUSHROOM_STEW);
+
+        recipe()
+                .input(ModItems.SWEET_BERRIES_JAR.get())
+                .shapeless(ModItems.SWEET_BERRIES_JAR_UNSEALED);
+        recipe()
+                .input(ModItems.GLOW_BERRIES_JAR.get())
+                .shapeless(ModItems.GLOW_BERRIES_JAR_UNSEALED);
+        recipe()
+                .input(ModItems.SWEET_BERRIES_JAR_UNSEALED.get())
+                .shapeless(ModItems.SWEET_BERRIES_JAM);
+        recipe()
+                .input(ModItems.GLOW_BERRIES_JAR_UNSEALED.get())
+                .shapeless(ModItems.GLOW_BERRIES_JAM);
 
         //Wood
         for (CompatWood wood : CompatWood.values())
@@ -877,6 +901,7 @@ public interface ModCraftingRecipes extends ModRecipes
                 .input('L', ModTags.Items.COMPAT_LUMBER)
                 .pattern("LLL", "L L", "LLL")
                 .shaped(Items.CHEST);
+
         recipe()
                 .input('X', ModTags.Items.COMPAT_LUMBER)
                 .input('L', ItemTags.PLANKS)

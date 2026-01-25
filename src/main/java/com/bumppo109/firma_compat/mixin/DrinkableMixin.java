@@ -73,6 +73,6 @@ public abstract class DrinkableMixin {
     }
 
     private static boolean isOceanBiome(Holder<Biome> biomeHolder) {
-        return biomeHolder.is(Tags.Biomes.IS_OCEAN);
+        return biomeHolder.is(Tags.Biomes.IS_OCEAN) || biomeHolder.is(Tags.Biomes.IS_BEACH);
     }
 }

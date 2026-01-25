@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.dynamic;
+package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatOre;
@@ -12,9 +12,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.datafixers.util.Pair;
 import net.dries007.tfc.common.TFCTags;
-import net.dries007.tfc.common.blockentities.TFCBlockEntities;
-import net.dries007.tfc.common.blocks.ExtendedProperties;
-import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
 import net.dries007.tfc.common.blocks.rock.AqueductBlock;
 import net.dries007.tfc.common.blocks.rock.LooseRockBlock;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
@@ -35,10 +32,6 @@ import net.mehvahdjukaar.stone_zone.StoneZone;
 import net.mehvahdjukaar.stone_zone.api.StoneZoneEntrySet;
 import net.mehvahdjukaar.stone_zone.api.StoneZoneModule;
 import net.mehvahdjukaar.stone_zone.api.set.VanillaRockChildKeys;
-import net.mehvahdjukaar.stone_zone.api.set.mud.MudType;
-import net.mehvahdjukaar.stone_zone.api.set.mud.MudTypeRegistry;
-import net.mehvahdjukaar.stone_zone.api.set.mud.VanillaMudChildKeys;
-import net.mehvahdjukaar.stone_zone.api.set.mud.VanillaMudTypes;
 import net.mehvahdjukaar.stone_zone.api.set.stone.StoneType;
 import net.mehvahdjukaar.stone_zone.api.set.stone.StoneTypeRegistry;
 import net.mehvahdjukaar.stone_zone.api.set.stone.VanillaStoneChildKeys;
@@ -54,10 +47,8 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.common.Tags;
 
 import javax.annotation.Nullable;
@@ -114,7 +105,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 .requiresFromMap(LOOSE.blocks)
                 .addTag(Tags.Items.COBBLESTONES_NORMAL, Registries.BLOCK, Registries.ITEM)
                 .addTag(TFCTags.Blocks.CAN_LANDSLIDE, Registries.BLOCK)
-                .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTexture(modRes("block/loose_stone_cobble"), PaletteStrategies.MAIN_CHILD)
                 .addRecipe(modRes("crafting/loose_stone_cobble"))
                 .dropSelf()
@@ -129,9 +119,8 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 )
                 .requiresFromMap(LOOSE.blocks)
                 .addTag(Tags.Items.COBBLESTONES_NORMAL, Registries.BLOCK, Registries.ITEM)
-                .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTexture(modRes("block/loose_stone_cobble"), PaletteStrategies.MAIN_CHILD)
-                //.addRecipe(modRes("crafting/hardened_andesite_cobble"))
+                .addRecipe(modRes("crafting/hardened_andesite_cobble"))
                 .defaultRecipe()
                 .dropSelf()
                 .setTabKey(tab)
@@ -139,7 +128,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 .build();
         this.addEntry(HARDENED_COBBLE);
 
-        //TODO - not sure how to handle columnar "raw" stone like tfc:rock/hardened/shale & firma_compat:basalt_hardened
         HARDENED = StoneZoneEntrySet.of(StoneType.class,"hardened",
                         getModBlock("stone_hardened"), () -> VanillaStoneTypes.STONE,
                         stoneType -> new Block(Utils.copyPropertySafe(stoneType.stone))
@@ -234,8 +222,8 @@ public class CompatStoneZoneModule extends StoneZoneModule {
             }
         }
 
-        /*
-        MUD_BRICK = ItemOnlyEntrySet.builder(MudType.class, "brick", "dried",
+        /* TODO - pending mod with mud brick set
+        MUD_BRICK = ItemOnlyEntrySet.builder(MudType.class, "brick",
                         getModItem("mud_brick"), () -> VanillaMudTypes.MUD,
                         w -> new Item(new Item.Properties())
                 )
@@ -254,6 +242,7 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 .addTag(BlockTags.MINEABLE_WITH_SHOVEL, Registries.BLOCK)
                 .addRecipe(modRes("crafting/drying_mud_bricks"))
                 .copyParentDrop()
+                .dropSelf()
                 .excludeBlockTypes("tfc:.*")
                 .setTabKey(tab)
                 .build();
@@ -324,7 +313,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 UtilityTag.createAndAddCustomTags(rockTag, sink, stoneType.stone);
 
                 if(LOOSE.items.get(stoneType) != null){
-                    generateBrickBlockRecipe(sink, LOOSE.items.get(stoneType).toString(), HARDENED_COBBLE.items.get(stoneType).toString(), 4, null);
                     if(stoneType.hasChild(VanillaRockChildKeys.BRICKS)){
                         if(BRICK.items.get(stoneType) != null){
                             generateBrickRecipe(sink, LOOSE.items.get(stoneType), BRICK.items.get(stoneType), "c:tools/chisel", 1,null);
@@ -343,16 +331,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                     }
                 }
             }
-
-            //TODO - mud blocks
-            /*
-            for(MudType mudType : MudTypeRegistry.INSTANCE){
-                if(mudType.hasChild("bricks")){
-                    generateMudBrickBlockRecipe(sink, MUD_BRICK.items.get(mudType).toString(), Utils.getID(Objects.requireNonNull(mudType.getChild(VanillaRockChildKeys.BRICKS))).toString(), 1, null);
-                    UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, mudType.getItemOfThis("bricks"));
-                }
-            }
-             */
 
             HARDENED.blocks.forEach((stoneType, block) -> {
                 if (stoneType == null) return;  // safety check
@@ -1425,60 +1403,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
         pattern.add("XYX");
         pattern.add("YXY");
         pattern.add("XYX");
-        recipe.add("pattern", pattern);
-
-        // Result
-        JsonObject result = new JsonObject();
-        result.addProperty("count", count);
-        result.addProperty("id", outputItem);
-        recipe.add("result", result);
-
-        // Build recipe ResourceLocation based on output item's namespace + path
-        ResourceLocation outLoc = ResourceLocation.parse(outputItem);
-        String recipePath = "crafting/" + outLoc.getPath();  // e.g. "bricks/andesite"
-
-        if (suffix != null && !suffix.isEmpty()) {
-            recipePath += suffix;
-        }
-
-        // Final location: <output_namespace>:recipes/<recipePath>
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
-                FirmaCompat.MODID, recipePath
-        );
-
-        sink.addJson(recipeId, recipe, ResType.RECIPES);
-    }
-
-    public void generateMudBrickBlockRecipe(
-            ResourceSink sink,
-            String inputItem,
-            String outputItem,
-            int count,
-            @Nullable String suffix
-    ) {
-        if (count < 1) {
-            count = 1;
-            EveryCompat.LOGGER.warn("Invalid count {} for mud brick recipe {} → {}, clamped to 1",
-                    count, inputItem, outputItem);
-        }
-
-        JsonObject recipe = new JsonObject();
-        recipe.addProperty("type", "minecraft:crafting_shaped");
-        recipe.addProperty("category", "misc");
-
-        // Key definitions
-        JsonObject key = new JsonObject();
-
-        JsonObject brickKey = new JsonObject();
-        brickKey.addProperty("item", inputItem);
-        key.add("X", brickKey);
-
-        recipe.add("key", key);
-
-        // Fixed 3x3 pattern from your example
-        JsonArray pattern = new JsonArray();
-        pattern.add("XX ");
-        pattern.add("XX ");
         recipe.add("pattern", pattern);
 
         // Result

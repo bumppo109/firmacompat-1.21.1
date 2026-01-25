@@ -54,34 +54,30 @@ public class ModBlocks {
             )
     );
 
-    /* TODO - add chests
-    public static final Id<Block> CHEST = register(
-            "chest",
+    public static final Id<Block> COMPAT_CHEST = register(
+            "compat_chest",
             () -> new TFCChestBlock(
                     ExtendedProperties.of()
                             .strength(2.5F)
                             .flammableLikeLogs()
                             .blockEntity(TFCBlockEntities.CHEST)
                             .clientTicks(ChestBlockEntity::lidAnimateTick),
-                    "minecraft:entity/chest/normal"   // ← or wood.getSerializedName()
+                    "compat_chest"   // ← or wood.getSerializedName()
             )
     );
 
     // Option B - pass string identifier
-    public static final Id<Block> TRAPPED_CHEST = register(
-            "trapped_chest",
+    public static final Id<Block> COMPAT_TRAPPED_CHEST = register(
+            "compat_trapped_chest",
             () -> new TFCTrappedChestBlock(
                     ExtendedProperties.of()
                             .strength(2.5F)
                             .flammableLikeLogs()
                             .blockEntity(TFCBlockEntities.TRAPPED_CHEST)
                             .clientTicks(ChestBlockEntity::lidAnimateTick),
-                    "minecraft:entity/chest/normal"
+                    "compat_trapped_chest"
             )
     );
-
-     */
-
 
     //Rock
     public static final Map<CompatRock, Map<CompatRock.BlockType, Id<Block>>> ROCK_BLOCKS = Helpers.mapOf(CompatRock.class, rock ->

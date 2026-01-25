@@ -38,14 +38,22 @@ public class RNRCompatBlocks {
 
     //Wood
     public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOFS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingles",
-            () -> new Block(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
+            () -> switch(wood){
+                case CRIMSON, WARPED -> new Block(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+                default -> new Block(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().flammableLikeLogs().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+            }));
 
     public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOF_SLABS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingle_stairs",
-            () -> new SlabBlock(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
+            () -> switch(wood){
+                case CRIMSON, WARPED -> new SlabBlock(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+                default -> new SlabBlock(ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().flammableLikeLogs().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+            }));
 
     public static final Map<CompatWood, ModBlocks.Id<Block>> WOOD_SHINGLE_ROOF_STAIRS = Helpers.mapOf(CompatWood.class, (wood) -> register(wood.getSerializedName() + "_shingle_slab",
-            () -> new StairBlock(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get().defaultBlockState(), ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties())));
-
+            () -> switch(wood){
+                case CRIMSON, WARPED -> new StairBlock(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get().defaultBlockState(), ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+                default -> new StairBlock(RNRCompatBlocks.WOOD_SHINGLE_ROOFS.get(wood).get().defaultBlockState(), ExtendedProperties.of(MapColor.WOOD).strength(1.0F, 0.6F).noOcclusion().flammableLikeLogs().isViewBlocking(TFCBlocks::never).sound(SoundType.WOOD).flammable(50, 100).properties());
+            }));
 
     //Flagstone, Sett, Cobbled
     public static final Map<CompatRock, Map<CompatRNR, ModBlocks.Id<Block>>> ROCK_BLOCKS = Helpers.mapOf(CompatRock.class, (rock) ->

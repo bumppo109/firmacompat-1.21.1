@@ -1,4 +1,10 @@
 {
-  "feature": "firma_compat:stonezone/firmalife/vein/normal_chromite",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "firmalife"
+    }
+  ],
+  "feature": "firma_compat:firmalife/vein/normal_chromite",
   "placement": []
 }

@@ -66,7 +66,8 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
         ModChiselRecipes,
         ModQuernRecipes,
         ModWeldingRecipes,
-        ModKnappingRecipes
+        ModKnappingRecipes,
+        ModPotRecipes
 
 {
     final Set<ResourceLocation> removedRecipes = new HashSet<>();
@@ -120,6 +121,7 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
         quernRecipes();
         weldingRecipes();
         knappingRecipes();
+        potRecipes();
 
         // Heat Recipes from Melting
         for (BuiltinItemHeat.MeltingRecipe melt : meltingRecipes)
@@ -359,26 +361,6 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
                     ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_SLABS.get(rock)).get(CompatRNR.COBBLED_ROAD)).get()).defaultBlockState(),
                     ChiselMode.SLAB, "slab", rnrLoaded);
 
-            if(rock.equals(CompatRock.NETHERRACK)) continue;
-
-            add(new BlockModRecipe(Ingredient.of(flagstoneItem), BlockIngredient.of(baseBlock), flagstoneBlock.defaultBlockState(), true), rnrLoaded);
-            add(new BlockModRecipe(Ingredient.of(brickItem), BlockIngredient.of(baseBlock), settBlock.defaultBlockState(), true), rnrLoaded);
-
-            //Mattock Recipe
-            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.FLAGSTONE)).get()}),
-                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_STAIRS.get(rock)).get(CompatRNR.FLAGSTONE)).get()).defaultBlockState(),
-                    ChiselMode.STAIR, "stair", rnrLoaded);
-            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.FLAGSTONE)).get()}),
-                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_SLABS.get(rock)).get(CompatRNR.FLAGSTONE)).get()).defaultBlockState(),
-                    ChiselMode.SLAB, "slab", rnrLoaded);
-
-            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.SETT_ROAD)).get()}),
-                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_STAIRS.get(rock)).get(CompatRNR.SETT_ROAD)).get()).defaultBlockState(),
-                    ChiselMode.STAIR, "stair", rnrLoaded);
-            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.SETT_ROAD)).get()}),
-                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_SLABS.get(rock)).get(CompatRNR.SETT_ROAD)).get()).defaultBlockState(),
-                    ChiselMode.SLAB, "slab", rnrLoaded);
-
             //Flagstone Items
             Ingredient primaryInput = Ingredient.of(rock.rawBlock().get());
             Ingredient tool = Ingredient.of(TFCTags.Items.TOOLS_CHISEL);
@@ -395,6 +377,27 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
                     Optional.of(primaryInput)                 // primary ingredient = the block being chiseled
             );
             add("rnr/" + rock.getSerializedName() + "_flagstone", recipe, rnrLoaded);
+
+            add(new BlockModRecipe(Ingredient.of(flagstoneItem), BlockIngredient.of(baseBlock), flagstoneBlock.defaultBlockState(), true), rnrLoaded);
+
+            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.FLAGSTONE)).get()}),
+                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_STAIRS.get(rock)).get(CompatRNR.FLAGSTONE)).get()).defaultBlockState(),
+                    ChiselMode.STAIR, "stair", rnrLoaded);
+            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.FLAGSTONE)).get()}),
+                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_SLABS.get(rock)).get(CompatRNR.FLAGSTONE)).get()).defaultBlockState(),
+                    ChiselMode.SLAB, "slab", rnrLoaded);
+
+            if(rock.equals(CompatRock.NETHERRACK)) continue;
+
+            add(new BlockModRecipe(Ingredient.of(brickItem), BlockIngredient.of(baseBlock), settBlock.defaultBlockState(), true), rnrLoaded);
+
+            //Mattock Recipe
+            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.SETT_ROAD)).get()}),
+                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_STAIRS.get(rock)).get(CompatRNR.SETT_ROAD)).get()).defaultBlockState(),
+                    ChiselMode.STAIR, "stair", rnrLoaded);
+            mattock(BlockIngredient.of(new Block[]{(Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_BLOCKS.get(rock)).get(CompatRNR.SETT_ROAD)).get()}),
+                    ((Block)((ModBlocks.Id)((Map)RNRCompatBlocks.ROCK_SLABS.get(rock)).get(CompatRNR.SETT_ROAD)).get()).defaultBlockState(),
+                    ChiselMode.SLAB, "slab", rnrLoaded);
         }
         Block baseBlock = RNRBlocks.BASE_COURSE.get();
         Block overheightGravel = RNRCompatBlocks.OVER_HEIGHT_GRAVEL.get();

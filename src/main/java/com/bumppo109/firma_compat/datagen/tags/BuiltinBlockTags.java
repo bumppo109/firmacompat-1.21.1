@@ -17,7 +17,6 @@ import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
-import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -82,6 +81,14 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
                 .add(Blocks.FERN)
                 .add(Blocks.LARGE_FERN)
         ;
+
+        tag(Tags.Blocks.CHESTS_WOODEN)
+                .add(ModBlocks.COMPAT_CHEST.get())
+                .add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
+
+        tag(PET_SITS_ON)
+                .add(ModBlocks.COMPAT_CHEST.get())
+                .add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
 
         //Wood
         //Mineable

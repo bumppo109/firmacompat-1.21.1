@@ -58,6 +58,22 @@ public class BuiltinLang extends LanguageProvider {
         add("block_type.firma_compat.stomping_barrel", "%s Stomping Barrel");
         add("block_type.firma_compat.barrel_press", "%s Barrel Press");
 
+        //Food
+        Item sweetBerryJar = ModItems.SWEET_BERRIES_JAR.get();
+        Item sweetBerryJarUnsealed = ModItems.SWEET_BERRIES_JAR_UNSEALED.get();
+        Item sweetBerryJam = ModItems.SWEET_BERRIES_JAM.get();
+
+        Item glowBerryJar = ModItems.GLOW_BERRIES_JAR.get();
+        Item glowBerryJarUnsealed = ModItems.GLOW_BERRIES_JAR_UNSEALED.get();
+        Item glowBerryJam = ModItems.GLOW_BERRIES_JAM.get();
+
+        add(sweetBerryJam, getItemDisplayName(sweetBerryJam));
+        add(sweetBerryJar, getItemDisplayName(sweetBerryJar));
+        add(sweetBerryJarUnsealed, getItemDisplayName(sweetBerryJarUnsealed));
+        add(glowBerryJar, getItemDisplayName(glowBerryJar));
+        add(glowBerryJarUnsealed, getItemDisplayName(glowBerryJarUnsealed));
+        add(glowBerryJam, getItemDisplayName(glowBerryJam));
+
         // Wood Related
         for (CompatWood wood : CompatWood.VALUES) {
             //TODO special case - not sure how to reference the item. but does it matter?
@@ -236,12 +252,12 @@ public class BuiltinLang extends LanguageProvider {
                 add(cobbledBlock.getDescriptionId(), getBlockDisplayName(cobbledBlock));
                 add(cobbledStair.getDescriptionId(), getBlockDisplayName(cobbledStair));
                 add(cobbledSlab.getDescriptionId(), getBlockDisplayName(cobbledSlab));
-                if(rock.equals(CompatRock.NETHERRACK)) continue;
-
                 add(flagstoneItem.getDescriptionId(), getItemDisplayName(flagstoneItem));
                 add(flagstoneBlock.getDescriptionId(), getBlockDisplayName(flagstoneBlock));
                 add(flagstoneStair.getDescriptionId(), getBlockDisplayName(flagstoneStair));
                 add(flagstoneSlab.getDescriptionId(), getBlockDisplayName(flagstoneSlab));
+
+                if(rock.equals(CompatRock.NETHERRACK)) continue;
                 add(settBlock.getDescriptionId(), getBlockDisplayName(settBlock));
                 add(settStair.getDescriptionId(), getBlockDisplayName(settStair));
                 add(settSlab.getDescriptionId(), getBlockDisplayName(settSlab));
@@ -257,6 +273,9 @@ public class BuiltinLang extends LanguageProvider {
             Block macadamStairsBlock = RNRCompatBlocks.MACADAM_ROAD_STAIRS.get();
             Block macadamSlabBlock = RNRCompatBlocks.MACADAM_ROAD_SLAB.get();
 
+            Item gravelFill = RNRCompatItems.GRAVEL_FILL.get();
+
+            add(gravelFill, getItemDisplayName(gravelFill));
             add(overheightGravelBlock.getDescriptionId(), getBlockDisplayName(overheightGravelBlock));
             add(tampedDirtBlock.getDescriptionId(), getBlockDisplayName(tampedDirtBlock));
             add(tampedMudBlock.getDescriptionId(), getBlockDisplayName(tampedMudBlock));

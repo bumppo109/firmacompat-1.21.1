@@ -128,11 +128,13 @@ dependencies {
     // at runtime, use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    /*
+
     //Moonlight Lib 1.21-2.29.4
     //implementation "curse.maven:selene-499980:7396730"
     //1.21-2.29.11
-    implementation "curse.maven:selene-499980:7473045"
+    //implementation "curse.maven:selene-499980:7473045"
+    //1.21-2.29.14
+    implementation "curse.maven:selene-499980:7511744"
 
     //Every Compat - Wood Good 1.21-2.11.23
     //implementation "curse.maven:every-compat-628539:7382431"
@@ -143,8 +145,6 @@ dependencies {
     //implementation "curse.maven:stone-zone-1154622:7339708"
     //1.21-2.11.7
     implementation "curse.maven:stone-zone-1154622:7439162"
-
-     */
 
     //TerraFirmaCraft 1.21.1-4.0.17
     //implementation "curse.maven:terrafirmacraft-302973:7452541"

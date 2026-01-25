@@ -10,8 +10,8 @@
     },
     {
       "type": "firma_compat:climate",
-      "min_temp": -20,
-      "max_temp": 50,
+      "min_temperature": -20,
+      "max_temperature": 50,
       "min_groundwater": 300
     }
   ]

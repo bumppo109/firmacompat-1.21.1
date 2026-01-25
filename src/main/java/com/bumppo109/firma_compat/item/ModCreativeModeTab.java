@@ -27,6 +27,13 @@ public class ModCreativeModeTab {
 
     private static void fillTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output out)
     {
+        //Food
+        ModItems.SWEET_BERRIES_JAR.get();
+        ModItems.SWEET_BERRIES_JAR_UNSEALED.get();
+        ModItems.SWEET_BERRIES_JAM.get();
+        ModItems.GLOW_BERRIES_JAR.get();
+        ModItems.GLOW_BERRIES_JAR_UNSEALED.get();
+        ModItems.GLOW_BERRIES_JAM.get();
         //Wood
         for (CompatWood wood : CompatWood.VALUES)
         {
@@ -127,18 +134,18 @@ public class ModCreativeModeTab {
             accept(out, RNRCompatBlocks.MACADAM_ROAD_SLAB);
 
             for(CompatRock rock : CompatRock.VALUES){
-                if(rock != CompatRock.NETHERRACK){
-                    accept(out, RNRCompatItems.FLAGSTONE.get(rock));
-                    accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE));
-                    accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE));
-                    accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE));
-                    accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD));
-                    accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD));
-                    accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD));
-                }
+                accept(out, RNRCompatItems.FLAGSTONE.get(rock));
+                accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.FLAGSTONE));
+                accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.FLAGSTONE));
+                accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.FLAGSTONE));
                 accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.COBBLED_ROAD));
                 accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.COBBLED_ROAD));
                 accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.COBBLED_ROAD));
+
+                if(rock.equals(CompatRock.NETHERRACK)) continue;
+                accept(out, RNRCompatBlocks.ROCK_BLOCKS.get(rock).get(CompatRNR.SETT_ROAD));
+                accept(out, RNRCompatBlocks.ROCK_STAIRS.get(rock).get(CompatRNR.SETT_ROAD));
+                accept(out, RNRCompatBlocks.ROCK_SLABS.get(rock).get(CompatRNR.SETT_ROAD));
             }
             for(CompatWood wood : CompatWood.VALUES){
                 accept(out, RNRCompatItems.SHINGLE.get(wood));

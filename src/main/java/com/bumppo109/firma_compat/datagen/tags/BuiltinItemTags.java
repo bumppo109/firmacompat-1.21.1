@@ -16,6 +16,7 @@ import com.eerussianguy.firmalife.common.FLTags;
 import com.google.common.base.Preconditions;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
+import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
 import net.minecraft.core.HolderLookup;
@@ -91,6 +92,14 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.BEETROOT)
                 .add(Items.SUGAR_CANE);
 
+        tag(Tags.Items.CHESTS_WOODEN)
+                .add(ModBlocks.COMPAT_CHEST.get().asItem())
+                .add(ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
+
+        tag(CARRIED_BY_HORSE)
+                .add(ModBlocks.COMPAT_CHEST.get().asItem())
+                .add(ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
+
         //Food
         tag(FRUITS)
                 .add(Items.SWEET_BERRIES)
@@ -102,6 +111,13 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
         tag(MEATS)
                 .add(Items.BROWN_MUSHROOM)
                 .add(Items.RED_MUSHROOM);
+
+        tag(SEALED_PRESERVES)
+                .add(ModItems.SWEET_BERRIES_JAR.get())
+                .add(ModItems.GLOW_BERRIES_JAR.get());
+        tag(PRESERVES)
+                .add(ModItems.SWEET_BERRIES_JAR_UNSEALED.get())
+                .add(ModItems.GLOW_BERRIES_JAR_UNSEALED.get());
         //Metal
         for(CompatMetal metal : CompatMetal.values()){
             if (metal.defaultOnlyParts()) {
@@ -119,6 +135,15 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
         addAllCompatWoods(CompatWood.BlockType.BARREL, BARRELS);
         addAllCompatWoods(CompatWood.BlockType.TWIG, Tags.Items.RODS_WOODEN);
         addAllCompatWoods(CompatWood.BlockType.TWIG, TWIGS);
+        addAllCompatWoods(CompatWood.BlockType.TOOL_RACK, TOOL_RACKS);
+        addAllCompatWoods(CompatWood.BlockType.LOOM, LOOMS);
+        addAllCompatWoods(CompatWood.BlockType.SLUICE, SLUICES);
+        addAllCompatWoods(CompatWood.BlockType.SCRIBING_TABLE, SCRIBING_TABLES);
+        addAllCompatWoods(CompatWood.BlockType.SEWING_TABLE, SEWING_TABLES);
+        addAllCompatWoods(CompatWood.BlockType.AXLE, AXLES);
+        addAllCompatWoods(CompatWood.BlockType.CLUTCH, CLUTCHES);
+        addAllCompatWoods(CompatWood.BlockType.GEAR_BOX, GEAR_BOXES);
+        addAllCompatWoods(CompatWood.BlockType.WATER_WHEEL, WATER_WHEELS);
 
         tag(LUMBER).add(ModItems.BAMBOO_LUMBER.get());
         tag(COMPAT_LUMBER).add(ModItems.BAMBOO_LUMBER.get());
@@ -250,6 +275,7 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
         //Firmalife
         for(CompatWood wood : CompatWood.VALUES){
             ResourceLocation foodShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_food_shelf");
+            ResourceLocation wineShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_wine_shelf");
             ResourceLocation hanger = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_hanger");
             ResourceLocation jarbnet = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_jarbnet");
             ResourceLocation stompBarrel = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_stomping_barrel");
@@ -257,6 +283,7 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
             ResourceLocation keg = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_keg");
 
             tag(FLTags.Items.FOOD_SHELVES).addOptional(foodShelf);
+            tag(WINE_SHELVES).addOptional(wineShelf);
             tag(FLTags.Items.HANGERS).addOptional(hanger);
             tag(FLTags.Items.JARBNETS).addOptional(jarbnet);
             tag(FLTags.Items.STOMPING_BARRELS).addOptional(stompBarrel);

@@ -1,5 +1,6 @@
 package com.bumppo109.firma_compat.datagen;
 
+import com.bumppo109.firma_compat.item.ModItems;
 import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.component.food.FoodCapability;
 import net.dries007.tfc.common.component.food.FoodData;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.ItemLike;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.dries007.tfc.common.component.food.FoodData.of;
 import static net.dries007.tfc.common.component.food.FoodData.ofFood;
 
 public class BuiltinFoods extends DataManagerProvider<FoodDefinition> implements ModAccessors
@@ -26,8 +28,8 @@ public class BuiltinFoods extends DataManagerProvider<FoodDefinition> implements
     @Override
     protected void addData(HolderLookup.Provider provider)
     {
-        add(Items.SWEET_BERRIES, ofFood(0.3f, 5, 4.9f).fruit(1f));
-        add(Items.GLOW_BERRIES, ofFood(0.3f, 5, 4.9f).fruit(1f));
+        add(Items.SWEET_BERRIES, ofFood(0.3f, 5, 4.9f).fruit(0.8f));
+        add(Items.GLOW_BERRIES, ofFood(0.3f, 5, 4.9f).fruit(0.8f));
         add(Items.DRIED_KELP, ofFood(0f, 0, 2.5f).vegetables(0.5f));
         add(Items.BROWN_MUSHROOM, ofFood(0f, 0, 4.9f).protein(0.5f));
         add(Items.RED_MUSHROOM, ofFood(0f, 0, 4.9f).protein(0.5f));

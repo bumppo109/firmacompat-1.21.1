@@ -37,6 +37,40 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
+        //Food
+        ResourceLocation sweetBerryJarTexture = ResourceLocation.fromNamespaceAndPath("firma_compat", "block/sweet_berries_jar");
+        ResourceLocation glowBerryJarTexture = ResourceLocation.fromNamespaceAndPath("firma_compat", "block/glow_berries_jar");
+
+        ModelFile sweetJar = models()
+                .withExistingParent(("sweet_berries_jar"), modLoc("block/template/jar"))
+                .texture("1", sweetBerryJarTexture);
+        ModelFile sweetUnsealedJar = models()
+                .withExistingParent(("sweet_berries_jar_unsealed"), modLoc("block/template/jar_no_lid"))
+                .texture("1", sweetBerryJarTexture)
+                .texture("2", modLoc("block/template/jar_no_lid"));
+        ModelFile sweetJarItem = models()
+                .withExistingParent(("sweet_berries_jar_item"), modLoc("block/template/jar_item"))
+                .texture("1", sweetBerryJarTexture);
+        ModelFile sweetUnsealedJarItem = models()
+                .withExistingParent(("sweet_berries_jar_unsealed_item"), modLoc("block/template/jar_no_lid_item"))
+                .texture("1", sweetBerryJarTexture)
+                .texture("2", modLoc("block/template/jar_no_lid"));
+
+        ModelFile glowJar = models()
+                .withExistingParent(("glow_berries_jar"), modLoc("block/template/jar"))
+                .texture("1", glowBerryJarTexture);
+        ModelFile glowUnsealedJar = models()
+                .withExistingParent(("glow_berries_jar_unsealed"), modLoc("block/template/jar_no_lid"))
+                .texture("1", glowBerryJarTexture)
+                .texture("2", modLoc("block/template/jar_no_lid"));
+        ModelFile glowJarItem = models()
+                .withExistingParent(("glow_berries_jar_item"), modLoc("block/template/jar_item"))
+                .texture("1", glowBerryJarTexture);
+        ModelFile glowUnsealedJarItem = models()
+                .withExistingParent(("glow_berries_jar_unsealed_item"), modLoc("block/template/jar_no_lid_item"))
+                .texture("1", glowBerryJarTexture)
+                .texture("2", modLoc("block/template/jar_no_lid"));
+
         for (CompatWood wood : CompatWood.VALUES) {
             String woodName = wood.getSerializedName();
 

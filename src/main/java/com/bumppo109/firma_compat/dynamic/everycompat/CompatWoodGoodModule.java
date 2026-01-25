@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.dynamic;
+package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.google.gson.JsonArray;
@@ -42,6 +42,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.PushReaction;
+import net.neoforged.neoforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.io.FileNotFoundException;
@@ -75,6 +76,9 @@ public final class CompatWoodGoodModule extends SimpleModule {
     public SimpleEntrySet<WoodType, Block> WINDMILL;
     public final SimpleEntrySet<WoodType, Block> WATER_WHEEL;
 
+    //private final Map<WoodType, RotationDevicePair> rotationPairs = new HashMap<>();
+
+
     public CompatWoodGoodModule() {
         super(FirmaCompat.MODID, FirmaCompat.MODID, FirmaCompat.MODID);
 
@@ -102,6 +106,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 .requiresChildren("log")
                 .addTexture(modRes("item/oak_twig"), PaletteStrategies.MAIN_CHILD)
                 .addTag(ResourceLocation.fromNamespaceAndPath("tfc", "twigs"), Registries.BLOCK, Registries.ITEM)
+                .addTag(Tags.Items.RODS_WOODEN, Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tab)
                 .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
@@ -131,6 +136,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 .requiresChildren("log")
                 .addTag(TFCTags.Blocks.SUPPORT_BEAMS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .addTexture(ResourceLocation.withDefaultNamespace("textures/item/barrier"))
                 .setTabKey(tab)
                 .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
@@ -145,6 +151,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 .requiresChildren("log")
                 .addTag(TFCTags.Blocks.SUPPORT_BEAMS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .addTexture(ResourceLocation.withDefaultNamespace("textures/item/barrier"))
                 .setTabKey(tab)
                 .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
@@ -171,6 +178,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.TOOL_RACKS, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_tool_rack"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -187,6 +195,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.LOOMS, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_loom"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -201,6 +210,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.SLUICES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_sluice"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -215,6 +225,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.BARRELS, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_barrel"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .addCustomItem((wood, block, itemProperties) ->
@@ -232,6 +243,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks", "slab")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.SCRIBING_TABLES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_scribing_table"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -246,6 +258,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.SEWING_TABLES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_sewing_table"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -284,6 +297,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 //.addRecipe(modRes("crafting/oak_axle"))
                 .dropSelf()
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.AXLES, Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
@@ -303,6 +317,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                                 () -> (AxleBlock) AXLE.blocks.get(w)
                         ))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .copyParentDrop()
                 .setTabKey(tab)
@@ -346,6 +361,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresFromMap(AXLE.blocks)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.CLUTCHES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_clutch"))
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
@@ -361,6 +377,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.GEAR_BOXES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_gear_box"))
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
@@ -369,6 +386,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 .build();
         this.addEntry(GEAR_BOX);
 
+        //TODO - waterwheel not registering & check texture resLoc
         WATER_WHEEL = SimpleEntrySet.builder(WoodType.class, "water_wheel",
                         () -> getModBlock("oak_water_wheel").get(), () -> VanillaWoodTypes.OAK,
                         w -> new
@@ -379,6 +397,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(TFCTags.Items.WATER_WHEELS, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_water_wheel"))
                 .addTexture(modRes("item/oak_water_wheel"), PaletteStrategies.MAIN_CHILD)
                 .addTexture(modRes("entity/oak_water_wheel"), PaletteStrategies.MAIN_CHILD)
@@ -400,7 +419,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
             for(var woodType : WoodTypeRegistry.INSTANCE){
                 Item lumberItem = LUMBER.items.get(woodType);
                 ResourceLocation logTag = getATagOrCreateANew("logs", "caps", woodType, sink, manager);
-                //ResourceLocation placedFeatureTag = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "tags/worldgen/placed_feature/twig_patches");
+                ResourceLocation placedFeatureTag = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "tags/worldgen/placed_feature/twig_patches");
 
                 if(woodType.hasChild("log")){
                     generateSupportRecipe(sink, logTag, "c:tools/saw", Utils.getID(SUPPORT.items.get(woodType)).getPath(), 8, null);

@@ -8,6 +8,8 @@ import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,6 +19,8 @@ import net.minecraft.world.level.block.StairBlock;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import java.util.Locale;
 
 import static com.bumppo109.firma_compat.block.ModBlocks.GRADED_ORES;
 import static com.bumppo109.firma_compat.block.ModBlocks.ORES;
@@ -28,6 +32,23 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        Item sweetBerryJar = ModItems.SWEET_BERRIES_JAR.get();
+        Item sweetBerryJarUnsealed = ModItems.SWEET_BERRIES_JAR_UNSEALED.get();
+        Item sweetBerryJam = ModItems.SWEET_BERRIES_JAM.get();
+
+        Item glowBerryJar = ModItems.GLOW_BERRIES_JAR.get();
+        Item glowBerryJarUnsealed = ModItems.GLOW_BERRIES_JAR_UNSEALED.get();
+        Item glowBerryJam = ModItems.GLOW_BERRIES_JAM.get();
+
+
+        basicItem(sweetBerryJam);
+        basicItem(sweetBerryJar);
+        basicItem(sweetBerryJarUnsealed);
+        basicItem(glowBerryJam);
+        basicItem(glowBerryJar);
+        basicItem(glowBerryJarUnsealed);
+
+
         for (CompatWood wood : CompatWood.VALUES) {
             var woodMap = ModBlocks.WOODS.get(wood);
             var woodSupportMap = ModItems.SUPPORTS.get(wood);

@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.dynamic;
+package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;

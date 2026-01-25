@@ -5,10 +5,16 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.fluid.ModFluids;
+import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.eerussianguy.firmalife.common.FLHelpers;
+import com.eerussianguy.firmalife.common.items.FLItems;
+import com.therighthon.afc.common.blocks.AFCBlocks;
+import com.therighthon.afc.common.fluids.AFCFluids;
 import net.dries007.tfc.client.ClientEventHandler;
 import net.dries007.tfc.client.RenderHelpers;
 import net.dries007.tfc.client.extensions.FluidRendererExtension;
+import net.dries007.tfc.client.extensions.ItemRendererExtension;
 import net.dries007.tfc.client.model.entity.*;
 import net.dries007.tfc.client.render.blockentity.*;
 import net.dries007.tfc.client.render.entity.*;
@@ -19,19 +25,23 @@ import net.dries007.tfc.common.component.TFCComponents;
 import net.dries007.tfc.common.entities.TFCEntities;
 import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
+import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CodModel;
 import net.minecraft.client.model.SquidModel;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.LecternRenderer;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
@@ -48,7 +58,11 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.dries007.tfc.client.model.entity.*;
 import net.dries007.tfc.client.render.entity.*;
+import net.neoforged.neoforge.fluids.FluidType;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -94,10 +108,13 @@ public class FirmaCompatClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.KAOLIN_CLAY_GRASS_BLOCK.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.KAOLIN_CLAY_PODZOL.get(), cutout);
 
+        //TODO - add barrel horse texture
         event.enqueueWork(() -> {
             ModBlocks.WOODS.forEach((wood, map) -> {
                 HorseChestLayer.registerChest(map.get(BARREL).get().asItem(), FirmaCompatHelpers.modIdentifier("textures/entity/chest/horse/" + wood.getSerializedName() + "_barrel.png"));
             });
+            HorseChestLayer.registerChest(ModBlocks.COMPAT_CHEST.get().asItem(), FirmaCompatHelpers.modIdentifier("textures/entity/chest/horse/compat_chest"));
+            HorseChestLayer.registerChest(ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem(), FirmaCompatHelpers.modIdentifier("textures/entity/chest/horse/compat_chest"));
         });
 
         //TODO - not sure what this does
@@ -125,6 +142,14 @@ public class FirmaCompatClient {
                 )
         );
 
+        event.enqueueWork(() -> {
+            PlacedItemBlockEntityRenderer.MODELS.putAll(Map.of(
+                    ModItems.SWEET_BERRIES_JAR.get(), translucent("block/sweet_berries_jar"),
+                    ModItems.SWEET_BERRIES_JAR_UNSEALED.get(), translucent("block/sweet_berries_jar_unsealed"),
+                    ModItems.GLOW_BERRIES_JAR.get(), translucent("block/glow_berries_jar"),
+                    ModItems.GLOW_BERRIES_JAR_UNSEALED.get(), translucent("block/glow_berries_jar_unsealed")));
+        });
+
         if(ModList.get().isLoaded("firmalife")){
             for(CompatWood wood : CompatWood.VALUES){
                 ItemBlockRenderTypes.setRenderLayer(CompatFLBlocks.FOOD_SHELVES.get(wood).get(), cutout);
@@ -140,6 +165,18 @@ public class FirmaCompatClient {
                 ItemBlockRenderTypes.setRenderLayer(CompatFLBlocks.CHROMITE_ORES.get(rock).get(Ore.Grade.RICH).get(), cutout);
             }
         }
+    }
+
+    private static PlacedItemBlockEntityRenderer.Provider solid(String model) {
+        return new PlacedItemBlockEntityRenderer.Provider(ModelResourceLocation.standalone(FirmaCompatHelpers.modIdentifier(model)), RenderType.solid());
+    }
+
+    private static PlacedItemBlockEntityRenderer.Provider translucent(String model) {
+        return new PlacedItemBlockEntityRenderer.Provider(ModelResourceLocation.standalone(FirmaCompatHelpers.modIdentifier(model)), RenderType.translucent());
+    }
+
+    private static PlacedItemBlockEntityRenderer.Provider translucentTFC(String model) {
+        return new PlacedItemBlockEntityRenderer.Provider(ModelResourceLocation.standalone(Helpers.identifier(model)), RenderType.translucent());
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -367,6 +404,11 @@ public class FirmaCompatClient {
                 new FluidRendererExtension(TFCFluids.ALPHA_MASK | metal.getColor(), ClientEventHandler.MOLTEN_STILL, ClientEventHandler.MOLTEN_FLOW, null, null),
                 holder.getType()
         ));
+        /*
+        registerCustomItemRenderer(event, ModBlocks.COMPAT_CHEST, ChestItemRenderer::new);
+        registerCustomItemRenderer(event, ModBlocks.COMPAT_TRAPPED_CHEST, ChestItemRenderer::new);
+
+         */
     }
 
     private static final ResourceLocation SEALED = Helpers.identifier("sealed");
@@ -375,6 +417,16 @@ public class FirmaCompatClient {
     {
         ItemProperties.register(item.asItem(), SEALED, (stack, level, entity, unused) -> stack.has(type) ? 1.0f : 0f);
     }
+
+    /*
+    private static <T> void registerCustomItemRenderer(RegisterClientExtensionsEvent event, @Nullable Supplier<? extends ItemLike> item, Function<T, BlockEntityWithoutLevelRenderer> renderer) {
+        if (item != null) {
+            event.registerItem(ItemRendererExtension.cached(() -> (BlockEntityWithoutLevelRenderer)renderer.apply(((ItemLike)item.get()).asItem())), new Item[]{((ItemLike)item.get()).asItem()});
+        }
+
+    }
+
+     */
 
     // Static flag to ensure reload happens only once per game session
     private static boolean hasTriggeredInitialReload = false;

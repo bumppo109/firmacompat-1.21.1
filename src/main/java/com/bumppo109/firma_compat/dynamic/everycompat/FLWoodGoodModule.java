@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.dynamic;
+package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.eerussianguy.firmalife.common.FLTags;
@@ -32,6 +32,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.PushReaction;
+import net.neoforged.neoforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
@@ -63,6 +64,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                 )
                 .requiresChildren("planks")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .noDrops()
                 .setTabKey(tab)
                 .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
@@ -76,9 +78,8 @@ public final class FLWoodGoodModule extends SimpleModule {
                                 .pushReaction(PushReaction.BLOCK).flammableLikeLogs().blockEntity(FLBlockEntities.KEG).serverTicks(KegBlockEntity::serverTick), () -> KEG_SUB.blocks.get(w))
                 )
                 .requiresFromMap(KEG_SUB.blocks)
-                .addTag(FLTags.Blocks.KEGS, Registries.BLOCK)
-                .addTag(FLTags.Items.KEGS, Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(FLTags.Items.KEGS, Registries.ITEM, Registries.BLOCK)
                 .addRecipe(modRes("crafting/oak_keg"))
                 .dropSelf()
                 .addTexture(modRes("block/big_barrel/oak_0"), PaletteStrategies.MAIN_CHILD)
@@ -103,8 +104,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new FoodShelfBlock(ExtendedProperties.of().strength(0.3F).sound(SoundType.WOOD).noOcclusion().blockEntity(FLBlockEntities.FOOD_SHELF).mapColor(w.getColor()))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.FOOD_SHELVES, Registries.BLOCK)
-                .addTag(FLTags.Items.FOOD_SHELVES, Registries.ITEM)
+                .addTag(FLTags.Items.FOOD_SHELVES, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
@@ -118,8 +118,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new HangerBlock(ExtendedProperties.of().strength(0.3F).sound(SoundType.WOOD).noOcclusion().blockEntity(FLBlockEntities.HANGER).mapColor(w.getColor()))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.HANGERS, Registries.BLOCK)
-                .addTag(FLTags.Items.HANGERS, Registries.ITEM)
+                .addTag(FLTags.Items.HANGERS, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addRecipe(modRes("crafting/oak_hanger"))
                 .dropSelf()
@@ -134,8 +133,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new JarbnetBlock(ExtendedProperties.of().strength(0.3F).sound(SoundType.WOOD).noOcclusion().randomTicks().lightLevel((s) -> (Boolean)s.getValue(JarbnetBlock.LIT) ? 11 : 0).blockEntity(FLBlockEntities.JARBNET).mapColor(w.getColor()))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.JARBNETS, Registries.BLOCK)
-                .addTag(FLTags.Items.JARBNETS, Registries.ITEM)
+                .addTag(FLTags.Items.JARBNETS, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
@@ -149,8 +147,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new WineShelfBlock(ExtendedProperties.of().mapColor(w.getColor()).sound(SoundType.WOOD).noOcclusion().strength(4.0F).pushReaction(PushReaction.BLOCK).flammableLikeLogs().blockEntity(FLBlockEntities.WINE_SHELF))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.WINE_SHELVES, Registries.BLOCK)
-                .addTag(FLTags.Items.WINE_SHELVES, Registries.ITEM)
+                .addTag(FLTags.Items.WINE_SHELVES, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addRecipe(modRes("crafting/oak_wine_shelf"))
                 .dropSelf()
@@ -165,8 +162,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new StompingBarrelBlock(ExtendedProperties.of().mapColor(w.getColor()).sound(SoundType.WOOD).noOcclusion().strength(4.0F).pushReaction(PushReaction.BLOCK).flammableLikeLogs().blockEntity(FLBlockEntities.STOMPING_BARREL))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.STOMPING_BARRELS, Registries.BLOCK)
-                .addTag(FLTags.Items.STOMPING_BARRELS, Registries.ITEM)
+                .addTag(FLTags.Items.STOMPING_BARRELS, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
@@ -180,8 +176,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                         w -> new BarrelPressBlock(ExtendedProperties.of().mapColor(w.getColor()).sound(SoundType.WOOD).noOcclusion().strength(4.0F).pushReaction(PushReaction.BLOCK).flammableLikeLogs().blockEntity(FLBlockEntities.BARREL_PRESS).ticks(BarrelPressBlockEntity::tick))
                 )
                 .requiresChildren("planks")
-                .addTag(FLTags.Blocks.BARREL_PRESSES, Registries.BLOCK)
-                .addTag(FLTags.Items.BARREL_PRESSES, Registries.ITEM)
+                .addTag(FLTags.Items.BARREL_PRESSES, Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addRecipe(modRes("crafting/oak_barrel_press"))
                 .dropSelf()
@@ -191,13 +186,6 @@ public final class FLWoodGoodModule extends SimpleModule {
                 .build();
         this.addEntry(BARREL_PRESS);
     }
-
-    /*
-    @Override
-    public boolean isEntryAlreadyRegistered(String entrySetId, String blockId, BlockType blockType, Registry<?> registry) {
-        return false;
-    }
-     */
 
     @Override
     public void addDynamicClientResources(Consumer<ResourceGenTask> executor) {

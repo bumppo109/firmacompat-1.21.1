@@ -179,6 +179,9 @@ public class ModEvents {
         modifyBlockEntityType(TFCBlockEntities.TICK_COUNTER.get(), Stream.of(ModBlocks.DRYING_MUD_BRICK.get()), event);
         modifyBlockEntityType(TFCBlockEntities.ANVIL.get(), Stream.of(ModBlocks.PRIMITIVE_ANVIL.get()), event);
 
+        modifyBlockEntityType(TFCBlockEntities.CHEST.get(), Stream.of(ModBlocks.COMPAT_CHEST.get()), event);
+        modifyBlockEntityType(TFCBlockEntities.TRAPPED_CHEST.get(), Stream.of(ModBlocks.COMPAT_TRAPPED_CHEST.get()), event);
+
         if(ModList.get().isLoaded("firmalife")){
             modifyBlockEntityType(
                     FLBlockEntities.FOOD_SHELF.get(),

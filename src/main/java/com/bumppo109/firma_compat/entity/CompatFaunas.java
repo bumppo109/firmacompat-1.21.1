@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.FirmaCompatHelpers;
+import com.bumppo109.firma_compat.util.ModTags;
 import com.google.gson.JsonParseException;
 import net.dries007.tfc.client.overworld.SolarCalculator;
 import net.dries007.tfc.common.entities.Fauna;
@@ -238,6 +239,12 @@ public class CompatFaunas {
                     }
                 }
 
+                boolean isWater = Helpers.isFluid(level.getFluidState(pos), ModTags.Fluids.WATERLOGGING_WATER);
+                boolean isWaterBelow = Helpers.isFluid(level.getFluidState(pos), ModTags.Fluids.WATERLOGGING_WATER);
+                if(isWater || isWaterBelow){
+                    return false;
+                }
+
                 int seaLevel = generator.getSeaLevel();
                 if (fauna.distanceBelowSeaLevel() != -1 && pos.getY() > seaLevel - fauna.distanceBelowSeaLevel()) {
                     return false;
@@ -250,7 +257,6 @@ public class CompatFaunas {
                         if (fauna.solidGround() && !Helpers.isBlock(level.getBlockState(below), BlockTags.VALID_SPAWN)) {
                             return false;
                         } else if (!(mob.equals(CompatTFCEntities.POLAR_BEAR.get())) && Helpers.isBlock(level.getBlockState(below), BlockTags.ICE)) {
-                            //TODO - confirm, expected to prevent any mob except a polar bear spawning on ice
                             return false;
                         } else if (!fauna.months().isEmpty() && !fauna.months().contains(Calendars.SERVER.getHemispheralCalendarMonthOfYear(hemisphere))) {
                             return false;
