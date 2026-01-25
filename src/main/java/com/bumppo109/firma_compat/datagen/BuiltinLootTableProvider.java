@@ -79,6 +79,9 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                             .when(survivesExplosion())
                     )
             );
+            dropSelf(ModBlocks.COMPAT_CHEST.get());
+            dropSelf(ModBlocks.COMPAT_TRAPPED_CHEST.get());
+
             //wood
             for (CompatWood wood : CompatWood.VALUES) {
                 var woodMap = ModBlocks.WOODS.get(wood);
@@ -525,6 +528,9 @@ public class BuiltinLootTableProvider extends LootTableProvider {
             knownBlocks.add(ModBlocks.NATIVE_COPPER_GRAVEL_DEPOSIT.get());
             knownBlocks.add(ModBlocks.NATIVE_GOLD_GRAVEL_DEPOSIT.get());
             knownBlocks.add(ModBlocks.NATIVE_SILVER_GRAVEL_DEPOSIT.get());
+
+            knownBlocks.add(ModBlocks.COMPAT_CHEST.get());
+            knownBlocks.add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
 
             //Firmalife
             for(CompatWood wood : CompatWood.VALUES){

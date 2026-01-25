@@ -75,6 +75,14 @@ public class BuiltinLang extends LanguageProvider {
         add(glowBerryJam, getItemDisplayName(glowBerryJam));
 
         // Wood Related
+        Block chestBlock = ModBlocks.COMPAT_CHEST.get();
+        Block trappedChestBlock = ModBlocks.COMPAT_TRAPPED_CHEST.get();
+        Item minecartChest = ModItems.COMPAT_CHEST_MINECART.get();
+
+        add(chestBlock, "Chest");
+        add(trappedChestBlock, "Trapped Chest");
+        add(minecartChest, "Minecart with Chest");
+
         for (CompatWood wood : CompatWood.VALUES) {
             //TODO special case - not sure how to reference the item. but does it matter?
             Item supportItem = ModItems.SUPPORTS.get(wood).get().asItem();

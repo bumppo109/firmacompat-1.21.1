@@ -62,7 +62,8 @@ public class ModEvents {
                                 String path = id.getPath();
                                 return id.getNamespace().equals(FirmaCompat.MODID)
                                         && path.endsWith("_barrel")
-                                        && !path.endsWith("_stomping_barrel");
+                                        && !path.endsWith("_stomping_barrel")
+                                        && !path.equals("compat_barrel");
                         }),
                 event
         );

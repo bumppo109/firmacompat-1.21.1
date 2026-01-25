@@ -83,6 +83,9 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.COPPER_DOOR)
                 .add(Items.COPPER_TRAPDOOR)
                 .add(Items.CHAIN)
+                .add(Items.CHEST)
+                .add(Items.TRAPPED_CHEST)
+                .add(Items.CHEST_MINECART)
         ;
 
         tag(PREVENT_INTERACTION)
@@ -95,6 +98,9 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
         tag(Tags.Items.CHESTS_WOODEN)
                 .add(ModBlocks.COMPAT_CHEST.get().asItem())
                 .add(ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
+
+        tag(MINECARTS)
+                .add(ModItems.COMPAT_CHEST_MINECART);
 
         tag(CARRIED_BY_HORSE)
                 .add(ModBlocks.COMPAT_CHEST.get().asItem())
@@ -282,13 +288,21 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
             ResourceLocation barrelPress = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_barrel_press");
             ResourceLocation keg = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_keg");
 
-            tag(FLTags.Items.FOOD_SHELVES).addOptional(foodShelf);
-            tag(WINE_SHELVES).addOptional(wineShelf);
-            tag(FLTags.Items.HANGERS).addOptional(hanger);
-            tag(FLTags.Items.JARBNETS).addOptional(jarbnet);
-            tag(FLTags.Items.STOMPING_BARRELS).addOptional(stompBarrel);
-            tag(FLTags.Items.BARREL_PRESSES).addOptional(barrelPress);
-            tag(FLTags.Items.KEGS).addOptional(keg);
+            ResourceLocation cfoodShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_food_shelves");
+            ResourceLocation cwineShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_wine_shelves");
+            ResourceLocation changer = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_hangers");
+            ResourceLocation cjarbnet = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_jarbnets");
+            ResourceLocation cstompBarrel = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_stomping_barrels");
+            ResourceLocation cbarrelPress = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_barrel_presses");
+            ResourceLocation ckeg = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_kegs");
+
+            tag(FLTags.Items.FOOD_SHELVES).addOptional(foodShelf).addOptionalTag(cfoodShelf);
+            tag(WINE_SHELVES).addOptional(foodShelf).addOptionalTag(cwineShelf);
+            tag(FLTags.Items.HANGERS).addOptional(hanger).addOptionalTag(changer);
+            tag(FLTags.Items.JARBNETS).addOptional(jarbnet).addOptionalTag(cjarbnet);
+            tag(FLTags.Items.STOMPING_BARRELS).addOptional(stompBarrel).addOptionalTag(cstompBarrel);
+            tag(FLTags.Items.BARREL_PRESSES).addOptional(barrelPress).addOptionalTag(cbarrelPress);
+            tag(FLTags.Items.KEGS).addOptional(keg).addOptionalTag(ckeg);
         }
 
         //RNR

@@ -10,16 +10,20 @@ import net.dries007.tfc.common.Lore;
 import net.dries007.tfc.common.entities.TFCEntities;
 import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
+import net.dries007.tfc.common.items.ChestBlockItem;
 import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.common.items.TFCMinecartItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistryHolder;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Locale;
@@ -44,6 +48,9 @@ public class ModItems {
             () -> new Item((new Item.Properties())));
 
     //Wood
+    public static final ItemId COMPAT_CHEST_MINECART = register("compat_chest_minecart",
+            (() -> new TFCMinecartItem(new Item.Properties(), TFCEntities.CHEST_MINECART,
+                    () -> ModBlocks.COMPAT_CHEST.get().asItem())));
     public static final Map<CompatWood, ItemId> LUMBER = Helpers.mapOf(CompatWood.class, wood -> register(wood.name() + "_lumber"));
 
     public static final ItemId BAMBOO_LUMBER = register("bamboo_lumber");

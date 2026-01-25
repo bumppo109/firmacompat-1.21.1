@@ -62,11 +62,15 @@ public class ModBlocks {
                             .flammableLikeLogs()
                             .blockEntity(TFCBlockEntities.CHEST)
                             .clientTicks(ChestBlockEntity::lidAnimateTick),
-                    "compat_chest"   // ← or wood.getSerializedName()
+                    "compat_chest"  // texture identifier (folder or key for entity textures)
+            ),
+            block -> new ChestBlockItem(
+                    block,
+                    new Item.Properties(),
+                    ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "textures/entity/chest_boat/compat.png")  // required third param; dummy/custom path
             )
     );
 
-    // Option B - pass string identifier
     public static final Id<Block> COMPAT_TRAPPED_CHEST = register(
             "compat_trapped_chest",
             () -> new TFCTrappedChestBlock(
@@ -75,7 +79,12 @@ public class ModBlocks {
                             .flammableLikeLogs()
                             .blockEntity(TFCBlockEntities.TRAPPED_CHEST)
                             .clientTicks(ChestBlockEntity::lidAnimateTick),
-                    "compat_trapped_chest"
+                    "compat_trapped_chest"  // texture identifier
+            ),
+            block -> new ChestBlockItem(
+                    block,
+                    new Item.Properties(),
+                    ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "textures/entity/chest_boat/compat_trapped.png")  // or same as above
             )
     );
 

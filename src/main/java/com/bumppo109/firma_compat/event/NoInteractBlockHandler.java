@@ -58,10 +58,10 @@ public class NoInteractBlockHandler {
 
             if (!level.isClientSide) {
                 player.displayClientMessage(
-                        Component.literal("Try smashing it!"),
+                        Component.literal("Try breaking it"),
                         true
                 );
-                level.playSound(null, pos, SoundEvents.VILLAGER_NO, SoundSource.PLAYERS, 1.0F, 1.0F);
+                //level.playSound(null, pos, SoundEvents.VILLAGER_NO, SoundSource.PLAYERS, 1.0F, 1.0F);
             }
         }
 

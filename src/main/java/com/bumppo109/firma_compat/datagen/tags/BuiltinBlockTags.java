@@ -9,12 +9,15 @@ import com.bumppo109.firma_compat.datagen.ModAccessors;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.util.ModTags;
+import com.eerussianguy.firmalife.common.FLTags;
 import com.google.common.base.Preconditions;
 import com.therighthon.rnr.common.RNRTags;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.DecorationBlockHolder;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
 import net.minecraft.core.HolderLookup;
@@ -47,6 +50,7 @@ import java.util.stream.Stream;
 import static com.bumppo109.firma_compat.util.ModTags.Blocks.MAKES_PRIMITIVE_ANVIL;
 import static com.bumppo109.firma_compat.util.ModTags.Blocks.PREVENT_INTERACTION;
 import static com.eerussianguy.firmalife.common.FLTags.Blocks.*;
+import static com.eerussianguy.firmalife.common.FLTags.Items.WINE_SHELVES;
 import static com.therighthon.rnr.common.RNRTags.Blocks.*;
 import static net.dries007.tfc.common.TFCTags.Blocks.*;
 import static net.dries007.tfc.common.TFCTags.Blocks.DIRT;
@@ -91,6 +95,7 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
                 .add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
 
         //Wood
+        addAllTFCWoods(Wood.BlockType.TWIG, ModTags.Blocks.TWIGS);
         //Mineable
         addAllCompatWoods(CompatWood.BlockType.TOOL_RACK, MINEABLE_WITH_AXE);
         addAllCompatWoods(CompatWood.BlockType.TWIG, MINEABLE_WITH_AXE);
@@ -115,6 +120,7 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         addAllCompatWoods(CompatWood.BlockType.LOG_FENCE, BlockTags.WOODEN_FENCES);
         addAllCompatWoods(CompatWood.BlockType.HORIZONTAL_SUPPORT, TFCTags.Blocks.SUPPORT_BEAMS);
         addAllCompatWoods(CompatWood.BlockType.VERTICAL_SUPPORT, TFCTags.Blocks.SUPPORT_BEAMS);
+        addAllCompatWoods(CompatWood.BlockType.TWIG, ModTags.Blocks.TWIGS);
 
         //Rock
         addAllCompatRocks(CompatRock.BlockType.HARDENED, STONES_HARDENED);
@@ -246,12 +252,21 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
             ResourceLocation barrelPress = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_barrel_press");
             ResourceLocation keg = ResourceLocation.fromNamespaceAndPath("firma_compat", wood.getSerializedName() + "_keg");
 
-            tag(FOOD_SHELVES).addOptional(foodShelf);
-            tag(HANGERS).addOptional(hanger);
-            tag(JARBNETS).addOptional(jarbnet);
-            tag(STOMPING_BARRELS).addOptional(stompBarrel);
-            tag(BARREL_PRESSES).addOptional(barrelPress);
-            tag(KEGS).addOptional(keg);
+            ResourceLocation cfoodShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_food_shelves");
+            ResourceLocation cwineShelf = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_wine_shelves");
+            ResourceLocation changer = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_hangers");
+            ResourceLocation cjarbnet = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_jarbnets");
+            ResourceLocation cstompBarrel = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_stomping_barrels");
+            ResourceLocation cbarrelPress = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_barrel_presses");
+            ResourceLocation ckeg = ResourceLocation.fromNamespaceAndPath("firma_compat", "compat_kegs");
+
+            tag(FOOD_SHELVES).addOptional(foodShelf).addOptionalTag(cfoodShelf);
+            tag(FLTags.Blocks.WINE_SHELVES).addOptional(foodShelf).addOptionalTag(cwineShelf);
+            tag(HANGERS).addOptional(hanger).addOptionalTag(changer);
+            tag(JARBNETS).addOptional(jarbnet).addOptionalTag(cjarbnet);
+            tag(STOMPING_BARRELS).addOptional(stompBarrel).addOptionalTag(cstompBarrel);
+            tag(BARREL_PRESSES).addOptional(barrelPress).addOptionalTag(cbarrelPress);
+            tag(KEGS).addOptional(keg).addOptionalTag(ckeg);
 
             tag(MINEABLE_WITH_AXE)
                     .addOptional(foodShelf)
@@ -436,6 +451,16 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         if (tagKey == null) return;  // Skip if no tag for this type
 
         ModBlocks.WOODS.forEach((wood, map) -> {
+            if (map.containsKey(type)) {
+                tag(tagKey).add(map.get(type).get());
+            }
+        });
+    }
+
+    private void addAllTFCWoods(Wood.BlockType type, TagKey<Block> tagKey) {
+        if (tagKey == null) return;  // Skip if no tag for this type
+
+        TFCBlocks.WOODS.forEach((wood, map) -> {
             if (map.containsKey(type)) {
                 tag(tagKey).add(map.get(type).get());
             }

@@ -1,6 +1,8 @@
 package com.bumppo109.firma_compat.datagen;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.block.ModBlocks;
+import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.loot_modifiers.ItemRemoverLootModifier;
 import com.bumppo109.firma_compat.loot_modifiers.ItemSwapModifier;
 import net.dries007.tfc.common.blocks.TFCBlocks;
@@ -37,6 +39,10 @@ public class BuiltinLootModifier extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        //chest
+        swap(Items.CHEST, ModBlocks.COMPAT_CHEST.get().asItem());
+        swap(Items.TRAPPED_CHEST, ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
+        swap(Items.CHEST_MINECART, ModItems.COMPAT_CHEST_MINECART.get());
         //straw
         addStrawFromGrassesModifier();
         //food

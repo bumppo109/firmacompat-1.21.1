@@ -241,13 +241,24 @@ public interface ModCraftingRecipes extends ModRecipes
                 "dried_kelp",
 
                 "chest",
+                "trapped_chest",
                 "stonecutter",
                 "grindstone",
                 "blast_furnace",
                 "jukebox",
                 "cauldron",
                 "decorated_pot_simple",
-                "chiseled_bookshelf"
+                "chiseled_bookshelf",
+                "acacia_chest_boat",
+                "birch_chest_boat",
+                "cherry_chest_boat",
+                "dark_oak_chest_boat",
+                "jungle_chest_boat",
+                "mangrove_chest_boat",
+                "oak_chest_boat",
+                "spruce_chest_boat",
+                "crimson_chest_boat",
+                "warped_chest_boat"
         );
 
         remove(
@@ -275,17 +286,7 @@ public interface ModCraftingRecipes extends ModRecipes
                 "magenta_dye_from_lilac",
                 "pink_dye_from_pink_petals",
                 "pink_dye_from_peony",
-                "pink_dye_from_pink_tulip",
-                "acacia_chest_boat",
-                "birch_chest_boat",
-                "cherry_chest_boat",
-                "dark_oak_chest_boat",
-                "jungle_chest_boat",
-                "mangrove_chest_boat",
-                "oak_chest_boat",
-                "spruce_chest_boat",
-                "crimson_chest_boat",
-                "warped_chest_boat"
+                "pink_dye_from_pink_tulip"
         );
 
         for (String material : List.of("netherite")){
@@ -900,7 +901,15 @@ public interface ModCraftingRecipes extends ModRecipes
         recipe()
                 .input('L', ModTags.Items.COMPAT_LUMBER)
                 .pattern("LLL", "L L", "LLL")
-                .shaped(Items.CHEST);
+                .shaped(ModBlocks.COMPAT_CHEST.get().asItem());
+        recipe()
+                .input(ModBlocks.COMPAT_CHEST.get().asItem())
+                .input(Items.TRIPWIRE_HOOK)
+                .shapeless(ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
+        recipe()
+                .input(ModBlocks.COMPAT_CHEST.get().asItem())
+                .input(Items.MINECART)
+                .shapeless(ModItems.COMPAT_CHEST_MINECART.get());
 
         recipe()
                 .input('X', ModTags.Items.COMPAT_LUMBER)
