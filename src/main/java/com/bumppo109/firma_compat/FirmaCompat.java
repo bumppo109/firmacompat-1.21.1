@@ -19,7 +19,6 @@ import com.bumppo109.firma_compat.util.RecipeRemover;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
 import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
-import net.mehvahdjukaar.stone_zone.api.set.stone.StoneTypeRegistry;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -65,33 +64,22 @@ public class FirmaCompat {
         modEventBus.addListener(FirmaCompatClient::registerEntityRenderers);
 
         modEventBus.addListener(ModDataMaps::register);
-        if(ModList.get().isLoaded("everycomp")){
-            CompatWoodGoodModule woodModule = new CompatWoodGoodModule();
-            EveryCompatAPI.registerModule(woodModule);
-        }
-        if(ModList.get().isLoaded("stonezone")){
-            CompatStoneZoneModule stoneModule = new CompatStoneZoneModule();
-            EveryCompatAPI.registerModule(stoneModule);
+        if (ModList.get().isLoaded("everycomp")) {
+            try {
+                Class.forName("com.bumppo109.firma_compat.dynamic.everycompat.EveryCompatHandler")
+                        .getMethod("registerModules")
+                        .invoke(null);
+            } catch (Exception e) {
+                LOGGER.error("Failed to invoke EveryCompat integration", e);
+            }
         }
         if(ModList.get().isLoaded("firmalife")){
             CompatFLBlocks.BLOCKS.register(modEventBus);
             CompatFLItems.ITEMS.register(modEventBus);
-            if(ModList.get().isLoaded("stonezone")){
-                FLStoneZoneModule flStoneModule = new FLStoneZoneModule();
-                EveryCompatAPI.registerModule(flStoneModule);
-            }
-            if(ModList.get().isLoaded("everycomp")){
-                FLWoodGoodModule flWoodModule = new FLWoodGoodModule();
-                EveryCompatAPI.registerModule(flWoodModule);
-            }
         }
         if(ModList.get().isLoaded("rnr")){
             RNRCompatBlocks.BLOCKS.register(modEventBus);
             RNRCompatItems.ITEMS.register(modEventBus);
-            if(ModList.get().isLoaded("stonezone")){
-                RNRStoneZoneModule rnrStoneModule = new RNRStoneZoneModule();
-                EveryCompatAPI.registerModule(rnrStoneModule);
-            }
         }
 
         //FirmaCompatDynamicPack.init();

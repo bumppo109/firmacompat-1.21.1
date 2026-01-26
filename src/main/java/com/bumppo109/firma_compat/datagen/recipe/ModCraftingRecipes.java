@@ -1,9 +1,6 @@
 package com.bumppo109.firma_compat.datagen.recipe;
 
-import com.bumppo109.firma_compat.block.CompatBricks;
-import com.bumppo109.firma_compat.block.CompatRock;
-import com.bumppo109.firma_compat.block.CompatWood;
-import com.bumppo109.firma_compat.block.ModBlocks;
+import com.bumppo109.firma_compat.block.*;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.util.ModTags;
@@ -880,6 +877,31 @@ public interface ModCraftingRecipes extends ModRecipes
                 .pattern(" L ", "LXL", " A ")
                 .shaped(Items.OXIDIZED_COPPER_BULB);
 
+        recipe()
+                .input('H', ModItems.METAL_ITEMS.get(CompatMetal.NETHERITE).get(CompatMetal.ItemType.PICKAXE_HEAD).get())
+                .input('R', Tags.Items.RODS_WOODEN)
+                .pattern("H  ", "R  ")
+                .shaped(Items.NETHERITE_PICKAXE);
+        recipe()
+                .input('H', ModItems.METAL_ITEMS.get(CompatMetal.NETHERITE).get(CompatMetal.ItemType.SHOVEL_HEAD).get())
+                .input('R', Tags.Items.RODS_WOODEN)
+                .pattern("H  ", "R  ")
+                .shaped(Items.NETHERITE_SHOVEL);
+        recipe()
+                .input('H', ModItems.METAL_ITEMS.get(CompatMetal.NETHERITE).get(CompatMetal.ItemType.AXE_HEAD).get())
+                .input('R', Tags.Items.RODS_WOODEN)
+                .pattern("H  ", "R  ")
+                .shaped(Items.NETHERITE_AXE);
+        recipe()
+                .input('H', ModItems.METAL_ITEMS.get(CompatMetal.NETHERITE).get(CompatMetal.ItemType.HOE_HEAD).get())
+                .input('R', Tags.Items.RODS_WOODEN)
+                .pattern("H  ", "R  ")
+                .shaped(Items.NETHERITE_HOE);
+        recipe()
+                .input('H', ModItems.METAL_ITEMS.get(CompatMetal.NETHERITE).get(CompatMetal.ItemType.SWORD_BLADE).get())
+                .input('R', Tags.Items.RODS_WOODEN)
+                .pattern("H  ", "R  ")
+                .shaped(Items.NETHERITE_SWORD);
         //Dye
         for(DyeColor color : DyeColor.values()){
             String woolRecipe = "dye_" + color.getSerializedName() + "_wool";
