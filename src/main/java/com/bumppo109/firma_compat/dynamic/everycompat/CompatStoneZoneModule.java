@@ -88,6 +88,7 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                         getModBlock("stone_loose"), () -> VanillaStoneTypes.STONE,
                         stoneType -> new LooseRockBlock(BlockBehaviour.Properties.of().strength(0.05f, 0.0f).noCollission())
                 )
+                .requiresChildren(VanillaStoneChildKeys.STONE)
                 .addTag(ModTags.Items.COMPAT_LOOSE, Registries.ITEM)
                 .addTag(TFCTags.Items.STONES_LOOSE, Registries.ITEM, Registries.BLOCK)
                 .addTag(TFCTags.Items.STONES_LOOSE_CATEGORY.get(RockCategory.METAMORPHIC), Registries.ITEM)
@@ -121,7 +122,6 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 .requiresFromMap(LOOSE.blocks)
                 .addTag(Tags.Items.COBBLESTONES_NORMAL, Registries.BLOCK, Registries.ITEM)
                 .addTexture(modRes("block/loose_stone_cobble"), PaletteStrategies.MAIN_CHILD)
-                .addRecipe(modRes("crafting/hardened_andesite_cobble"))
                 .defaultRecipe()
                 .dropSelf()
                 .setTabKey(tab)
@@ -314,20 +314,24 @@ public class CompatStoneZoneModule extends StoneZoneModule {
                 UtilityTag.createAndAddCustomTags(rockTag, sink, stoneType.stone);
 
                 if(LOOSE.items.get(stoneType) != null){
-                    if(stoneType.hasChild(VanillaRockChildKeys.BRICKS)){
-                        if(BRICK.items.get(stoneType) != null){
+                    if(HARDENED_COBBLE.items.get(stoneType) != null){
+                        generateBrickBlockRecipe(sink, LOOSE.items.get(stoneType).toString(), HARDENED_COBBLE.items.get(stoneType).toString(), 4, null);
+                    }
+                    if(BRICK.items.get(stoneType) != null){
+                        if(stoneType.hasChild(VanillaRockChildKeys.BRICKS) || stoneType.hasChild(VanillaRockChildKeys.BUTTON) || stoneType.hasChild(VanillaRockChildKeys.PRESSURE_PLATE)){
                             generateBrickRecipe(sink, LOOSE.items.get(stoneType), BRICK.items.get(stoneType), "c:tools/chisel", 1,null);
+                        }
+                        if(stoneType.hasChild(VanillaRockChildKeys.BUTTON)){
+                            generateBrickRecipe(sink, BRICK.items.get(stoneType), stoneType.getItemOfThis("button"), "c:tools/chisel", 1,null);
+                            UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, stoneType.getItemOfThis("button"));
+                        }
+                        if(stoneType.hasChild(VanillaRockChildKeys.PRESSURE_PLATE)){
+                            generatePressurePlateFromBrickRecipe(sink, stoneType, BRICK.items.get(stoneType).asItem(), 1, null);
+                            UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, stoneType.getItemOfThis("pressure_plate"));
+                        }
+                        if(stoneType.hasChild(VanillaRockChildKeys.BRICKS)){
                             generateBrickBlockRecipe(sink, BRICK.items.get(stoneType).toString(), Utils.getID(Objects.requireNonNull(stoneType.getChild(VanillaRockChildKeys.BRICKS))).toString(), 4, null);
                             UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, stoneType.getItemOfThis("bricks"));
-
-                            if(stoneType.hasChild(VanillaRockChildKeys.BUTTON)){
-                                generateBrickRecipe(sink, BRICK.items.get(stoneType), stoneType.getItemOfThis("button"), "c:tools/chisel", 1,null);
-                                UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, stoneType.getItemOfThis("button"));
-                            }
-                            if(stoneType.hasChild(VanillaRockChildKeys.PRESSURE_PLATE)){
-                                generatePressurePlateFromBrickRecipe(sink, stoneType, BRICK.items.get(stoneType).asItem(), 1, null);
-                                UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, stoneType.getItemOfThis("pressure_plate"));
-                            }
                         }
                     }
                 }

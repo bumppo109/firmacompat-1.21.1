@@ -32,6 +32,10 @@ public class EveryCompatHandler {
                 RNRStoneZoneModule rnrStoneModule = new RNRStoneZoneModule();
                 EveryCompatAPI.registerModule(rnrStoneModule);
             }
+            if(ModList.get().isLoaded("everycomp")){
+                RNRWoodGoodModule rnrWoodGoodModule = new RNRWoodGoodModule();
+                EveryCompatAPI.registerModule(rnrWoodGoodModule);
+            }
         }
     }
 }

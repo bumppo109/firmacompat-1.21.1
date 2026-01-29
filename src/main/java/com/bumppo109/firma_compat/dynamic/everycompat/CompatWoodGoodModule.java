@@ -111,7 +111,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .addTag(Tags.Items.RODS_WOODEN, Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(TWIG);
 
@@ -120,13 +120,13 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         w -> new
                                 TFCFenceBlock(ExtendedProperties.of().strength(2.0F, 3.0F).flammableLikeLogs())
                 )
-                .requiresChildren("planks")
+                .requiresChildren("planks", "log")
                 .addTag(ItemTags.WOODEN_FENCES, Registries.ITEM)
                 .addTag(BlockTags.WOODEN_FENCES, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 //.addRecipe(modRes("crafting/oak_log_fence"))
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(LOG_FENCE);
 
@@ -141,7 +141,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .addTexture(ResourceLocation.withDefaultNamespace("textures/item/barrier"))
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(VERTICAL_SUPPORT);
 
@@ -156,7 +156,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .addTexture(ResourceLocation.withDefaultNamespace("textures/item/barrier"))
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(HORIZONTAL_SUPPORT);
 
@@ -169,7 +169,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .requiresFromMap(HORIZONTAL_SUPPORT.blocks)
                 .requiresChildren("log")
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(SUPPORT);
 
@@ -184,7 +184,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_tool_rack"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(TOOL_RACK);
 
@@ -201,7 +201,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_loom"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(LOOM);
 
@@ -216,7 +216,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_sluice"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(SLUICE);
 
@@ -234,7 +234,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         new BarrelBlockItem(block, itemProperties))
                 .copyParentDrop()
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(BARREL);
 
@@ -249,7 +249,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_scribing_table"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(SCRIBING_TABLE);
 
@@ -258,13 +258,13 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         w -> new
                                 SewingTableBlock(ExtendedProperties.of().noOcclusion().strength(2.5F).flammable(20, 30))
                 )
-                .requiresChildren("planks")
+                .requiresChildren("planks", "log")
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(TFCTags.Items.SEWING_TABLES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_sewing_table"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(SEWING_TABLE);
 
@@ -278,7 +278,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_shelf"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(SHELF);
 
@@ -302,7 +302,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .addTag(TFCTags.Items.AXLES, Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
 
         this.addEntry(AXLE);
@@ -318,12 +318,13 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                                         .ticks(WindmillBlockEntity::serverTick, WindmillBlockEntity::clientTick),
                                 () -> (AxleBlock) AXLE.blocks.get(w)
                         ))
+                .requiresFromMap(AXLE.blocks)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(Tags.Items.HIDDEN_FROM_RECIPE_VIEWERS, Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .copyParentDrop()
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(WINDMILL);
 
@@ -338,7 +339,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(BLADED_AXLE);
 
@@ -352,7 +353,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 //.addRecipe(modRes("crafting/oak_encased_axle"))
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(ENCASED_AXLE);
 
@@ -368,7 +369,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(CLUTCH);
 
@@ -377,14 +378,14 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         w -> new
                                 GearBoxBlock(ExtendedProperties.of().strength(2f).noOcclusion().blockEntity(TFCBlockEntities.GEAR_BOX), () -> (AxleBlock) AXLE.blocks.get(w))
                 )
-                .requiresChildren("planks")
+                .requiresFromMap(AXLE.blocks)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(TFCTags.Items.GEAR_BOXES, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_gear_box"))
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(GEAR_BOX);
 
@@ -397,7 +398,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                                 () -> (AxleBlock) AXLE.blocks.get(w),
                                 ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "textures/entity/" + FirmaCompat.MODID + "/" + w.getNamespace()+ "/" + w.getTypeName() + "_water_wheel.png"))
                 )
-                .requiresChildren("planks")
+                .requiresFromMap(AXLE.blocks)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(TFCTags.Items.WATER_WHEELS, Registries.ITEM)
                 //.addRecipe(modRes("crafting/oak_water_wheel"))
@@ -406,7 +407,7 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
-                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*")
+                .excludeBlockTypes("tfc:.*").excludeBlockTypes("afc:.*").excludeBlockTypes("domum_ornamentum:.*")
                 .build();
         this.addEntry(WATER_WHEEL);
     }
@@ -423,24 +424,42 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 ResourceLocation logTag = getATagOrCreateANew("logs", "caps", woodType, sink, manager);
                 ResourceLocation placedFeatureTag = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "tags/worldgen/placed_feature/twig_patches");
 
-                if(woodType.hasChild("log")){
-                    generateSupportRecipe(sink, logTag, "c:tools/saw", Utils.getID(SUPPORT.items.get(woodType)).getPath(), 8, null);
-                    supportData(sink, woodType);
-                }
-                if(LUMBER.items.get(woodType) != null){
-                    if(woodType.hasChild("log")){
-                        generateToolTagRecipe(sink, logTag, "c:tools/saw", lumberItem, 8, null);
-                    }
+                if(lumberItem != null){
+                    generateToolRackRecipe(sink, woodType, null);
+                    generateLoomRecipe(sink, woodType, null);
+                    generateSluiceRecipe(sink, woodType, null);
+                    generateBarrelRecipe(sink, woodType, null);
+
                     if(woodType.hasChild("planks")){
                         generatePlanksRecipe(sink, woodType, null);
                         generateToolItemRecipe(sink, woodType.planks.asItem(), "c:tools/saw", lumberItem, 4, "from_planks");
                         UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.planks.asItem());
+                        generateShelfRecipe(sink, woodType, null);
+                        if(woodType.hasChild("fence")){
+                            generateFenceRecipe(sink, woodType, "fence", null);
+                            UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("fence"));
+                        }
+                        if(woodType.hasChild("fence_gate")){
+                            generateFenceGateRecipe(sink, woodType, null);
+                            UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("fence_gate"));
+                        }
+                        if(woodType.hasChild("log")){
+                            generateSewingTableRecipe(sink, woodType, null);
+                        }
+                        if(woodType.hasChild("slab")){
+                            generateScribingTableRecipe(sink, woodType, null);
+                            generateToolItemRecipe(sink, woodType.getItemOfThis("slab"), "c:tools/saw", lumberItem, 2, "from_slab");
+
+                        }
+                        if(woodType.hasChild("stairs")) {
+                            generateToolItemRecipe(sink, woodType.getItemOfThis("stairs"), "c:tools/saw", lumberItem, 3, "from_stairs");
+                        }
                     }
-                    if(woodType.hasChild("stairs")) {
-                        generateToolItemRecipe(sink, woodType.getItemOfThis("stairs"), "c:tools/saw", lumberItem, 3, "from_stairs");
-                    }
-                    if(woodType.hasChild("slab")){
-                        generateToolItemRecipe(sink, woodType.getItemOfThis("slab"), "c:tools/saw", lumberItem, 2, "from_slab");
+                    if(woodType.hasChild("log")){
+                        generateSupportRecipe(sink, logTag, "c:tools/saw", Utils.getID(SUPPORT.items.get(woodType)).getPath(), 8, null);
+                        generateToolTagRecipe(sink, logTag, "c:tools/saw", lumberItem, 8, null);
+                        generateFenceRecipe(sink, woodType, "log_fence", null);
+                        supportData(sink, woodType);
                     }
                     if(woodType.hasChild("door")){
                         generateDoorRecipe(sink, woodType, null);
@@ -454,14 +473,6 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         generatePressurePlateRecipe(sink, woodType, null);
                         UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("pressure_plate"));
                     }
-                    if(woodType.hasChild("fence")){
-                        generateFenceRecipe(sink, woodType, "fence", null);
-                        UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("fence"));
-                    }
-                    if(woodType.hasChild("fence_gate")){
-                        generateFenceGateRecipe(sink, woodType, null);
-                        UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("fence_gate"));
-                    }
                     if(woodType.hasChild("sign")){
                         generateSignRecipe(sink, woodType, null);
                         UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("sign"));
@@ -470,24 +481,14 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                         generateHangingSignRecipe(sink, woodType, null);
                         UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("hanging_sign"));
                     }
-                    if(AXLE.blocks.get(woodType) != null){
-                        FirmaCompat.LOGGER.debug("Wood Good - {} has axle", woodType);
-                        generateAxleRecipe(sink, woodType, null);
-                        generateBladedAxleRecipe(sink, woodType, null);
-                        generateEncasedAxleRecipe(sink, woodType, null);
-                        generateClutchRecipe(sink, woodType, null);
-                        generateGearBoxRecipe(sink, woodType, null);
-                        generateWaterWheelRecipe(sink, woodType, null);
-                    }
-                    FirmaCompat.LOGGER.debug("Wood Good - {} has basic wood recipes", woodType);
-                    generateFenceRecipe(sink, woodType, "log_fence", null);
-                    generateToolRackRecipe(sink, woodType, null);
-                    generateLoomRecipe(sink, woodType, null);
-                    generateSluiceRecipe(sink, woodType, null);
-                    generateBarrelRecipe(sink, woodType, null);
-                    generateShelfRecipe(sink, woodType, null);
-                    generateScribingTableRecipe(sink, woodType, null);
-                    generateSewingTableRecipe(sink, woodType, null);
+                }
+                if(AXLE.blocks.get(woodType) != null){
+                    generateAxleRecipe(sink, woodType, null);
+                    generateBladedAxleRecipe(sink, woodType, null);
+                    generateEncasedAxleRecipe(sink, woodType, null);
+                    generateClutchRecipe(sink, woodType, null);
+                    generateGearBoxRecipe(sink, woodType, null);
+                    generateWaterWheelRecipe(sink, woodType, null);
                 }
 
                 if(TWIG.blocks.get(woodType) != null){

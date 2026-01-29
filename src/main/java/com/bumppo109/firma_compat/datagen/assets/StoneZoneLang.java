@@ -34,6 +34,11 @@ public class StoneZoneLang extends LanguageProvider {
         add("block_type.firma_compat.sett_road_slab", "%s Sett Road Slab");
         add("item_type.firma_compat.flagstone", "%s Flagstone");
 
+        add("item_type.firma_compat.shingle", "%s Shingle");
+        add("item_type.firma_compat.shingles", "%s Shingle");
+        add("item_type.firma_compat.shingle_stair", "%s Shingle Stairs");
+        add("item_type.firma_compat.shingle_slab", "%s Shingle Slab");
+
         //TODO - ore names not going through correctly
         for(CompatOre ore :CompatOre.values()) {
             if (ore.isGraded()) {

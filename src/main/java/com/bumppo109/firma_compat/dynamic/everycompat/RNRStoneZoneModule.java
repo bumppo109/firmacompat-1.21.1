@@ -24,6 +24,7 @@ import net.mehvahdjukaar.stone_zone.StoneZone;
 import net.mehvahdjukaar.stone_zone.api.StoneZoneModule;
 import net.mehvahdjukaar.stone_zone.api.set.stone.StoneType;
 import net.mehvahdjukaar.stone_zone.api.set.stone.StoneTypeRegistry;
+import net.mehvahdjukaar.stone_zone.api.set.stone.VanillaStoneChildKeys;
 import net.mehvahdjukaar.stone_zone.api.set.stone.VanillaStoneTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -160,6 +161,7 @@ public class RNRStoneZoneModule extends StoneZoneModule {
                         getModBlock("stone_sett_road"), () -> VanillaStoneTypes.STONE,
                         stoneType -> new PathHeightBlock(Utils.copyPropertySafe(RNRCompatBlocks.ROCK_BLOCKS.get(CompatRock.STONE).get(CompatRNR.SETT_ROAD).get()))
                 )
+                .requiresChildren(VanillaStoneChildKeys.BRICKS)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.CAN_LANDSLIDE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.SUPPORTS_LANDSLIDE, Registries.BLOCK)
@@ -176,6 +178,7 @@ public class RNRStoneZoneModule extends StoneZoneModule {
                         stoneType -> new PathStairBlock(() -> FLAGSTONE.blocks.get(stoneType).defaultBlockState(),
                                 Utils.copyPropertySafe(RNRCompatBlocks.ROCK_BLOCKS.get(CompatRock.STONE).get(CompatRNR.SETT_ROAD).get()))
                 )
+                .requiresChildren(VanillaStoneChildKeys.BRICKS)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.CAN_LANDSLIDE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.SUPPORTS_LANDSLIDE, Registries.BLOCK)
@@ -190,6 +193,7 @@ public class RNRStoneZoneModule extends StoneZoneModule {
                         getModBlock("stone_sett_road_slab"), () -> VanillaStoneTypes.STONE,
                         stoneType -> new PathSlabBlock(Utils.copyPropertySafe(RNRCompatBlocks.ROCK_BLOCKS.get(CompatRock.STONE).get(CompatRNR.SETT_ROAD).get()))
                 )
+                .requiresChildren(VanillaStoneChildKeys.BRICKS)
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.CAN_LANDSLIDE, Registries.BLOCK)
                 .addTag(TFCTags.Blocks.SUPPORTS_LANDSLIDE, Registries.BLOCK)
@@ -226,98 +230,101 @@ public class RNRStoneZoneModule extends StoneZoneModule {
 
         executor.accept((manager, sink) -> {
             for(StoneType stone : StoneTypeRegistry.INSTANCE){
-                generateToolItemRecipe(sink, stone.stone.asItem(), "c:tools/chisel", FLAGSTONE.items.get(stone), 12, null);
+                if(stone.stone != null){
+                    generateBlockModRecipe(sink, stone, COBBLED_ROAD);
+                    generateMattockStairRecipes(sink, stone, COBBLED_ROAD, COBBLED_ROAD_STAIRS,"tfc:stair");
+                    generateMattockStairRecipes(sink, stone, COBBLED_ROAD, COBBLED_ROAD_SLAB,"tfc:slab");
+
+                    if(FLAGSTONE.items.get(stone) != null){
+                        generateToolItemRecipe(sink, stone.stone.asItem(), "c:tools/chisel", FLAGSTONE.items.get(stone), 12, null);
+                        generateBlockModRecipe(sink, stone, FLAGSTONES);
+                        generateMattockStairRecipes(sink, stone, FLAGSTONES, FLAGSTONE_STAIRS,"tfc:stair");
+                        generateMattockStairRecipes(sink, stone, FLAGSTONES, FLAGSTONE_SLAB,"tfc:slab");
+                    }
+                }
+                if(stone.hasChildren(VanillaStoneChildKeys.BRICKS)){
+                    generateBlockModRecipe(sink, stone, SETT_ROAD);
+                    generateMattockStairRecipes(sink, stone, SETT_ROAD, SETT_ROAD_STAIRS,"tfc:stair");
+                    generateMattockStairRecipes(sink, stone, SETT_ROAD, SETT_ROAD_SLAB,"tfc:slab");
+                }
             }
-            generateMattockStairRecipes(sink, FLAGSTONES, FLAGSTONE_STAIRS,"tfc:stair");
-            generateMattockStairRecipes(sink, COBBLED_ROAD, COBBLED_ROAD_STAIRS,"tfc:stair");
-            generateMattockStairRecipes(sink, SETT_ROAD, SETT_ROAD_STAIRS,"tfc:stair");
-
-            generateMattockStairRecipes(sink, FLAGSTONES, FLAGSTONE_STAIRS,"tfc:slab");
-            generateMattockStairRecipes(sink, COBBLED_ROAD, COBBLED_ROAD_STAIRS,"tfc:slab");
-            generateMattockStairRecipes(sink, SETT_ROAD, SETT_ROAD_STAIRS,"tfc:slab");
-
-            generateBlockModRecipe(sink, FLAGSTONES);
-            generateBlockModRecipe(sink, COBBLED_ROAD);
-            generateBlockModRecipe(sink, SETT_ROAD);
         });
     }
 
     private void generateMattockStairRecipes(
-            ResourceSink sink,
-            SimpleEntrySet<StoneType, Block> baseEntrySet,
-            SimpleEntrySet<StoneType, Block> stairsEntrySet,
-            String chiselMode) {
+        ResourceSink sink,
+        StoneType stone,
+        SimpleEntrySet<StoneType, Block> baseEntrySet,
+        SimpleEntrySet<StoneType, Block> stairsEntrySet,
+        String chiselMode) {
 
-        for (StoneType stone : StoneTypeRegistry.INSTANCE) {
-            Block stairs = stairsEntrySet.blocks.get(stone);
-            Block base = baseEntrySet.blocks.get(stone);
+        Block stairs = stairsEntrySet.blocks.get(stone);
+        Block base = baseEntrySet.blocks.get(stone);
 
-            if (stairs == null || base == null) continue;
+        if (stairs != null && base != null) {
 
             ResourceLocation stairsId = Utils.getID(stairs);
             ResourceLocation baseId = Utils.getID(base);
 
             // Skip if something is wrong / not registered
-            if (stairsId == null || baseId == null) continue;
+            if (stairsId != null && baseId != null) {
 
-            JsonObject recipe = new JsonObject();
-            recipe.addProperty("type", "rnr:mattock");
+                JsonObject recipe = new JsonObject();
+                recipe.addProperty("type", "rnr:mattock");
 
-            JsonArray ingredient = new JsonArray();
-            ingredient.add(baseId.toString());
-            recipe.add("ingredient", ingredient);
+                JsonArray ingredient = new JsonArray();
+                ingredient.add(baseId.toString());
+                recipe.add("ingredient", ingredient);
 
-            recipe.addProperty("mode", chiselMode);
+                recipe.addProperty("mode", chiselMode);
 
-            recipe.addProperty("result", stairsId.toString());
+                recipe.addProperty("result", stairsId.toString());
 
-            // Final path example: firma_compat:recipes/mattock/andesite_cobbled_road_stairs.json
-            ResourceLocation recipePath = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID,"mattock/" + stairsId.getPath());
+                // Final path example: firma_compat:recipes/mattock/andesite_cobbled_road_stairs.json
+                ResourceLocation recipePath = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID,"mattock/" + stairsId.getPath());
 
-            sink.addJson(recipePath, recipe, ResType.RECIPES);
+                sink.addJson(recipePath, recipe, ResType.RECIPES);
+            }
         }
     }
 
-    private void generateBlockModRecipe(ResourceSink sink, SimpleEntrySet<StoneType, Block> baseEntrySet) {
-        for (StoneType stone : StoneTypeRegistry.INSTANCE) {
-            Block base = baseEntrySet.blocks.get(stone);
-            Block baseCourse = RNRBlocks.BASE_COURSE.get();
-            Item roadItem = null;
+    private void generateBlockModRecipe(ResourceSink sink, StoneType stone, SimpleEntrySet<StoneType, Block> baseEntrySet) {
+        Block base = baseEntrySet.blocks.get(stone);
+        Block baseCourse = RNRBlocks.BASE_COURSE.get();
+        Item roadItem = null;
 
-            if(baseEntrySet == FLAGSTONES){
-                roadItem = FLAGSTONE.items.get(stone);
-            } else if(baseEntrySet == COBBLED_ROAD){
-                roadItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(StoneZone.MOD_ID, FirmaCompat.MODID + "/" + stone.getNamespace() + "/" + stone.getTypeName() +"_loose"));
-            } else if(baseEntrySet == SETT_ROAD){
-                roadItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(StoneZone.MOD_ID, FirmaCompat.MODID + "/" + stone.getNamespace() + "/" + stone.getTypeName() +"_brick"));
-            }
+        if(baseEntrySet == FLAGSTONES){
+            roadItem = FLAGSTONE.items.get(stone);
+        } else if(baseEntrySet == COBBLED_ROAD){
+            roadItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(StoneZone.MOD_ID, FirmaCompat.MODID + "/" + stone.getNamespace() + "/" + stone.getTypeName() +"_loose"));
+        } else if(baseEntrySet == SETT_ROAD){
+            roadItem = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(StoneZone.MOD_ID, FirmaCompat.MODID + "/" + stone.getNamespace() + "/" + stone.getTypeName() +"_brick"));
+        }
 
-            if (base == null || roadItem == null) continue;
-
+        if (base != null && roadItem != null){
             ResourceLocation baseCourseID = Utils.getID(baseCourse);
             ResourceLocation baseId = Utils.getID(base);
 
-            // Skip if something is wrong / not registered
-            if (baseCourseID == null || baseId == null) continue;
+            if (baseCourseID != null && baseId != null){
+                JsonObject recipe = new JsonObject();
+                recipe.addProperty("type", "rnr:block_mod");
 
-            JsonObject recipe = new JsonObject();
-            recipe.addProperty("type", "rnr:block_mod");
+                JsonArray ingredient = new JsonArray();
+                ingredient.add(baseCourseID.toString());
+                recipe.add("input_block", ingredient);
 
-            JsonArray ingredient = new JsonArray();
-            ingredient.add(baseCourseID.toString());
-            recipe.add("input_block", ingredient);
+                JsonObject input_item = new JsonObject();
+                input_item.addProperty("item", Utils.getID(roadItem).toString());
+                recipe.add("input_item", input_item);
 
-            JsonObject input_item = new JsonObject();
-            input_item.addProperty("item", Utils.getID(roadItem).toString());
-            recipe.add("input_item", input_item);
-
-            recipe.addProperty("output_block", baseId.toString());
+                recipe.addProperty("output_block", baseId.toString());
 
 
-            // Final path example: firma_compat:recipes/mattock/andesite_cobbled_road_stairs.json
-            ResourceLocation recipePath = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID,"block_mod/" + baseId.getPath());
+                // Final path example: firma_compat:recipes/mattock/andesite_cobbled_road_stairs.json
+                ResourceLocation recipePath = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID,"block_mod/" + baseId.getPath());
 
-            sink.addJson(recipePath, recipe, ResType.RECIPES);
+                sink.addJson(recipePath, recipe, ResType.RECIPES);
+            }
         }
     }
 
