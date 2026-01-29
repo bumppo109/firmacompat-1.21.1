@@ -178,7 +178,7 @@ public final class FLWoodGoodModule extends SimpleModule {
                 .requiresChildren("planks")
                 .addTag(modRes("compat_barrel_presses"), Registries.ITEM, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .addRecipe(modRes("crafting/firmalife/barrel_press_oak"))
+                //.addRecipe(modRes("crafting/firmalife/barrel_press_oak"))
                 .dropSelf()
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -210,6 +210,9 @@ public final class FLWoodGoodModule extends SimpleModule {
                 }
                 if(STOMPING_BARREL.blocks.get(wood) != null){
                     generateStompBarrelRecipe(sink, wood, null);
+                }
+                if(BARREL_PRESS.blocks.get(wood) != null){
+                    generateBarrelPressRecipe(sink, wood, null);
                 }
             }
         });
@@ -263,7 +266,7 @@ public final class FLWoodGoodModule extends SimpleModule {
         recipe.add("result", result);
 
         // Recipe path
-        String recipePath = "crafting/" + FirmaCompat.MODID + "/" + outputItemNamespace + "/" + outputItemPath;
+        String recipePath = "crafting/" + outputItemPath;
 
         if (suffix != null && !suffix.isEmpty()) {
             recipePath += ("_" + suffix);
@@ -326,7 +329,7 @@ public final class FLWoodGoodModule extends SimpleModule {
         recipe.add("result", result);
 
         // Recipe path
-        String recipePath = "crafting/" + FirmaCompat.MODID + "/" + outputItemNamespace + "/" + outputItemPath;
+        String recipePath = "crafting/" + outputItemPath;
 
         if (suffix != null && !suffix.isEmpty()) {
             recipePath += ("_" + suffix);
@@ -383,7 +386,71 @@ public final class FLWoodGoodModule extends SimpleModule {
         recipe.add("result", result);
 
         // Recipe path
-        String recipePath = "crafting/" + FirmaCompat.MODID + "/" + outputItemNamespace + "/" + outputItemPath;
+        String recipePath = "crafting/" + outputItemPath;
+
+        if (suffix != null && !suffix.isEmpty()) {
+            recipePath += ("_" + suffix);
+        }
+
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, recipePath);
+
+        sink.addJson(recipeId, recipe, ResType.RECIPES);
+    }
+
+    public void generateBarrelPressRecipe(
+            ResourceSink sink,
+            WoodType wood,
+            @Nullable String suffix
+    ) {
+        String stompBarrelItem = wood.getTypeName().toLowerCase(Locale.ROOT) + "_stomping_barrel";
+        String woodNamespace = wood.getNamespace();
+        Item outputItem = BARREL_PRESS.getItemOf(wood);
+
+        String lumberItemPath = FirmaCompat.MODID + "/" + woodNamespace + "/" + stompBarrelItem;
+
+
+        assert outputItem != null;
+        String outputItemPath = Utils.getID(outputItem).getPath();
+        String outputItemNamespace = Utils.getID(outputItem).getNamespace();
+
+        JsonObject recipe = new JsonObject();
+        recipe.addProperty("type", "minecraft:crafting_shaped");
+        recipe.addProperty("category", "misc");
+
+        // Key definitions
+        JsonObject key = new JsonObject();
+
+        JsonObject lumberKey = new JsonObject();
+        lumberKey.addProperty("item", FirmaCompat.MODID + ":" + lumberItemPath);
+        key.add("L", lumberKey);
+
+        JsonObject brassKey = new JsonObject();
+        brassKey.addProperty("item", TFCItems.BRASS_MECHANISMS.get().toString());
+        key.add("B", brassKey);
+
+        JsonObject steelRodKey = new JsonObject();
+        steelRodKey.addProperty("item", TFCItems.METAL_ITEMS.get(Metal.STEEL).get(Metal.ItemType.ROD).get().toString());
+        key.add("S", steelRodKey);
+
+        JsonObject steelSheetKey = new JsonObject();
+        steelSheetKey.addProperty("item", TFCItems.METAL_ITEMS.get(Metal.STEEL).get(Metal.ItemType.SHEET).get().toString());
+        key.add("H", steelSheetKey);
+
+        recipe.add("key", key);
+
+        JsonArray pattern = new JsonArray();
+        pattern.add("LS ");
+        pattern.add("HB ");
+        recipe.add("pattern", pattern);
+
+        // Result: 1 door (vanilla wood type)
+        JsonObject result = new JsonObject();
+        result.addProperty("count", 1);
+        result.addProperty("id",  outputItemNamespace + ":" + outputItemPath);
+        recipe.add("result", result);
+
+        // Recipe path
+        String recipePath = "crafting/" + outputItemPath;
 
         if (suffix != null && !suffix.isEmpty()) {
             recipePath += ("_" + suffix);

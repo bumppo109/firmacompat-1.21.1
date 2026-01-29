@@ -23,6 +23,7 @@ import net.dries007.tfc.util.Metal;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.*;
 import net.mehvahdjukaar.every_compat.misc.UtilityTag;
+import net.mehvahdjukaar.every_compat.modules.EveryCompatModule;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.pack.ResourceGenTask;
@@ -53,7 +54,7 @@ import java.util.function.Consumer;
 
 import static net.mehvahdjukaar.every_compat.misc.UtilityTag.getATagOrCreateANew;
 
-public final class CompatWoodGoodModule extends SimpleModule {
+public final class CompatWoodGoodModule extends EveryCompatModule {
 
     public final ItemOnlyEntrySet<WoodType, Item> LUMBER;
     public final ItemOnlyEntrySet<WoodType, Item> SUPPORT;
@@ -470,6 +471,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                         UtilityTag.createAndAddCustomTags(modRes("remove_from_crafting"), sink, woodType.getItemOfThis("hanging_sign"));
                     }
                     if(AXLE.blocks.get(woodType) != null){
+                        FirmaCompat.LOGGER.debug("Wood Good - {} has axle", woodType);
                         generateAxleRecipe(sink, woodType, null);
                         generateBladedAxleRecipe(sink, woodType, null);
                         generateEncasedAxleRecipe(sink, woodType, null);
@@ -477,6 +479,7 @@ public final class CompatWoodGoodModule extends SimpleModule {
                         generateGearBoxRecipe(sink, woodType, null);
                         generateWaterWheelRecipe(sink, woodType, null);
                     }
+                    FirmaCompat.LOGGER.debug("Wood Good - {} has basic wood recipes", woodType);
                     generateFenceRecipe(sink, woodType, "log_fence", null);
                     generateToolRackRecipe(sink, woodType, null);
                     generateLoomRecipe(sink, woodType, null);

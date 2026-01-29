@@ -44,8 +44,6 @@ public class FirmaCompat {
     public FirmaCompat(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-        RecipeRemover.init();
-
         modEventBus.addListener(ModEvents::addToBlockEntities);
 
         modEventBus.addListener(CompatTFCEntities::onEntityAttributeCreation);
@@ -64,9 +62,9 @@ public class FirmaCompat {
         modEventBus.addListener(FirmaCompatClient::registerEntityRenderers);
 
         modEventBus.addListener(ModDataMaps::register);
-        if (ModList.get().isLoaded("everycomp")) {
+        if (ModList.get().isLoaded("everycomp") || ModList.get().isLoaded("stonezone")) {
             try {
-                Class.forName("com.bumppo109.firma_compat.dynamic.everycompat.EveryCompatHandler")
+                Class.forName("com.bumppo109.firma_compat.dynamic.EveryCompatHandler")
                         .getMethod("registerModules")
                         .invoke(null);
             } catch (Exception e) {
@@ -81,6 +79,8 @@ public class FirmaCompat {
             RNRCompatBlocks.BLOCKS.register(modEventBus);
             RNRCompatItems.ITEMS.register(modEventBus);
         }
+
+        RecipeRemover.init();
 
         //FirmaCompatDynamicPack.init();
 

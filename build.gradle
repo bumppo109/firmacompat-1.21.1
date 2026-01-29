@@ -134,17 +134,23 @@ dependencies {
     //1.21-2.29.11
     //implementation "curse.maven:selene-499980:7473045"
     //1.21-2.29.14
-    implementation "curse.maven:selene-499980:7511744"
+    //implementation "curse.maven:selene-499980:7511744"
+    //1.21-2.29.16
+    implementation "curse.maven:selene-499980:7522321"
 
     //Every Compat - Wood Good 1.21-2.11.23
     //implementation "curse.maven:every-compat-628539:7382431"
     //1.21-2.11.24
-    implementation "curse.maven:every-compat-628539:7436223"
+    //implementation "curse.maven:every-compat-628539:7436223"
+    //1.21-2.11.25
+    implementation "curse.maven:every-compat-628539:7528817"
 
     //Stone Zone - 1.21.211.6
     //implementation "curse.maven:stone-zone-1154622:7339708"
     //1.21-2.11.7
-    implementation "curse.maven:stone-zone-1154622:7439162"
+    //implementation "curse.maven:stone-zone-1154622:7439162"
+    //1.21-2.11.8
+    implementation "curse.maven:stone-zone-1154622:7534582"
 
     //TerraFirmaCraft 1.21.1-4.0.17
     //implementation "curse.maven:terrafirmacraft-302973:7452541"
