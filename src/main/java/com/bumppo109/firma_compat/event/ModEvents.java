@@ -3,9 +3,12 @@ package com.bumppo109.firma_compat.event;
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
+import com.bumppo109.firma_compat.util.climate.SereneClimateModel;
 import com.eerussianguy.firmalife.common.blockentities.FLBlockEntities;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.util.Metal;
+import net.dries007.tfc.util.climate.BiomeBasedClimateModel;
+import net.dries007.tfc.util.events.SelectClimateModelEvent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -17,7 +20,6 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import java.util.stream.Stream;
 
 public class ModEvents {
-
     // This is where we add new AFC wood blocks to existing TFC block entity types
     @SubscribeEvent
     public static void addToBlockEntities(BlockEntityTypeAddBlocksEvent event)

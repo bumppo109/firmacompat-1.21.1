@@ -74,6 +74,7 @@ public class CompatClimatePlacement extends PlacementModifier {
 
         // 3. Rainfall proxy — this is the best available without chunk data
         //    (TFC falls back to average rainfall in non-TFC contexts too)
+        //TODO - not sure this matters if the model is either SereneClimateModel or BiomeBasedClimateModel
         float rainfall = BiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
 
         int elevation = pos.getY();
@@ -92,23 +93,6 @@ public class CompatClimatePlacement extends PlacementModifier {
         return valid;
     }
 
-    /*
-    public boolean isValid(WorldGenLevel level, BlockPos pos, RandomSource random) {
-        Holder<Biome> biomeHolder = level.getBiome(pos);
-        Biome biome = biomeHolder.value();
-
-        float vanillaTemp = Climate.fromVanilla(biome.getBaseTemperature());
-        float adjustedTemp = EnvironmentHelpers.adjustAvgTempForElev(pos.getY(), vanillaTemp);
-        float rainfall = BiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
-        int elevation = pos.getY();
-
-        return adjustedTemp >= minTemp && adjustedTemp <= maxTemp &&
-                rainfall >= minGroundwater && rainfall <= maxGroundwater &&
-                elevation >= minElevation && elevation <= maxElevation;
-    }
-
-     */
-
     @Override
     public Stream<BlockPos> getPositions(PlacementContext context, RandomSource random, BlockPos pos) {
         WorldGenLevel level = context.getLevel();
@@ -117,26 +101,4 @@ public class CompatClimatePlacement extends PlacementModifier {
         }
         return Stream.empty();
     }
-
-    /*
-    @Override
-    public Stream<BlockPos> getPositions(PlacementContext context, RandomSource random, BlockPos pos) {
-        WorldGenLevel level = context.getLevel();
-        Holder<Biome> biomeHolder = level.getBiome(pos);
-        Biome biome = biomeHolder.value();
-
-        float vanillaTemp = Climate.fromVanilla(biome.getBaseTemperature());
-        float adjustedTemp = EnvironmentHelpers.adjustAvgTempForElev(pos.getY(), vanillaTemp);
-        float rainfall = BiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
-        int elevation = pos.getY();
-
-        if (adjustedTemp >= minTemp && adjustedTemp <= maxTemp &&
-                rainfall >= minGroundwater && rainfall <= maxGroundwater &&
-                elevation >= minElevation && elevation <= maxElevation) {
-            return Stream.of(pos);
-        }
-        return Stream.empty();
-    }
-
-     */
 }

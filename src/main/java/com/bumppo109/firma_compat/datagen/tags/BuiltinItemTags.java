@@ -86,6 +86,7 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.CHEST)
                 .add(Items.TRAPPED_CHEST)
                 .add(Items.CHEST_MINECART)
+                .add(Items.OAK_DOOR)
         ;
 
         tag(PREVENT_INTERACTION)

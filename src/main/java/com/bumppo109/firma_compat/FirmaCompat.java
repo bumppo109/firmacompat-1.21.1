@@ -16,6 +16,8 @@ import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLItems;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import com.bumppo109.firma_compat.util.RecipeRemover;
+import com.bumppo109.firma_compat.util.climate.ModClimateModels;
+import com.bumppo109.firma_compat.util.climate.SereneClimateModel;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
 import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
@@ -57,6 +59,7 @@ public class FirmaCompat {
         ModLootModifiers.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModPlacement.PLACEMENT_MODIFIERS.register(modEventBus);
+        ModClimateModels.TYPES.register(modEventBus);
 
         CompatTFCEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(FirmaCompatClient::registerEntityRenderers);
