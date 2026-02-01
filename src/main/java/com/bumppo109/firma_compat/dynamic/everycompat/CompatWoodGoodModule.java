@@ -501,7 +501,9 @@ public final class CompatWoodGoodModule extends EveryCompatModule {
                 }
                 //TFC data
                 if(woodType.canBurn()){
-                    if(woodType.getNamespace() != "minecraft"){
+                    if(!Objects.equals(woodType.getNamespace(), "minecraft")
+                        && !Objects.equals(woodType.getNamespace(), "tfc")
+                        && !Objects.equals(woodType.getNamespace(), "afc")){
                         fuelData(woodType, sink, manager);
                     }
                 }

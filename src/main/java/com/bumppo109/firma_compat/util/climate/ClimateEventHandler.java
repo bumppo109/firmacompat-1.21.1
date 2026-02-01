@@ -1,6 +1,7 @@
 package com.bumppo109.firma_compat.util.climate;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
 import net.dries007.tfc.util.climate.BiomeBasedClimateModel;
 import net.dries007.tfc.util.events.SelectClimateModelEvent;
 import net.neoforged.api.distmarker.Dist;
@@ -19,10 +20,16 @@ public class ClimateEventHandler {
      */
     @SubscribeEvent
     public static void onSelectClimateModel(SelectClimateModelEvent event) {
-        if (ModList.get().isLoaded("sereneseasons") && event.getModel() == BiomeBasedClimateModel.INSTANCE) {
-            event.setModel(SereneClimateModel.INSTANCE);
+        boolean serene = ModList.get().isLoaded("sereneseasons");
 
-            FirmaCompat.LOGGER.debug("Applied SereneClimateModel for world: {}", event.level().dimension().location());
+        if(event.getModel() == BiomeBasedClimateModel.INSTANCE){
+            if(serene){
+                event.setModel(SereneClimateModel.INSTANCE);
+                FirmaCompat.LOGGER.debug("Applied SereneClimateModel for world: {}", event.level().dimension().location());
+            } else {
+                event.setModel(ModBiomeBasedClimateModel.INSTANCE);
+                FirmaCompat.LOGGER.debug("Applied ModBiomeBasedClimateModel for world: {}", event.level().dimension().location());
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.tfcaddon.firmalife;
+package com.bumppo109.firma_compat.integration.firmalife;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import net.dries007.tfc.util.registry.RegistryHolder;

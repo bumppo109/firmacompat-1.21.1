@@ -4,7 +4,10 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "SimpleWaterloggedBlockMixin",
-    "DrinkableMixin"
+    "DrinkableMixin",
+    "TerraFirmaCraftModifierMixin",
+    "LegendarySurvivalOverhaulMixin",
+    "PlayerInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1

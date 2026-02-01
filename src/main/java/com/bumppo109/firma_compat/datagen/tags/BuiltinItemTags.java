@@ -7,17 +7,11 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.datagen.ModAccessors;
 import com.bumppo109.firma_compat.item.ModItems;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
 import com.bumppo109.firma_compat.util.ModTags;
 import com.eerussianguy.firmalife.common.FLTags;
 import com.google.common.base.Preconditions;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
-import net.dries007.tfc.common.items.TFCItems;
-import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -34,7 +28,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -49,18 +42,9 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static com.bumppo109.firma_compat.util.ModTags.Items.*;
-import static com.eerussianguy.firmalife.common.FLTags.Blocks.FOOD_SHELVES;
-import static com.eerussianguy.firmalife.common.FLTags.Blocks.HANGERS;
-import static com.eerussianguy.firmalife.common.FLTags.Blocks.JARBNETS;
-import static com.eerussianguy.firmalife.common.FLTags.Items.*;
-import static com.eerussianguy.firmalife.common.FLTags.Items.BARREL_PRESSES;
-import static com.eerussianguy.firmalife.common.FLTags.Items.KEGS;
-import static com.eerussianguy.firmalife.common.FLTags.Items.STOMPING_BARRELS;
 import static com.eerussianguy.firmalife.common.FLTags.Items.WINE_SHELVES;
 import static com.therighthon.rnr.common.RNRTags.Items.FLAGSTONE_ROAD_ITEMS;
 import static net.dries007.tfc.common.TFCTags.Items.*;
-import static net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE;
-import static net.minecraft.tags.ItemTags.*;
 
 public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
 {

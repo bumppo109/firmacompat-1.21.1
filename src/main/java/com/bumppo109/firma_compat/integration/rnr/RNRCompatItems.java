@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.tfcaddon.rnr;
+package com.bumppo109.firma_compat.integration.rnr;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;

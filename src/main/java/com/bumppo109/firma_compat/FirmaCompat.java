@@ -2,25 +2,24 @@ package com.bumppo109.firma_compat;
 
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.data.ModDataMaps;
-import com.bumppo109.firma_compat.dynamic.everycompat.*;
+import com.bumppo109.firma_compat.dynamic.EveryCompatHandler;
 import com.bumppo109.firma_compat.entity.CompatFaunas;
 import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.event.ModEvents;
 import com.bumppo109.firma_compat.fluid.ModFluids;
+import com.bumppo109.firma_compat.integration.legendarysurvivaloverhaul.LSOHandler;
 import com.bumppo109.firma_compat.item.ModCreativeModeTab;
 import com.bumppo109.firma_compat.item.ModItemCapabilities;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.loot_modifiers.ModLootModifiers;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLItems;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
+import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.integration.firmalife.CompatFLItems;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
 import com.bumppo109.firma_compat.util.RecipeRemover;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
-import com.bumppo109.firma_compat.util.climate.SereneClimateModel;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
-import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -46,6 +45,8 @@ public class FirmaCompat {
     public FirmaCompat(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
+        RecipeRemover.init();
+
         modEventBus.addListener(ModEvents::addToBlockEntities);
 
         modEventBus.addListener(CompatTFCEntities::onEntityAttributeCreation);
@@ -65,14 +66,8 @@ public class FirmaCompat {
         modEventBus.addListener(FirmaCompatClient::registerEntityRenderers);
 
         modEventBus.addListener(ModDataMaps::register);
-        if (ModList.get().isLoaded("everycomp") || ModList.get().isLoaded("stonezone")) {
-            try {
-                Class.forName("com.bumppo109.firma_compat.dynamic.EveryCompatHandler")
-                        .getMethod("registerModules")
-                        .invoke(null);
-            } catch (Exception e) {
-                LOGGER.error("Failed to invoke EveryCompat integration", e);
-            }
+        if(ModList.get().isLoaded("everycomp") || ModList.get().isLoaded("stonezone")){
+            EveryCompatHandler.registerModules();
         }
         if(ModList.get().isLoaded("firmalife")){
             CompatFLBlocks.BLOCKS.register(modEventBus);
@@ -82,8 +77,9 @@ public class FirmaCompat {
             RNRCompatBlocks.BLOCKS.register(modEventBus);
             RNRCompatItems.ITEMS.register(modEventBus);
         }
-
-        RecipeRemover.init();
+        if(ModList.get().isLoaded("legendarysurvivaloverhaul")){
+            LSOHandler.registerModifiers();
+        }
 
         //FirmaCompatDynamicPack.init();
 

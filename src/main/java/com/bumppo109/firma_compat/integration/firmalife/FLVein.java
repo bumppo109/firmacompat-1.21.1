@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.tfcaddon.firmalife;
+package com.bumppo109.firma_compat.integration.firmalife;
 
 import com.eerussianguy.firmalife.common.blocks.FLBlocks;
 import net.minecraft.world.level.block.Block;

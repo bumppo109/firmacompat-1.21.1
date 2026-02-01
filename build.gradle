@@ -180,6 +180,9 @@ dependencies {
     //GlitchCore 1.21.1-2.1.0.0
     implementation "curse.maven:glitchcore-955399:5660740"
 
+    //Legendary Suvival Overhaul 1.21.1-2.4.1
+    implementation "curse.maven:legendary-survival-overhaul-840254:7469871"
+
     //TODO - testing with Regions Unexplored
 
     implementation "curse.maven:regions-unexplored-659110:6273893"

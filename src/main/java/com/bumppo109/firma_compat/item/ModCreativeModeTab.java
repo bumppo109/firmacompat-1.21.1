@@ -2,10 +2,10 @@ package com.bumppo109.firma_compat.item;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.*;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
+import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

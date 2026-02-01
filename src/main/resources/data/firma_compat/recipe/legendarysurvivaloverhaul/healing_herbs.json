@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "legendarysurvivaloverhaul"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "tag": "firma_compat:medicinal_plants"
+    },
+    "S": {
+      "tag": "c:seeds"
+    }
+  },
+  "pattern": [
+    "FF ",
+    "SS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "legendarysurvivaloverhaul:healing_herbs"
+  }
+}

@@ -37,6 +37,7 @@ public class BuiltinDataMaps extends DataMapProvider
         addHardened(Blocks.SAND, Blocks.SANDSTONE);
         addHardened(Blocks.RED_SAND, Blocks.RED_SANDSTONE);
         addHardened(Blocks.GRAVEL, ModBlocks.ROCK_BLOCKS.get(CompatRock.STONE).get(CompatRock.BlockType.HARDENED).get());
+        addHardened(Blocks.GRASS_BLOCK, ModBlocks.ROCK_BLOCKS.get(CompatRock.STONE).get(CompatRock.BlockType.HARDENED).get());
 
         //copper, gold, iron
         addOreReplace(Blocks.COPPER_ORE, Blocks.STONE);

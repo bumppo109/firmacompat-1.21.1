@@ -3,24 +3,18 @@ package com.bumppo109.firma_compat.datagen.assets;
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.*;
 import com.bumppo109.firma_compat.item.ModItems;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatItems;
+import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
 import net.dries007.tfc.common.blocks.rock.Ore;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-
-import java.util.Locale;
 
 import static com.bumppo109.firma_compat.block.ModBlocks.GRADED_ORES;
 import static com.bumppo109.firma_compat.block.ModBlocks.ORES;

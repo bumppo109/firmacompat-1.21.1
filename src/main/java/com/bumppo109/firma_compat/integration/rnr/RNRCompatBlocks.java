@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.tfcaddon.rnr;
+package com.bumppo109.firma_compat.integration.rnr;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;
@@ -8,7 +8,6 @@ import com.bumppo109.firma_compat.item.ModItems;
 import com.therighthon.rnr.common.block.*;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
-import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistrationHelpers;
 import net.minecraft.core.registries.Registries;

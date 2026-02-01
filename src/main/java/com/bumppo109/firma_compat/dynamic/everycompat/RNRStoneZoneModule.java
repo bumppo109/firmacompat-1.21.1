@@ -2,8 +2,8 @@ package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;
-import com.bumppo109.firma_compat.tfcaddon.rnr.CompatRNR;
-import com.bumppo109.firma_compat.tfcaddon.rnr.RNRCompatBlocks;
+import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
+import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.therighthon.rnr.common.RNRTags;

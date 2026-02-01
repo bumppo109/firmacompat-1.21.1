@@ -1,6 +1,7 @@
 package com.bumppo109.firma_compat.util.climate;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
 import io.netty.buffer.ByteBuf;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.climate.*;
@@ -23,6 +24,7 @@ public class ModClimateModels {
 
     // Your custom model entry
     public static final Id<SereneClimateModel> SERENE_MODEL = register("serene", SereneClimateModel.STREAM_CODEC);
+    public static final Id<ModBiomeBasedClimateModel> LSO_MODEL = register("lso", ModBiomeBasedClimateModel.STREAM_CODEC);
 
     private static <T extends ClimateModel> Id<T> register(String id, StreamCodec<ByteBuf, T> codec) {
         return new Id<>(TYPES.register(id, () -> new ClimateModelType<>(codec)));

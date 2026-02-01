@@ -2,8 +2,8 @@ package com.bumppo109.firma_compat.dynamic.everycompat;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.block.CompatRock;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.FLVein;
-import com.bumppo109.firma_compat.tfcaddon.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.integration.firmalife.FLVein;
+import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.eerussianguy.firmalife.common.items.FLItems;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

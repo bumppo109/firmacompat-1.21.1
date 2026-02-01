@@ -1,14 +1,13 @@
 package com.bumppo109.firma_compat.worldgen.placement;
 
+import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
+import com.bumppo109.firma_compat.util.climate.ClimateHelpers;
+import com.bumppo109.firma_compat.util.climate.ModBiomeBasedClimateModel;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.dries007.tfc.client.overworld.SolarCalculator;
 import net.dries007.tfc.util.EnvironmentHelpers;
-import net.dries007.tfc.util.climate.BiomeBasedClimateModel;
 import net.dries007.tfc.util.climate.Climate;
-import net.dries007.tfc.world.chunkdata.ChunkData;
-import net.dries007.tfc.world.chunkdata.ForestType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
@@ -17,14 +16,12 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
+import net.neoforged.fml.ModList;
 
 import java.util.stream.Stream;
 
-import static vazkii.patchouli.api.PatchouliAPI.LOGGER;
-
 public class CompatClimatePlacement extends PlacementModifier {
 
-    // Codec matching relevant fields from TFC ClimatePlacement, with defaults to make them optional
     public static final MapCodec<CompatClimatePlacement> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.optionalFieldOf("min_temperature", Float.NEGATIVE_INFINITY).forGetter(c -> c.minTemp),
@@ -54,7 +51,6 @@ public class CompatClimatePlacement extends PlacementModifier {
         this.maxGroundwater = maxGroundwater;
         this.minElevation = minElevation;
         this.maxElevation = maxElevation;
-
     }
 
     @Override
@@ -65,21 +61,20 @@ public class CompatClimatePlacement extends PlacementModifier {
     public boolean isValid(WorldGenLevel level, BlockPos pos, RandomSource random) {
         Holder<Biome> biomeHolder = level.getBiome(pos);
         Biome biome = biomeHolder.value();
-
-        // 1. Use the exact same conversion TFC uses
-        float vanillaTemp = Climate.fromVanilla(biome.getBaseTemperature());
-
-        // 2. Apply the exact same elevation adjustment TFC uses everywhere
-        float adjustedTemp = EnvironmentHelpers.adjustAvgTempForElev(pos.getY(), vanillaTemp);
-
-        // 3. Rainfall proxy — this is the best available without chunk data
-        //    (TFC falls back to average rainfall in non-TFC contexts too)
-        //TODO - not sure this matters if the model is either SereneClimateModel or BiomeBasedClimateModel
-        float rainfall = BiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
-
         int elevation = pos.getY();
+        float vanillaTemp;
+        float adjustedTemp;
+        float rainfall;
 
-        // Core validity checks — same as TFC's main conditions
+        if(ModList.get().isLoaded("sereneseasons")){
+            vanillaTemp = SereneClimateModel.INSTANCE.getAverageTemperature(level, pos);
+            rainfall = SereneClimateModel.INSTANCE.getAverageRainfall(level, pos);
+        } else {
+            vanillaTemp = ModBiomeBasedClimateModel.INSTANCE.getAverageTemperature(level, pos);
+            rainfall = ModBiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
+        }
+        adjustedTemp = EnvironmentHelpers.adjustAvgTempForElev(pos.getY(), vanillaTemp);
+
         boolean elevationOk = elevation >= minElevation && elevation <= maxElevation;
         boolean tempOk     = adjustedTemp >= minTemp && adjustedTemp <= maxTemp;
         boolean rainOk     = rainfall >= minGroundwater && rainfall <= maxGroundwater;
@@ -88,7 +83,6 @@ public class CompatClimatePlacement extends PlacementModifier {
 
 //        LOGGER.debug("Climate check at {} | Biome: {} | Temp: {} (ok: {}) | Rainfall: {} (ok: {}) | Elev: {} (ok: {}) | Overall Valid: {}",
 //                pos, biomeHolder.getKey().location(), adjustedTemp, tempOk, rainfall, rainOk, elevation, elevationOk, valid);
-
 
         return valid;
     }

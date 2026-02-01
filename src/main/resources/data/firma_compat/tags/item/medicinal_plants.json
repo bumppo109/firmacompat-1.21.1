@@ -1,0 +1,27 @@
+{
+  "values": [
+    "tfc:plant/goldenrod",
+    "tfc:plant/calendula",
+    "tfc:plant/dandelion",
+    "tfc:plant/butterfly_milkweed",
+    "tfc:plant/cattail",
+    "tfc:plant/field_horsetail",
+    "tfc:plant/lady_fern",
+    "tfc:plant/licorice_fern",
+    "tfc:plant/yucca",
+    "tfc:plant/sacred_datura",
+    "tfc:plant/labrador_tea",
+    "tfc:plant/marigold",
+    "tfc:plant/poppy",
+    "tfc:plant/prickly_pear",
+    "tfc:plant/prickly_pear_purple",
+    "tfc:plant/sagebrush",
+    "tfc:plant/tropical_milkweed",
+    "tfc:plant/foxglove",
+    "tfc:plant/lily_of_the_valley",
+    "minecraft:poppy",
+    "minecraft:dandelion",
+    "minecraft:lily_of_the_valley",
+    "minecraft:cornflower"
+  ]
+}

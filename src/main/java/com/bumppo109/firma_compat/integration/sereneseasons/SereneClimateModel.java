@@ -1,5 +1,7 @@
-package com.bumppo109.firma_compat.util.climate;
+package com.bumppo109.firma_compat.integration.sereneseasons;
 
+import com.bumppo109.firma_compat.util.climate.ClimateHelpers;
+import com.bumppo109.firma_compat.util.climate.ModClimateModels;
 import io.netty.buffer.ByteBuf;
 import net.dries007.tfc.util.climate.*;
 import net.minecraft.core.BlockPos;
@@ -27,29 +29,11 @@ public class SereneClimateModel implements ClimateModel {
 
         if (ModList.get().isLoaded("sereneseasons") && reader instanceof Level level) {
             Season.SubSeason sub = SeasonHelper.getSeasonState(level).getSubSeason();
-
-            // Hardcoded from your actual config file (exact values)
-            float adjustment = switch (sub) {
-                // Winter (all sub-seasons = -0.8)
-                case EARLY_WINTER, MID_WINTER, LATE_WINTER -> -0.8f;
-
-                // Spring
-                case EARLY_SPRING -> -0.25f;
-                case MID_SPRING, LATE_SPRING -> 0.0f;
-
-                // Summer (all = 0.0)
-                case EARLY_SUMMER, MID_SUMMER, LATE_SUMMER -> 0.0f;
-
-                // Autumn
-                case EARLY_AUTUMN, MID_AUTUMN -> 0.0f;
-                case LATE_AUTUMN -> -0.25f;
-
-                default -> 0.0f;
-            };
-            vanillaBase = vanillaBase + adjustment;
+            //seasonal adjustment
+            vanillaBase = vanillaBase + ClimateHelpers.getSereneSeasonalAdjustment(sub);
         }
 
-        return Climate.fromVanilla(vanillaBase);
+        return Climate.fromVanilla(ClimateHelpers.normalizeTFCTemperature(vanillaBase));
     }
 
     @Override
