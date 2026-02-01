@@ -144,6 +144,8 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
         add(new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_DIRT.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
         add("clay_grass_block", new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_GRASS_BLOCK.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
         add("clay_podzol", new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_PODZOL.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
+        add("snow_block", new LandslideRecipe(BlockIngredient.of(Blocks.SNOW_BLOCK), Blocks.POWDER_SNOW.defaultBlockState()));
+        add("powder_snow", new LandslideRecipe(BlockIngredient.of(Blocks.POWDER_SNOW), Blocks.POWDER_SNOW.defaultBlockState()));
 
         for(CompatRock rock : CompatRock.VALUES){
             Block looseCobbleBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE_COBBLE).get();
