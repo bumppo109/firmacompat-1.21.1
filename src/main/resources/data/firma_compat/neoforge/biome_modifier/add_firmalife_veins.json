@@ -19,6 +19,6 @@
   ],
   "type": "neoforge:add_features",
   "biomes": "#c:is_overworld",
-  "features": "#firma_comapt:firmalife_veins",
-  "step": "vegetal_decoration"
+  "features": "#firma_compat:firmalife_veins",
+  "step": "underground_decoration"
 }

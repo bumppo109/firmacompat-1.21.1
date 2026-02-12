@@ -218,7 +218,6 @@ public class CompatFaunas {
         return new CompatFaunas.Id<E>(entity, CompatFauna.MANAGER.getReference(entity.getId()), spawnPlacement, heightmapType);
     }
 
-    //TODO - fauna definitions not loading
     private static <E extends Mob> void registerSpawnPlacement(RegisterSpawnPlacementsEvent event, Id<E> type) {
         event.register((EntityType)type.entity().get(), type.spawnPlacementType(), type.heightmapType(), (mob, level, heightmap, pos, rand) -> {
             CompatFauna fauna;

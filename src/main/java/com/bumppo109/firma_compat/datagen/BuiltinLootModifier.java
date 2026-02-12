@@ -1,12 +1,17 @@
 package com.bumppo109.firma_compat.datagen;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.block.CompatRock;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.loot_modifiers.ItemRemoverLootModifier;
 import com.bumppo109.firma_compat.loot_modifiers.ItemSwapModifier;
+import com.eerussianguy.beneath.common.blocks.BeneathBlocks;
+import com.eerussianguy.beneath.common.blocks.Stem;
+import com.eerussianguy.beneath.common.items.BeneathItems;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.common.items.Food;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Metal;
@@ -23,6 +28,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 
@@ -39,6 +46,54 @@ public class BuiltinLootModifier extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        //beneath dependent swaps
+        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), Items.WARPED_STEM, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), Items.STRIPPED_WARPED_STEM, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), Items.WARPED_HYPHAE, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), Items.STRIPPED_WARPED_HYPHAE, new ModLoadedCondition("beneath"));
+
+        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.LOG).get().asItem(), Items.CRIMSON_STEM, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), Items.STRIPPED_CRIMSON_STEM, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.WOOD).get().asItem(), Items.CRIMSON_HYPHAE, new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), Items.STRIPPED_CRIMSON_HYPHAE, new ModLoadedCondition("beneath"));
+
+        swap(BeneathBlocks.BLACKSTONE_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.BLACKSTONE).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(BeneathBlocks.NETHER_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.NETHERRACK).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
+
+        /*
+        swap(Items.WARPED_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.STRIPPED_WARPED_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.STRIPPED_WARPED_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_PLANKS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PLANKS).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_STAIRS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STAIRS).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_SLAB, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SLAB).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_FENCE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_FENCE_GATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE_GATE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_DOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.DOOR).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_TRAPDOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.TRAPDOOR).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_PRESSURE_PLATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PRESSURE_PLATE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_BUTTON, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.BUTTON).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_SIGN, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SIGN).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.WARPED_HANGING_SIGN, BeneathBlocks.WALL_HANGING_SIGNS.get(Stem.WARPED).get(Metal.WROUGHT_IRON).get().asItem(), new ModLoadedCondition("beneath"));
+
+        swap(Items.CRIMSON_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.STRIPPED_CRIMSON_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.STRIPPED_CRIMSON_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_PLANKS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PLANKS).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_STAIRS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STAIRS).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_SLAB, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SLAB).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_FENCE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_FENCE_GATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE_GATE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_DOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.DOOR).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_TRAPDOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.TRAPDOOR).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_PRESSURE_PLATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PRESSURE_PLATE).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_BUTTON, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.BUTTON).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_SIGN, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SIGN).get().asItem(), new ModLoadedCondition("beneath"));
+        swap(Items.CRIMSON_HANGING_SIGN, BeneathBlocks.WALL_HANGING_SIGNS.get(Stem.WARPED).get(Metal.WROUGHT_IRON).get().asItem(), new ModLoadedCondition("beneath"));
+
+         */
         //chest
         swap(Items.CHEST, ModBlocks.COMPAT_CHEST.get().asItem());
         swap(Items.TRAPPED_CHEST, ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());
@@ -144,6 +199,18 @@ public class BuiltinLootModifier extends GlobalLootModifierProvider {
         add(name, new ItemSwapModifier(NO_CONDITIONS, from, to));
     }
 
+    protected void swap(Item from, Item to, ICondition... conditions) {
+        ResourceLocation fromId = BuiltInRegistries.ITEM.getKey(from);
+        ResourceLocation toId = BuiltInRegistries.ITEM.getKey(to);
+
+        // Clean name: swap_minecraft_black_candle_to_tfc_candle_black
+        String name = normalizeModifierName("swap_" +
+                fromId.getNamespace() + "_" + fromId.getPath() +
+                "_to_" +
+                toId.getNamespace() + "_" + toId.getPath());
+
+        add(name, new ItemSwapModifier(NO_CONDITIONS, from, to), conditions);
+    }
     /**
      * Registers a loot modifier that removes all instances of a specific item.
      * The modifier name is automatically generated as:
