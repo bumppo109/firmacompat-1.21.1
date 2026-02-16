@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:campfire",
+    "minecraft:soul_campfire",
+    {
+      "id": "irons_spellbooks:brazier",
+      "required": false
+    },
+    {
+      "id": "irons_spellbooks:brazier_soul",
+      "required": false
+    }
+  ]
+}

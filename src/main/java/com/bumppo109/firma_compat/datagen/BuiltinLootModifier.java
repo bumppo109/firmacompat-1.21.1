@@ -60,40 +60,6 @@ public class BuiltinLootModifier extends GlobalLootModifierProvider {
         swap(BeneathBlocks.BLACKSTONE_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.BLACKSTONE).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
         swap(BeneathBlocks.NETHER_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.NETHERRACK).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
 
-        /*
-        swap(Items.WARPED_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.STRIPPED_WARPED_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.STRIPPED_WARPED_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_PLANKS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PLANKS).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_STAIRS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STAIRS).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_SLAB, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SLAB).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_FENCE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_FENCE_GATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE_GATE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_DOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.DOOR).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_TRAPDOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.TRAPDOOR).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_PRESSURE_PLATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PRESSURE_PLATE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_BUTTON, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.BUTTON).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_SIGN, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SIGN).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.WARPED_HANGING_SIGN, BeneathBlocks.WALL_HANGING_SIGNS.get(Stem.WARPED).get(Metal.WROUGHT_IRON).get().asItem(), new ModLoadedCondition("beneath"));
-
-        swap(Items.CRIMSON_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.STRIPPED_CRIMSON_STEM, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.STRIPPED_CRIMSON_HYPHAE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_PLANKS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PLANKS).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_STAIRS, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STAIRS).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_SLAB, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SLAB).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_FENCE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_FENCE_GATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.FENCE_GATE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_DOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.DOOR).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_TRAPDOOR, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.TRAPDOOR).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_PRESSURE_PLATE, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.PRESSURE_PLATE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_BUTTON, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.BUTTON).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_SIGN, BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.SIGN).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(Items.CRIMSON_HANGING_SIGN, BeneathBlocks.WALL_HANGING_SIGNS.get(Stem.WARPED).get(Metal.WROUGHT_IRON).get().asItem(), new ModLoadedCondition("beneath"));
-
-         */
         //chest
         swap(Items.CHEST, ModBlocks.COMPAT_CHEST.get().asItem());
         swap(Items.TRAPPED_CHEST, ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());

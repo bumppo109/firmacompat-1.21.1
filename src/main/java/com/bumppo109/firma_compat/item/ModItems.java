@@ -11,6 +11,7 @@ import net.dries007.tfc.common.entities.TFCEntities;
 import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.ChestBlockItem;
+import net.dries007.tfc.common.items.FlintAndPyriteItem;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.items.TFCMinecartItem;
 import net.dries007.tfc.util.Helpers;

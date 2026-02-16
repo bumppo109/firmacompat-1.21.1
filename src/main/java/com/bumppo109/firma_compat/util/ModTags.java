@@ -21,6 +21,7 @@ public class ModTags {
         public static final TagKey<Block> PREVENT_INTERACTION = createTag("prevent_interaction");
         public static final TagKey<Block> PLACE_LOOSE_STONE = createTag("place_loose_stone");
         public static final TagKey<Block> TWIGS = createTag("twigs");
+        public static final TagKey<Block> UNLIT_BLOCKS = createTag("unlit_blocks");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, name));
