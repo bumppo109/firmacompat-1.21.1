@@ -1,22 +1,52 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "regions_unexplored"
-    }
-  ],
   "values": [
-    "regions_unexplored:stone_grass_block",
-    "regions_unexplored:prismoss",
-    "regions_unexplored:viridescent_nylium",
-    "regions_unexplored:alpha_grass_block",
-    "regions_unexplored:peat_grass_block",
-    "regions_unexplored:peat_dirt",
-    "regions_unexplored:peat_coarse_dirt",
-    "regions_unexplored:peat_podzol",
-    "regions_unexplored:silt_grass_block",
-    "regions_unexplored:silt_dirt",
-    "regions_unexplored:silt_coarse_dirt",
-    "regions_unexplored:silt_podzol"
+    {
+      "id": "regions_unexplored:stone_grass_block",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:prismoss",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:viridescent_nylium",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:alpha_grass_block",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:peat_grass_block",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:peat_dirt",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:peat_coarse_dirt",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:peat_podzol",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silt_grass_block",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silt_dirt",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silt_coarse_dirt",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silt_podzol",
+      "required": false
+    }
   ]
 }

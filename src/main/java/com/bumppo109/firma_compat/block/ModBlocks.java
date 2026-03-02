@@ -7,6 +7,7 @@ import com.google.common.base.Suppliers;
 import net.dries007.tfc.common.blockentities.FarmlandBlockEntity;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
+import net.dries007.tfc.common.blocks.HotWaterBlock;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
 import net.dries007.tfc.common.blocks.rock.AqueductBlock;
@@ -14,6 +15,7 @@ import net.dries007.tfc.common.blocks.rock.RockAnvilBlock;
 import net.dries007.tfc.common.blocks.soil.FarmlandBlock;
 import net.dries007.tfc.common.blocks.wood.TFCChestBlock;
 import net.dries007.tfc.common.blocks.wood.TFCTrappedChestBlock;
+import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.ChestBlockItem;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
@@ -173,6 +175,11 @@ public class ModBlocks {
     public static final Map<CompatMetal, Id<LiquidBlock>> METAL_FLUIDS = Helpers.mapOf(CompatMetal.class, metal ->
             registerNoItem("fluid/metal/" + metal.name(), () -> new LiquidBlock(ModFluids.METALS.get(metal).source().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.LAVA).noLootTable()))
     );
+
+    /*
+    public static final Id<LiquidBlock> PURIFIED_WATER = registerNoItem("fluid/purified_water",
+            () -> new LiquidBlock(ModFluids.PURIFIED_WATER.getFlowing(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).noLootTable()));
+     */
 
     private static <T1 extends SlabBlock, T2 extends StairBlock, T3 extends WallBlock> CompatDecorationBlockHolder registerDecorations(String baseName, Supplier<T1> slab, Supplier<T2> stair, Supplier<T3> wall, Item.Properties properties) {
         return new CompatDecorationBlockHolder(register(baseName + "_slab", slab, (Function)((b) -> new BlockItem((Block) b, properties))), register(baseName + "_stairs", stair, (Function)((b) -> new BlockItem((Block) b, properties))), register(baseName + "_wall", wall, (Function)((b) -> new BlockItem((Block) b, properties))));

@@ -10,21 +10,16 @@ import net.dries007.tfc.common.Lore;
 import net.dries007.tfc.common.entities.TFCEntities;
 import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
-import net.dries007.tfc.common.items.ChestBlockItem;
-import net.dries007.tfc.common.items.FlintAndPyriteItem;
-import net.dries007.tfc.common.items.TFCItems;
-import net.dries007.tfc.common.items.TFCMinecartItem;
+import net.dries007.tfc.common.items.*;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.registry.RegistryHolder;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Locale;
@@ -94,6 +89,12 @@ public class ModItems {
     public static final Map<CompatMetal, ItemId> METAL_FLUID_BUCKETS = Helpers.mapOf(CompatMetal.class, metal ->
             register("bucket/metal/" + metal.name(), () -> new BucketItem(ModFluids.METALS.get(metal).getSource(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))
     );
+
+    /*
+    public static final ItemId PURIFIED_WATER_BUCKET = register("bucket/purified_water",
+            () -> new BucketItem(ModFluids.PURIFIED_WATER.getSource(), (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
+     */
+
     //Fish buckets
     public static final Map<Fish, ModItems.ItemId> FRESHWATER_FISH_BUCKETS = Helpers.mapOf(Fish.class, (fish) -> register("bucket/" + fish.getSerializedName(), (Supplier)(() -> new MobBucketItem((EntityType)((CompatTFCEntities.Id)CompatTFCEntities.FRESHWATER_FISH.get(fish)).get(), net.minecraft.world.level.material.Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)))));
 

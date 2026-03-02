@@ -27,6 +27,8 @@ public interface ModHeatRecipes extends ModRecipes
         //TODO - copper
         add(Ingredient.of(Items.COPPER_DOOR), new FluidStack(meltFluidFor(Metal.COPPER), 200), 1080);
         add(Ingredient.of(Items.CHAIN), new FluidStack(meltFluidFor(Metal.CAST_IRON), 6), 1535);
+        add(Ingredient.of(Items.IRON_NUGGET), new FluidStack(meltFluidFor(Metal.CAST_IRON), 10), 1535);
+        add(Ingredient.of(Items.GOLD_NUGGET), new FluidStack(meltFluidFor(Metal.GOLD), 10), 1060);
 
         add(ModItems.UNFIRED_POT, Items.DECORATED_POT, 1399);
 

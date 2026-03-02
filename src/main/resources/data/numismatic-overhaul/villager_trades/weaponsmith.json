@@ -1,0 +1,219 @@
+{
+  "profession": "weaponsmith",
+  "trades": {
+    "novice": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1000,
+        "sell": {
+          "item": "tfc:metal/sword/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1200,
+        "sell": {
+          "item": "tfc:metal/mace/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 800,
+        "sell": {
+          "item": "tfc:metal/javelin/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 500,
+        "sell": {
+          "item": "tfc:metal/knife/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "apprentice": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1400,
+        "sell": {
+          "item": "tfc:metal/sword/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1700,
+        "sell": {
+          "item": "tfc:metal/mace/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1100,
+        "sell": {
+          "item": "tfc:metal/javelin/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 700,
+        "sell": {
+          "item": "tfc:metal/knife/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "journeyman": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 3000,
+        "sell": {
+          "item": "tfc:metal/sword/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 3700,
+        "sell": {
+          "item": "tfc:metal/mace/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2400,
+        "sell": {
+          "item": "tfc:metal/javelin/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1500,
+        "sell": {
+          "item": "tfc:metal/knife/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 15
+      }
+    ],
+    "expert": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 5500,
+        "sell": {
+          "item": "tfc:metal/sword/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 6800,
+        "sell": {
+          "item": "tfc:metal/mace/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 4400,
+        "sell": {
+          "item": "tfc:metal/javelin/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 25
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2800,
+        "sell": {
+          "item": "tfc:metal/knife/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 25
+      }
+    ],
+    "master": [
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 2000,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/sword/steel"
+        },
+        "max_uses": 3,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 2400,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/mace/steel"
+        },
+        "max_uses": 3,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 1600,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/javelin/steel"
+        },
+        "max_uses": 3,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 1000,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/knife/steel"
+        },
+        "max_uses": 3,
+        "villager_experience": 40
+      }
+    ]
+  }
+}

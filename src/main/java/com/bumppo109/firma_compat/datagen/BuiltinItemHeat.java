@@ -49,8 +49,9 @@ public class BuiltinItemHeat extends DataManagerProvider<HeatDefinition> impleme
     protected void addData(HolderLookup.Provider provider)
     {
         FirmaCompatHelpers.fakeDataManager(FluidHeat.MANAGER, Map.of(
-                Metal.COPPER.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.COPPER).getSource(), 0.35f, 1080),
-                Metal.CAST_IRON.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.CAST_IRON).getSource(), 0.35f, 1535)
+                Metal.COPPER.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.COPPER).getSource(), 1080, 0.008571429f),
+                Metal.CAST_IRON.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.CAST_IRON).getSource(), 1535, 0.008571429f),
+                Metal.GOLD.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.GOLD).getSource(), 1060, 0.005f)
         ));
 
         //food
@@ -59,6 +60,8 @@ public class BuiltinItemHeat extends DataManagerProvider<HeatDefinition> impleme
         //TODO - add copper
         add("copper_door", Ingredient.of(Items.COPPER_DOOR), Metal.COPPER, 200);
         add("chain", Ingredient.of(Items.CHAIN), Metal.CAST_IRON, 6);
+        add("iron_nugget", Ingredient.of(Items.IRON_NUGGET), Metal.CAST_IRON, 10);
+        add("gold_nugget", Ingredient.of(Items.GOLD_NUGGET), Metal.GOLD, 10);
 
         ModItems.METAL_ITEMS.forEach((metal, items) -> {
             add(metal, CompatMetal.ItemType.DOUBLE_INGOT);

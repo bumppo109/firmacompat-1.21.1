@@ -43,8 +43,6 @@ public class FirmaCompat {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public FirmaCompat(IEventBus modEventBus, ModContainer modContainer) {
-        modEventBus.addListener(this::commonSetup);
-
         RecipeRemover.init();
 
         modEventBus.addListener(ModEvents::addToBlockEntities);
@@ -66,6 +64,9 @@ public class FirmaCompat {
         modEventBus.addListener(FirmaCompatClient::registerEntityRenderers);
 
         modEventBus.addListener(ModDataMaps::register);
+
+        modEventBus.addListener(this::commonSetup);
+
         if(ModList.get().isLoaded("everycomp") || ModList.get().isLoaded("stonezone")){
             EveryCompatHandler.registerModules();
         }

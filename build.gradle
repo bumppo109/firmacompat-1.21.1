@@ -155,7 +155,9 @@ dependencies {
     //TerraFirmaCraft 1.21.1-4.0.17
     //implementation "curse.maven:terrafirmacraft-302973:7452541"
     //1.21.1-4.0.18-beta
-    implementation "curse.maven:terrafirmacraft-302973:7476548"
+    //implementation "curse.maven:terrafirmacraft-302973:7476548"
+    //1.21.1-4.0.19
+    implementation "curse.maven:terrafirmacraft-302973:7634816"
 
     //Patchoili 1.21.1-92
     implementation "curse.maven:patchouli-306770:6842247"
@@ -188,6 +190,12 @@ dependencies {
 
     //Beneath
     implementation "curse.maven:beneath-1113980:7503901"
+
+    //cinchsmissingblocks 2.2
+    implementation "curse.maven:cinchs-missing-blocks-1338020:7427693"
+
+    //punchy 2.3
+    implementation "curse.maven:punchy-1374153:7567680"
 
     //TODO - testing with Regions Unexplored
 

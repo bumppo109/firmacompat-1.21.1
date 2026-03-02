@@ -5,6 +5,7 @@ import com.bumppo109.firma_compat.block.CompatOre;
 import com.bumppo109.firma_compat.block.CompatRock;
 import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
+import com.bumppo109.firma_compat.datagen.helpers.CinchMissingBlocks;
 import com.bumppo109.firma_compat.datagen.recipe.*;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
@@ -17,13 +18,16 @@ import com.therighthon.rnr.common.block.RNRBlocks;
 import com.therighthon.rnr.common.item.RNRItems;
 import com.therighthon.rnr.common.recipe.BlockModRecipe;
 import com.therighthon.rnr.common.recipe.MattockRecipe;
+import net.cinchtail.cinchsmissingblocks.CinchsMissingBlocks;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.items.Food;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.player.ChiselMode;
 import net.dries007.tfc.common.recipes.*;
 import net.dries007.tfc.common.recipes.ingredients.BlockIngredient;
 import net.dries007.tfc.common.recipes.outputs.ItemStackProvider;
+import net.dries007.tfc.util.DataGenerationHelpers;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.core.Holder;
@@ -39,6 +43,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -48,9 +53,11 @@ import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.fluids.FluidStack;
 
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
@@ -70,6 +77,7 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
     final Set<ResourceLocation> removedRecipes = new HashSet<>();
     ModLoadedCondition flLoaded = new ModLoadedCondition("firmalife");
     ModLoadedCondition rnrLoaded = new ModLoadedCondition("rnr");
+    ModLoadedCondition cinchLoaded = new ModLoadedCondition("cinchsmissingblocks");
 
     final Codec<Unit> emptyRecipeCodec = Codec.STRING.fieldOf("type")
             .codec()
@@ -472,6 +480,124 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
             add("rnr/" + wood.getSerializedName() + "_shingle", recipe, rnrLoaded);
         }
 
+        //Cincs Missing Blocks
+        recipe()
+                .input('B', ModItems.ANDESITE_BRICK.get())
+                .input('M', TFCItems.MORTAR.get())
+                .pattern("BMB", "MBM", "BMB")
+                .shaped(net.cinchtail.cinchsmissingblocks.block.ModBlocks.ANDESITE_BRICKS.get().asItem());
+        recipe()
+                .input('B', ModItems.GRANITE_BRICK.get())
+                .input('M', TFCItems.MORTAR.get())
+                .pattern("BMB", "MBM", "BMB")
+                .shaped(net.cinchtail.cinchsmissingblocks.block.ModBlocks.GRANITE_BRICKS.get().asItem());
+        recipe()
+                .input('B', ModItems.DIORITE_BRICK.get())
+                .input('M', TFCItems.MORTAR.get())
+                .pattern("BMB", "MBM", "BMB")
+                .shaped(net.cinchtail.cinchsmissingblocks.block.ModBlocks.DIORITE_BRICKS.get().asItem());
+        recipe()
+                .input('B', ModItems.DRIPSTONE_BRICK.get())
+                .input('M', TFCItems.MORTAR.get())
+                .pattern("BMB", "MBM", "BMB")
+                .shaped(net.cinchtail.cinchsmissingblocks.block.ModBlocks.DRIPSTONE_BRICKS.get().asItem());
+        recipe()
+                .input('B', ModItems.CALCITE_BRICK.get())
+                .input('M', TFCItems.MORTAR.get())
+                .pattern("BMB", "MBM", "BMB")
+                .shaped(net.cinchtail.cinchsmissingblocks.block.ModBlocks.CALCITE_BRICKS.get().asItem());
+
+        //tool variants
+        for (var set : CinchMissingBlocks.BRICK_SETS) {
+            Block bricks   = set.bricks();
+            Block cracked  = set.cracked();
+            Block chiseled = set.chiseled();
+
+            String crackedId = BuiltInRegistries.BLOCK.getKey(cracked).getPath();
+            String chiseledId = BuiltInRegistries.BLOCK.getKey(chiseled).getPath();
+
+            Ingredient primaryInput = Ingredient.of(bricks);
+            Ingredient hammer = Ingredient.of(TFCTags.Items.TOOLS_HAMMER);
+            Ingredient chisel = Ingredient.of(TFCTags.Items.TOOLS_CHISEL);
+            ItemStack crackedStack = new ItemStack(cracked.asItem());
+            ItemStack chiseledStack = new ItemStack(chiseled.asItem());
+
+            NonNullList<Ingredient> crackedIngredients = NonNullList.create();
+            crackedIngredients.add(primaryInput);   // the raw block
+            crackedIngredients.add(hammer);           // the hammer
+
+            AdvancedShapelessRecipe crackedRecipe = new AdvancedShapelessRecipe(
+                    crackedIngredients,
+                    ItemStackProvider.of(crackedStack),// result as ItemStackProvider
+                    Optional.empty(),                            // no special remainder (or add if needed)
+                    Optional.of(primaryInput)                 // primary ingredient = the block being chiseled
+            );
+
+            add("cinchsmissingblocks/" + crackedId, crackedRecipe, cinchLoaded);
+
+            NonNullList<Ingredient> chiseledIngredients = NonNullList.create();
+            chiseledIngredients.add(primaryInput);   // the raw block
+            chiseledIngredients.add(chisel);           // the chisel
+
+            AdvancedShapelessRecipe chiseledRecipe = new AdvancedShapelessRecipe(
+                    chiseledIngredients,
+                    ItemStackProvider.of(chiseledStack),// result as ItemStackProvider
+                    Optional.empty(),                            // no special remainder (or add if needed)
+                    Optional.of(primaryInput)                 // primary ingredient = the block being chiseled
+            );
+
+            add("cinchsmissingblocks/" + chiseledId, chiseledRecipe, cinchLoaded);
+
+        }
+        for (var set : CinchMissingBlocks.BRICK_VARIANTS) {
+            Block bricks   = set.bricks();
+            Block stair  = set.stair();
+            Block slab = set.slab();
+
+            chisel(BlockIngredient.of(bricks), stair.defaultBlockState(), ChiselMode.STAIR, "stair", cinchLoaded);
+            chisel(BlockIngredient.of(bricks), slab.defaultBlockState(), ChiselMode.SLAB, "slab", cinchLoaded);
+        }
+        for (var set : CinchMissingBlocks.RAW_SET) {
+            Block raw   = set.raw();
+            Block stair  = set.rawStair();
+            Block slab = set.rawSlab();
+
+            collapse("from_stair", BlockIngredient.of(stair), slab.defaultBlockState(), cinchLoaded);
+            collapse("", BlockIngredient.of(slab), slab.defaultBlockState(), cinchLoaded);
+        }
+
+        chisel(BlockIngredient.of(Blocks.CUT_SANDSTONE), net.cinchtail.cinchsmissingblocks.block.ModBlocks.CUT_SANDSTONE_STAIRS.get().defaultBlockState(), ChiselMode.STAIR, "stair", cinchLoaded);
+        chisel(BlockIngredient.of(Blocks.CUT_RED_SANDSTONE), net.cinchtail.cinchsmissingblocks.block.ModBlocks.CUT_RED_SANDSTONE_STAIRS.get().defaultBlockState(), ChiselMode.STAIR, "stair", cinchLoaded);
+
+        Ingredient calciteInput = Ingredient.of(Blocks.CALCITE);
+        Ingredient dripstoneInput = Ingredient.of(Blocks.DRIPSTONE_BLOCK);
+        Ingredient chisel = Ingredient.of(TFCTags.Items.TOOLS_CHISEL);
+        ItemStack polishedCalciteStack = new ItemStack(net.cinchtail.cinchsmissingblocks.block.ModBlocks.POLISHED_CALCITE.get().asItem());
+        ItemStack polishedDripstoneStack = new ItemStack(net.cinchtail.cinchsmissingblocks.block.ModBlocks.POLISHED_DRIPSTONE.get().asItem());
+
+        NonNullList<Ingredient> calciteIngredients = NonNullList.create();
+        calciteIngredients.add(calciteInput);   // the raw block
+        calciteIngredients.add(chisel);           // the chisel
+
+        NonNullList<Ingredient> dripstoneIngredients = NonNullList.create();
+        dripstoneIngredients.add(dripstoneInput);   // the raw block
+        dripstoneIngredients.add(chisel);           // the chisel
+
+        AdvancedShapelessRecipe polishedCalciteRecipe = new AdvancedShapelessRecipe(
+                calciteIngredients,
+                ItemStackProvider.of(polishedCalciteStack),// result as ItemStackProvider
+                Optional.empty(),                            // no special remainder (or add if needed)
+                Optional.of(calciteInput)                 // primary ingredient = the block being chiseled
+        );
+        AdvancedShapelessRecipe polishedDripstoneRecipe = new AdvancedShapelessRecipe(
+                dripstoneIngredients,
+                ItemStackProvider.of(polishedDripstoneStack),// result as ItemStackProvider
+                Optional.empty(),                            // no special remainder (or add if needed)
+                Optional.of(dripstoneInput)                 // primary ingredient = the block being chiseled
+        );
+
+        add("cinchsmissingblocks/polished_calcite", polishedCalciteRecipe, cinchLoaded);
+        add("cinchsmissingblocks/polished_dripstone", polishedDripstoneRecipe, cinchLoaded);
     }
 
     @Override
@@ -498,6 +624,21 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
                 conditions);
     }
 
+    private void collapse(String suffix, BlockIngredient in, BlockState out, ICondition... conditions) {
+        this.add(this.nameOf(out.getBlock().asItem()) + (Objects.equals(suffix, "") ? "" : "_") + suffix,
+                new CollapseRecipe(in, out), conditions);
+    }
+
+    /**
+     * @return A builder for a new recipe with a name inferred from the output.
+     */
+    private DataGenerationHelpers.Builder recipe()
+    {
+        return new DataGenerationHelpers.Builder((name, r) -> {
+            if (name != null) add(name, r);
+            else add(r);
+        });
+    }
 
     @Override
     public void add(String prefix, String name, Recipe<?> recipe)

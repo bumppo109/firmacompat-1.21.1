@@ -1,0 +1,170 @@
+{
+  "profession": "fisherman",
+  "trades": {
+    "novice": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 150,
+        "buy": {
+          "item": "minecraft:string",
+          "count": 20
+        },
+        "max_uses": 16
+      },
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 200,
+        "buy": {
+          "item": "tfc:food/cod",
+          "count": 8
+        },
+        "max_uses": 12
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 400,
+        "sell": {
+          "item": "tfc:food/cooked_cod",
+          "count": 6
+        },
+        "max_uses": 12,
+        "villager_experience": 10
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 300,
+        "sell": {
+          "item": "tfc:food/salmon",
+          "count": 8
+        },
+        "max_uses": 12,
+        "villager_experience": 10
+      }
+    ],
+    "apprentice": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 250,
+        "buy": {
+          "item": "tfc:food/salmon",
+          "count": 8
+        },
+        "max_uses": 12
+      },
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 180,
+        "buy": {
+          "item": "minecraft:feather",
+          "count": 16
+        },
+        "max_uses": 12
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 500,
+        "sell": {
+          "item": "tfc:food/cooked_salmon",
+          "count": 6
+        },
+        "max_uses": 10,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 600,
+        "sell": {
+          "item": "tfc:food/bluegill",
+          "count": 10
+        },
+        "max_uses": 10,
+        "villager_experience": 12
+      }
+    ],
+    "journeyman": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 300,
+        "buy": {
+          "item": "tfc:food/tropical_fish",
+          "count": 12
+        },
+        "max_uses": 10
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 800,
+        "sell": {
+          "item": "tfc:food/cooked_bluegill",
+          "count": 8
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 700,
+        "sell": {
+          "item": "tfc:food/tropical_fish",
+          "count": 12
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "expert": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1000,
+        "sell": {
+          "item": "tfc:food/cooked_tropical_fish",
+          "count": 8
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 900,
+        "sell": {
+          "item": "tfc:food/cooked_cod",
+          "count": 8
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      }
+    ],
+    "master": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1500,
+        "sell": {
+          "item": "tfc:food/cooked_salmon",
+          "count": 8
+        },
+        "max_uses": 4,
+        "villager_experience": 25
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1200,
+        "sell": {
+          "item": "minecraft:enchanted_book",
+          "count": 1
+        },
+        "max_uses": 3,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2000,
+        "sell": {
+          "item": "tfc:food/cooked_cod",
+          "count": 16
+        },
+        "max_uses": 3,
+        "villager_experience": 25
+      }
+    ]
+  }
+}

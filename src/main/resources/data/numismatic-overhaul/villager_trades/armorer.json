@@ -1,0 +1,219 @@
+{
+  "profession": "armorer",
+  "trades": {
+    "novice": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1500,
+        "sell": {
+          "item": "tfc:metal/helmet/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2000,
+        "sell": {
+          "item": "tfc:metal/chestplate/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1750,
+        "sell": {
+          "item": "tfc:metal/greaves/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1300,
+        "sell": {
+          "item": "tfc:metal/greaves/copper",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "apprentice": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1900,
+        "sell": {
+          "item": "tfc:metal/helmet/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2500,
+        "sell": {
+          "item": "tfc:metal/chestplate/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2200,
+        "sell": {
+          "item": "tfc:metal/greaves/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1600,
+        "sell": {
+          "item": "tfc:metal/greaves/bronze",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "journeyman": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 3500,
+        "sell": {
+          "item": "tfc:metal/helmet/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 4500,
+        "sell": {
+          "item": "tfc:metal/chestplate/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 4000,
+        "sell": {
+          "item": "tfc:metal/greaves/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 3000,
+        "sell": {
+          "item": "tfc:metal/greaves/wrought_iron",
+          "count": 1
+        },
+        "max_uses": 6,
+        "villager_experience": 15
+      }
+    ],
+    "expert": [
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 6000,
+        "sell": {
+          "item": "tfc:metal/helmet/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 25
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 8000,
+        "sell": {
+          "item": "tfc:metal/chestplate/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 7000,
+        "sell": {
+          "item": "tfc:metal/greaves/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 5200,
+        "sell": {
+          "item": "tfc:metal/greaves/steel",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 25
+      }
+    ],
+    "master": [
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 3600,
+        "allow_treasure": false,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/greaves/steel"
+        },
+        "max_uses": 4,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 3000,
+        "allow_treasure": false,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/greaves/steel"
+        },
+        "max_uses": 4,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 3400,
+        "allow_treasure": false,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/helmet/steel"
+        },
+        "max_uses": 4,
+        "villager_experience": 40
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 5000,
+        "allow_treasure": false,
+        "level": 30,
+        "item": {
+          "item": "tfc:metal/chestplate/steel"
+        },
+        "max_uses": 4,
+        "villager_experience": 40
+      }
+    ]
+  }
+}

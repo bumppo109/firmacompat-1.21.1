@@ -1,0 +1,197 @@
+{
+  "profession": "leatherworker",
+  "trades": {
+    "novice": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 300,
+        "buy": {
+          "item": "tfc:powder/lime",
+          "count": 16
+        },
+        "max_uses": 12,
+        "villager_experience": 8
+      },
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 200,
+        "buy": {
+          "item": "tfc:small_raw_hide",
+          "count": 4
+        },
+        "max_uses": 16
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 600,
+        "sell": {
+          "item": "minecraft:leather_helmet",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 800,
+        "sell": {
+          "item": "minecraft:leather_leggings",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      }
+    ],
+    "apprentice": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 800,
+        "buy": {
+          "item": "tfc:medium_raw_hide",
+          "count": 6
+        },
+        "max_uses": 12
+      },
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 800,
+        "buy": {
+          "item": "minecraft:leather",
+          "count": 16
+        },
+        "max_uses": 16
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 500,
+        "sell": {
+          "item": "minecraft:leather_chestplate",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 15
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 300,
+        "sell": {
+          "item": "minecraft:leather_boots",
+          "count": 1
+        },
+        "max_uses": 8,
+        "villager_experience": 10
+      }
+    ],
+    "journeyman": [
+      {
+        "type": "numismatic-overhaul:buy_stack",
+        "price": 600,
+        "buy": {
+          "item": "tfc:large_raw_hide",
+          "count": 4
+        },
+        "max_uses": 10
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 1200,
+        "sell": {
+          "item": "minecraft:saddle",
+          "count": 1
+        },
+        "max_uses": 4,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 900,
+        "sell": {
+          "item": "minecraft:leather_horse_armor",
+          "count": 1
+        },
+        "max_uses": 3,
+        "villager_experience": 15
+      }
+    ],
+    "expert": [
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 800,
+        "allow_treasure": false,
+        "level": 20,
+        "item": {
+          "item": "minecraft:leather_helmet"
+        },
+        "max_uses": 4,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 1000,
+        "allow_treasure": false,
+        "level": 20,
+        "item": {
+          "item": "minecraft:leather_chestplate"
+        },
+        "max_uses": 4,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 900,
+        "allow_treasure": false,
+        "level": 20,
+        "item": {
+          "item": "minecraft:leather_leggings"
+        },
+        "max_uses": 4,
+        "villager_experience": 20
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 700,
+        "allow_treasure": false,
+        "level": 20,
+        "item": {
+          "item": "minecraft:leather_boots"
+        },
+        "max_uses": 4,
+        "villager_experience": 20
+      }
+    ],
+    "master": [
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 1500,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "minecraft:leather_chestplate"
+        },
+        "max_uses": 3,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:enchant_item",
+        "base_price": 1200,
+        "allow_treasure": true,
+        "level": 30,
+        "item": {
+          "item": "minecraft:leather_leggings"
+        },
+        "max_uses": 3,
+        "villager_experience": 30
+      },
+      {
+        "type": "numismatic-overhaul:sell_stack",
+        "price": 2500,
+        "sell": {
+          "item": "minecraft:name_tag",
+          "count": 1
+        },
+        "max_uses": 5,
+        "villager_experience": 20
+      }
+    ]
+  }
+}

@@ -593,6 +593,12 @@ public interface ModCraftingRecipes extends ModRecipes
                 .shapeless(ModItems.BAMBOO_LUMBER, 2);
 
         //Rock
+        recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.ANDESITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.ANDESITE).get(CompatRock.BlockType.LOOSE).get().asItem());
+        recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.GRANITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.GRANITE).get(CompatRock.BlockType.LOOSE).get().asItem());
+        recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.DIORITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.DIORITE).get(CompatRock.BlockType.LOOSE).get().asItem());
+        recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.DRIPSTONE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.DRIPSTONE).get(CompatRock.BlockType.LOOSE).get().asItem());
+        recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.CALCITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.CALCITE).get(CompatRock.BlockType.LOOSE).get().asItem());
+
         for(CompatRock rock : CompatRock.VALUES){
                 Item looseItem = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE).get().asItem();
                 Item looseCobbleItem = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE_COBBLE).get().asItem();
