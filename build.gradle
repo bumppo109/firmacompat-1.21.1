@@ -197,6 +197,13 @@ dependencies {
     //punchy 2.3
     implementation "curse.maven:punchy-1374153:7567680"
 
+    //Hybrid Aquatic 1.5.5
+    implementation "curse.maven:hybrid-aquatic-834427:7694018"
+
+    //GeckoLib 4.8.4
+    implementation "curse.maven:geckolib-388172:7707149"
+
+
     //TODO - testing with Regions Unexplored
 
     implementation "curse.maven:regions-unexplored-659110:6273893"

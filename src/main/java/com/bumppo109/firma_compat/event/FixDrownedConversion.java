@@ -20,27 +20,6 @@ import java.util.Objects;
 @EventBusSubscriber(modid = "firma_compat") // Replace with your mod ID
 public class FixDrownedConversion {
 
-    /*
-    @SubscribeEvent
-    public static void drownedImmune(LivingDamageEvent.Pre event) {
-        LivingEntity entity = event.getEntity();
-
-        // Only care about drowned taking drown damage
-        if (!(entity instanceof Drowned)) return;
-        if (!event.getSource().is(net.minecraft.world.damagesource.DamageTypes.DROWN)) return;
-
-        BlockPos eye = BlockPos.containing(entity.getEyePosition());
-        FluidState fluid = entity.level().getFluidState(eye);
-
-        // Only in TFC salt water
-        if (fluid.is(ModTags.Fluids.WATERLOGGING_WATER)) {
-            // "Cancel" by setting final damage to 0
-            event.setNewDamage(0.0F);
-        }
-    }
-
-     */
-
     @SubscribeEvent
     public static void handleSaltWaterBreathing(LivingBreatheEvent event) {
         LivingEntity entity = event.getEntity();

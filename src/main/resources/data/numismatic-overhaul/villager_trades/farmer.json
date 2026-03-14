@@ -15,7 +15,7 @@
         "type": "numismatic-overhaul:buy_stack",
         "price": 200,
         "buy": {
-          "item": "tfc:seeds/oats",
+          "item": "tfc:seeds/oat",
           "count": 16
         },
         "max_uses": 16
