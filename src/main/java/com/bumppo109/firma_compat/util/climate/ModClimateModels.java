@@ -24,7 +24,7 @@ public class ModClimateModels {
 
     // Your custom model entry
     public static final Id<SereneClimateModel> SERENE_MODEL = register("serene", SereneClimateModel.STREAM_CODEC);
-    public static final Id<ModBiomeBasedClimateModel> LSO_MODEL = register("lso", ModBiomeBasedClimateModel.STREAM_CODEC);
+    public static final Id<VanillaClimateModel> VANILLA_MODEL = register("vanilla", VanillaClimateModel.STREAM_CODEC);
 
     private static <T extends ClimateModel> Id<T> register(String id, StreamCodec<ByteBuf, T> codec) {
         return new Id<>(TYPES.register(id, () -> new ClimateModelType<>(codec)));

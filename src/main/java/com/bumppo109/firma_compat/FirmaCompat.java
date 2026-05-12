@@ -16,7 +16,6 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLItems;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
-import com.bumppo109.firma_compat.util.RecipeRemover;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
@@ -30,7 +29,6 @@ import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -42,8 +40,14 @@ public class FirmaCompat {
     public static final String MODID = "firma_compat";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static boolean isSereneLoaded = false;
+    public static boolean isLSOLoaded = false;
+    public static boolean isFirmalifeLoaded = false;
+    public static boolean isRnRLoaded = false;
+
     public FirmaCompat(IEventBus modEventBus, ModContainer modContainer) {
-        RecipeRemover.init();
+        //TODO - replace with prioritized datapack & empty recipe files
+        //RecipeRemover.init();
 
         modEventBus.addListener(ModEvents::addToBlockEntities);
 
@@ -86,9 +90,10 @@ public class FirmaCompat {
 
         NeoForge.EVENT_BUS.register(this);
 
+        this.modIntegration(modEventBus);
         modEventBus.addListener(this::addCreative);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, FirmaCompatConfig.SPEC);
+        FirmaCompatConfig.register(modContainer);
 
         CompatFaunas.init();
 
@@ -97,6 +102,13 @@ public class FirmaCompat {
             modEventBus.addListener(ModItemCapabilities::register);
             modEventBus.addListener(FirmaCompatClient::registerExtensions);
         }
+    }
+
+    private void modIntegration(IEventBus forgeBus) {
+        isSereneLoaded = ModList.get().isLoaded("sereneseasons");
+        isLSOLoaded = ModList.get().isLoaded("legendarysurvivaloverhaul");
+        isFirmalifeLoaded = ModList.get().isLoaded("firmalife");
+        isRnRLoaded = ModList.get().isLoaded("rnr");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

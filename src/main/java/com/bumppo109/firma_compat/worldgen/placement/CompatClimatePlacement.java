@@ -1,22 +1,15 @@
 package com.bumppo109.firma_compat.worldgen.placement;
 
-import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
-import com.bumppo109.firma_compat.util.climate.ClimateHelpers;
-import com.bumppo109.firma_compat.util.climate.ModBiomeBasedClimateModel;
+import com.bumppo109.firma_compat.util.climate.VanillaClimateHelper;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.dries007.tfc.util.EnvironmentHelpers;
-import net.dries007.tfc.util.climate.Climate;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.placement.PlacementContext;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
-import net.neoforged.fml.ModList;
 
 import java.util.stream.Stream;
 
@@ -59,32 +52,20 @@ public class CompatClimatePlacement extends PlacementModifier {
     }
 
     public boolean isValid(WorldGenLevel level, BlockPos pos, RandomSource random) {
-        Holder<Biome> biomeHolder = level.getBiome(pos);
-        Biome biome = biomeHolder.value();
+
+        float temp = VanillaClimateHelper.getTemperatureWorldgen(
+                level, pos
+        );
+
+        float rain = VanillaClimateHelper.getRainfallWorldgen(
+                level, pos
+        );
+
         int elevation = pos.getY();
-        float vanillaTemp;
-        float adjustedTemp;
-        float rainfall;
 
-        if(ModList.get().isLoaded("sereneseasons")){
-            vanillaTemp = SereneClimateModel.INSTANCE.getAverageTemperature(level, pos);
-            rainfall = SereneClimateModel.INSTANCE.getAverageRainfall(level, pos);
-        } else {
-            vanillaTemp = ModBiomeBasedClimateModel.INSTANCE.getAverageTemperature(level, pos);
-            rainfall = ModBiomeBasedClimateModel.INSTANCE.getAverageRainfall(level, pos);
-        }
-        adjustedTemp = EnvironmentHelpers.adjustAvgTempForElev(pos.getY(), vanillaTemp);
-
-        boolean elevationOk = elevation >= minElevation && elevation <= maxElevation;
-        boolean tempOk     = adjustedTemp >= minTemp && adjustedTemp <= maxTemp;
-        boolean rainOk     = rainfall >= minGroundwater && rainfall <= maxGroundwater;
-
-        boolean valid = elevationOk && tempOk && rainOk;
-
-//        LOGGER.debug("Climate check at {} | Biome: {} | Temp: {} (ok: {}) | Rainfall: {} (ok: {}) | Elev: {} (ok: {}) | Overall Valid: {}",
-//                pos, biomeHolder.getKey().location(), adjustedTemp, tempOk, rainfall, rainOk, elevation, elevationOk, valid);
-
-        return valid;
+        return elevation >= minElevation && elevation <= maxElevation
+                && temp >= minTemp && temp <= maxTemp
+                && rain >= minGroundwater && rain <= maxGroundwater;
     }
 
     @Override

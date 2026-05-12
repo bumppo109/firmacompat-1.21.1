@@ -1,7 +1,7 @@
 package com.bumppo109.firma_compat.integration.sereneseasons;
 
-import com.bumppo109.firma_compat.util.climate.ClimateHelpers;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
+import com.bumppo109.firma_compat.util.climate.VanillaClimateHelper;
 import io.netty.buffer.ByteBuf;
 import net.dries007.tfc.util.climate.*;
 import net.minecraft.core.BlockPos;
@@ -9,7 +9,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.biome.Biome;
-import net.neoforged.fml.ModList;
 import sereneseasons.api.season.Season;
 import sereneseasons.api.season.SeasonHelper;
 
@@ -24,16 +23,26 @@ public class SereneClimateModel implements ClimateModel {
 
     @Override
     public float getAverageTemperature(LevelReader reader, BlockPos pos) {
-        Biome biome = reader.getBiome(pos).value();
-        float vanillaBase = biome.getBaseTemperature();
 
-        if (ModList.get().isLoaded("sereneseasons") && reader instanceof Level level) {
-            Season.SubSeason sub = SeasonHelper.getSeasonState(level).getSubSeason();
-            //seasonal adjustment
-            vanillaBase = vanillaBase + ClimateHelpers.getSereneSeasonalAdjustment(sub);
+        float temp = VanillaClimateHelper.getTemperature(reader, pos);
+
+        if (reader instanceof Level level) {
+
+            Season.SubSeason subSeason =
+                    SeasonHelper.getSeasonState(level).getSubSeason();
+
+            //TODO - need better seasonal adj., the Serene Seasons Config is too irregular
+            float seasonalAdjustment = SereneSeasonsHelper.getSereneSeasonalAdjustment(subSeason);
+
+            /*
+             * Serene Seasons adjustment is in vanilla biome-temp units.
+             *
+             * Apply BEFORE TFC conversion.
+             */
+            temp += seasonalAdjustment;
         }
 
-        return Climate.fromVanilla(ClimateHelpers.normalizeTFCTemperature(vanillaBase));
+        return temp;
     }
 
     @Override
