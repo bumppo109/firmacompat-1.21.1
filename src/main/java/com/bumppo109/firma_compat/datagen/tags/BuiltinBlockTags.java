@@ -276,7 +276,7 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
             for(Ore.Grade grade : Ore.Grade.values()){
                 ResourceLocation oreRes = ResourceLocation.fromNamespaceAndPath("firma_compat", grade.toString().toLowerCase(Locale.ROOT) + "_" + rock.getSerializedName() + "_chromite_ore");
 
-                tag(MINEABLE_WITH_AXE).addOptional(oreRes);
+                tag(MINEABLE_WITH_PICKAXE).addOptional(oreRes);
                 tag(CAN_COLLAPSE).addOptional(oreRes);
                 tag(CAN_START_COLLAPSE).addOptional(oreRes);
                 tag(CAN_TRIGGER_COLLAPSE).addOptional(oreRes);
