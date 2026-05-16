@@ -181,6 +181,8 @@ public class ModEvents {
         modifyBlockEntityType(TFCBlockEntities.CHEST.get(), Stream.of(ModBlocks.COMPAT_CHEST.get()), event);
         modifyBlockEntityType(TFCBlockEntities.TRAPPED_CHEST.get(), Stream.of(ModBlocks.COMPAT_TRAPPED_CHEST.get()), event);
 
+        modifyBlockEntityType(TFCBlockEntities.LAMP.get(), Stream.of(ModBlocks.LANTERN.get()), event);
+
         if(ModList.get().isLoaded("firmalife")){
             modifyBlockEntityType(
                     FLBlockEntities.FOOD_SHELF.get(),

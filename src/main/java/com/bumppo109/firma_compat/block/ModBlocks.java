@@ -2,6 +2,7 @@ package com.bumppo109.firma_compat.block;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.fluid.ModFluids;
+import com.bumppo109.firma_compat.item.FirmaLampItem;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.google.common.base.Suppliers;
 import net.dries007.tfc.common.blockentities.FarmlandBlockEntity;
@@ -10,6 +11,7 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.HotWaterBlock;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
+import net.dries007.tfc.common.blocks.devices.LampBlock;
 import net.dries007.tfc.common.blocks.rock.AqueductBlock;
 import net.dries007.tfc.common.blocks.rock.RockAnvilBlock;
 import net.dries007.tfc.common.blocks.soil.FarmlandBlock;
@@ -32,6 +34,7 @@ import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -48,6 +51,17 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> FLUID_BLOCKS =
             DeferredRegister.create(Registries.BLOCK, FirmaCompat.MODID);
+
+    public static final Id<LampBlock> LANTERN = register("lantern",
+            () -> new LampBlock(
+                    ExtendedProperties.of().mapColor(MapColor.COLOR_BLACK)
+                            .noOcclusion().sound(SoundType.LANTERN)
+                            .strength(4.0F, 10.0F)
+                            .randomTicks().pushReaction(PushReaction.DESTROY)
+                            .lightLevel((state) -> (Boolean)state.getValue(LampBlock.LIT) ? 15 : 0)
+                            .blockEntity(TFCBlockEntities.LAMP)),
+            block -> new FirmaLampItem(new Item.Properties().stacksTo(1), block)
+    );
 
     //Wood
     public static final Map<CompatWood, Map<CompatWood.BlockType, Id<Block>>> WOODS = Helpers.mapOf(CompatWood.class, wood ->

@@ -16,29 +16,22 @@ import java.util.Arrays;
 public interface ModQuernRecipes extends ModRecipes{
 
     default void quernRecipes(){
-        add(Ingredient.of(ModTags.Items.MAKES_BLACK_DYE), Items.BLACK_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_WHITE_DYE), Items.WHITE_DYE, 1);
-        //add(Ingredient.of(ModTags.Items.MAKES_LIGHT_GRAY_DYE), Items.LIGHT_GRAY_DYE, 1);
-        //add(Ingredient.of(ModTags.Items.MAKES_GRAY_DYE), Items.GRAY_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_BROWN_DYE), Items.BROWN_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_RED_DYE), Items.RED_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_ORANGE_DYE), Items.ORANGE_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_YELLOW_DYE), Items.YELLOW_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_LIME_DYE), Items.LIME_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_GREEN_DYE), Items.GREEN_DYE, 1);
-        //add(Ingredient.of(ModTags.Items.MAKES_CYAN_DYE), Items.CYAN_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_LIGHT_BLUE_DYE), Items.LIGHT_BLUE_DYE, 1);
-        //add(Ingredient.of(ModTags.Items.MAKES_PURPLE_DYE), Items.PURPLE_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_MAGENTA_DYE), Items.MAGENTA_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_PINK_DYE), Items.PINK_DYE, 1);
-        add(Ingredient.of(ModTags.Items.MAKES_BLUE_DYE), Items.BLUE_DYE, 1);
-
-        add("from_rose_bush", Ingredient.of(Items.ROSE_BUSH), Items.RED_DYE, 2);
-        add("from_peony",Ingredient.of(Items.PEONY), Items.PINK_DYE, 2);
-        add("from_lilac",Ingredient.of(Items.LILAC), Items.MAGENTA_DYE, 2);
-        add("from_sunflower",Ingredient.of(Items.SUNFLOWER), Items.YELLOW_DYE, 2);
-        add("from_torchflower",Ingredient.of(Items.TORCHFLOWER), Items.ORANGE_DYE, 2);
-        add("from_pitcher_plant",Ingredient.of(Items.PITCHER_PLANT), Items.CYAN_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_BLACK_DYE), Items.BLACK_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_WHITE_DYE), Items.WHITE_DYE, 2);
+        //add(Ingredient.of(ModTags.Items.MAKES_LIGHT_GRAY_DYE), Items.LIGHT_GRAY_DYE, 2);
+        //add(Ingredient.of(ModTags.Items.MAKES_GRAY_DYE), Items.GRAY_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_BROWN_DYE), Items.BROWN_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_RED_DYE), Items.RED_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_ORANGE_DYE), Items.ORANGE_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_YELLOW_DYE), Items.YELLOW_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_LIME_DYE), Items.LIME_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_GREEN_DYE), Items.GREEN_DYE, 2);
+        //add(Ingredient.of(ModTags.Items.MAKES_CYAN_DYE), Items.CYAN_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_LIGHT_BLUE_DYE), Items.LIGHT_BLUE_DYE, 2);
+        //add(Ingredient.of(ModTags.Items.MAKES_PURPLE_DYE), Items.PURPLE_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_MAGENTA_DYE), Items.MAGENTA_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_PINK_DYE), Items.PINK_DYE, 2);
+        add(Ingredient.of(ModTags.Items.MAKES_BLUE_DYE), Items.BLUE_DYE, 2);
     }
 
     private Ingredient notRotten(ItemLike input)

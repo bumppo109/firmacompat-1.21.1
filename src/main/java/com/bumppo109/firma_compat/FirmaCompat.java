@@ -11,11 +11,13 @@ import com.bumppo109.firma_compat.integration.legendarysurvivaloverhaul.LSOHandl
 import com.bumppo109.firma_compat.item.ModCreativeModeTab;
 import com.bumppo109.firma_compat.item.ModItemCapabilities;
 import com.bumppo109.firma_compat.item.ModItems;
+import com.bumppo109.firma_compat.loot.ModLootFunctions;
 import com.bumppo109.firma_compat.loot_modifiers.ModLootModifiers;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLItems;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
+import com.bumppo109.firma_compat.util.ModDataComponents;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
@@ -54,6 +56,8 @@ public class FirmaCompat {
         modEventBus.addListener(CompatTFCEntities::onEntityAttributeCreation);
         modEventBus.addListener(CompatFaunas::registerSpawnPlacements);
 
+        ModDataComponents.COMPONENTS.register(modEventBus);
+        ModLootFunctions.FUNCTIONS.register(modEventBus);
         ModFluids.FLUID_TYPES.register(modEventBus);
         ModFluids.FLUID.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);

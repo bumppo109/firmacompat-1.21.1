@@ -82,6 +82,8 @@ public class FirmaCompatClient {
             Stream.of(TWIG, BARREL, SCRIBING_TABLE, SEWING_TABLE, SHELF, ENCASED_AXLE, CLUTCH, GEAR_BOX).forEach(type -> ItemBlockRenderTypes.setRenderLayer(map.get(type).get(), cutout));
         });
 
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LANTERN.get(), cutout);
+
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CASSITERITE_GRAVEL_DEPOSIT.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.NATIVE_COPPER_GRAVEL_DEPOSIT.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.NATIVE_SILVER_GRAVEL_DEPOSIT.get(), cutout);

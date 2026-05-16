@@ -199,6 +199,8 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(ModItems.QUARTZ_BRICK.asItem())
                 .add(ModItems.DEEPSLATE_TILE.asItem());
 
+        tag(LAMPS).add(ModBlocks.LANTERN.get().asItem());
+
         //Dye
         tag(MAKES_WHITE_DYE)
                 .add(Items.LILY_OF_THE_VALLEY)
@@ -212,14 +214,17 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.COCOA_BEANS);
 
         tag(MAKES_RED_DYE)
+                .add(Items.ROSE_BUSH)
                 .add(Items.BEETROOT)
                 .add(Items.RED_TULIP)
                 .add(Items.POPPY);
 
         tag(MAKES_ORANGE_DYE)
+                .add(Items.TORCHFLOWER)
                 .add(Items.ORANGE_TULIP);
 
         tag(MAKES_YELLOW_DYE)
+                .add(Items.SUNFLOWER)
                 .add(Items.DANDELION);
 
         tag(MAKES_LIME_DYE)
@@ -228,6 +233,9 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
         tag(MAKES_GREEN_DYE)
                 .add(Items.CACTUS);
 
+        tag(MAKES_CYAN_DYE)
+                .add(Items.PITCHER_PLANT);
+
         tag(MAKES_LIGHT_BLUE_DYE)
                 .add(Items.BLUE_ORCHID);
 
@@ -235,9 +243,11 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(Items.CORNFLOWER);
 
         tag(MAKES_MAGENTA_DYE)
+                .add(Items.LILAC)
                 .add(Items.ALLIUM);
 
         tag(MAKES_PINK_DYE)
+                .add(Items.PEONY)
                 .add(Items.PINK_PETALS)
                 .add(Items.PINK_TULIP);
 

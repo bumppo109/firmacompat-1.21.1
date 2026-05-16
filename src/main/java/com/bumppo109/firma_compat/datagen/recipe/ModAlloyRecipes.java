@@ -12,9 +12,7 @@ public interface ModAlloyRecipes extends ModRecipes {
 
     default void alloyRecipes()
     {
-        alloy(CompatMetal.NETHERITE,
-                rangeOf(Metal.GOLD, 0.45, 0.6),
-                rangeOf(CompatMetal.POOR_NETHERITE, 0.4, 0.5));
+
     }
 
     private AlloyRange rangeOf(Metal metal, double min, double max)

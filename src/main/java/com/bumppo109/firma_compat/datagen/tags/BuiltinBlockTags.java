@@ -81,6 +81,8 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
                 .add(Blocks.LARGE_FERN)
         ;
 
+        tag(LAMPS).add(ModBlocks.LANTERN.get());
+
         tag(Tags.Blocks.CHESTS_WOODEN)
                 .add(ModBlocks.COMPAT_CHEST.get())
                 .add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
@@ -166,6 +168,7 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         ;
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.LANTERN.get())
                 .add(ModBlocks.PRIMITIVE_ANVIL.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
