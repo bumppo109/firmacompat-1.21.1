@@ -12,6 +12,7 @@ import com.eerussianguy.firmalife.common.FLTags;
 import com.google.common.base.Preconditions;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
+import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -200,6 +201,12 @@ public class BuiltinItemTags extends TagsProvider<Item> implements ModAccessors
                 .add(ModItems.DEEPSLATE_TILE.asItem());
 
         tag(LAMPS).add(ModBlocks.LANTERN.get().asItem());
+
+        for(Metal metal : Metal.values()) {
+            if(metal.allParts()){
+                tag(LAMPS).add(ModBlocks.COMPAT_LANTERNS.get(metal).get().asItem());
+            }
+        }
 
         //Dye
         tag(MAKES_WHITE_DYE)

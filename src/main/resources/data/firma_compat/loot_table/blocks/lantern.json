@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "loot_pool",
+      "name": "lamp_pool",
       "rolls": 1,
       "entries": [
         {
@@ -11,6 +11,9 @@
           "functions": [
             {
               "function": "tfc:copy_fluid"
+            },
+            {
+              "function": "firma_compat:copy_lamp_state"
             }
           ]
         }

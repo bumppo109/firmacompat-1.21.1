@@ -12,6 +12,7 @@ import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.*;
 import net.dries007.tfc.util.Helpers;
+import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.RegistryHolder;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -83,7 +84,8 @@ public class ModItems {
             )
     );
 
-    public static final ItemId NETHERITE_SCRAP_INGOT = register("netherite_scrap_ingot");
+    public static final ItemId UNFINISHED_LANTERN = register("unfinished_lantern");
+    public static final ItemId POOR_NETHERITE_INGOT = register("poor_netherite_ingot");
 
     //Fluid Buckets
     public static final Map<CompatMetal, ItemId> METAL_FLUID_BUCKETS = Helpers.mapOf(CompatMetal.class, metal ->

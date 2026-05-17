@@ -128,6 +128,17 @@ dependencies {
     // at runtime, use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
+    //Jade
+    implementation "curse.maven:jade-324717:7545219"
+
+    //Sodium
+    implementation "curse.maven:sodium-394468:6382651"
+    //Reese's Sodium Options
+    implementation "curse.maven:reeses-sodium-options-511319:6091021"
+    //Sodium Options API
+    implementation "curse.maven:sodium-options-api-1103431:6100815"
+    //Sodium Dynamic Lights
+    implementation "curse.maven:dynamiclights-reforged-551736:6044477"
 
     //Moonlight Lib 1.21-2.29.4
     //implementation "curse.maven:selene-499980:7396730"

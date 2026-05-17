@@ -46,10 +46,9 @@ public class FirmaCompat {
     public static boolean isLSOLoaded = false;
     public static boolean isFirmalifeLoaded = false;
     public static boolean isRnRLoaded = false;
+    public static boolean isDynamicLightLoaded = false;
 
     public FirmaCompat(IEventBus modEventBus, ModContainer modContainer) {
-        //TODO - replace with prioritized datapack & empty recipe files
-        //RecipeRemover.init();
 
         modEventBus.addListener(ModEvents::addToBlockEntities);
 
@@ -113,6 +112,7 @@ public class FirmaCompat {
         isLSOLoaded = ModList.get().isLoaded("legendarysurvivaloverhaul");
         isFirmalifeLoaded = ModList.get().isLoaded("firmalife");
         isRnRLoaded = ModList.get().isLoaded("rnr");
+        isDynamicLightLoaded = ModList.get().isLoaded("sodiumdynamiclights");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

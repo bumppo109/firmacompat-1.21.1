@@ -60,8 +60,28 @@ public class ModBlocks {
                             .randomTicks().pushReaction(PushReaction.DESTROY)
                             .lightLevel((state) -> (Boolean)state.getValue(LampBlock.LIT) ? 15 : 0)
                             .blockEntity(TFCBlockEntities.LAMP)),
-            block -> new FirmaLampItem(new Item.Properties().stacksTo(1), block)
+            block -> new FirmaLampItem(block, new Item.Properties().stacksTo(1))
     );
+
+    public static final Map<Metal, Id<LampBlock>> COMPAT_LANTERNS =
+            Helpers.mapOf(
+                    Metal.class,
+                    Metal::allParts,
+                    metal -> register(metal.getSerializedName() + "_lantern",
+                            () -> new LampBlock(
+                                    ExtendedProperties.of()
+                                            .mapColor(metal.mapColor())
+                                            .noOcclusion()
+                                            .sound(SoundType.LANTERN)
+                                            .strength(4.0F, 10.0F)
+                                            .randomTicks()
+                                            .pushReaction(PushReaction.DESTROY)
+                                            .lightLevel(state -> state.getValue(LampBlock.LIT) ? 15 : 0)
+                                            .blockEntity(TFCBlockEntities.LAMP)
+                            ),
+                            block -> new FirmaLampItem(block, new Item.Properties().stacksTo(1))
+                    )
+            );
 
     //Wood
     public static final Map<CompatWood, Map<CompatWood.BlockType, Id<Block>>> WOODS = Helpers.mapOf(CompatWood.class, wood ->

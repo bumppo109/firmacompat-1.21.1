@@ -1,9 +1,11 @@
 package com.bumppo109.firma_compat.event;
 
 import com.bumppo109.firma_compat.item.FirmaLampItem;
+import com.bumppo109.firma_compat.util.ModDataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -11,88 +13,94 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 @EventBusSubscriber
-public class FirmaLampEvents
-{
-    /*
-     * =========================================================
-     * LIGHT LAMP IN HAND
-     * =========================================================
-     */
+public class FirmaLampEvents {
 
     @SubscribeEvent
-    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event)
-    {
-        ItemStack lampStack = event.getItemStack();
+    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
 
-        if (!(lampStack.getItem() instanceof FirmaLampItem lamp))
-        {
+        ItemStack stack = event.getItemStack();
+
+        if (!(stack.getItem() instanceof FirmaLampItem)) {
             return;
         }
 
+        var player = event.getEntity();
+        var level = event.getLevel();
+
+        InteractionHand eventHand = event.getHand();
+
         InteractionHand otherHand =
-                event.getHand() == InteractionHand.MAIN_HAND
+                eventHand == InteractionHand.MAIN_HAND
                         ? InteractionHand.OFF_HAND
                         : InteractionHand.MAIN_HAND;
 
-        ItemStack igniterStack =
-                event.getEntity().getItemInHand(otherHand);
+        ItemStack eventHandStack = stack;
+        ItemStack otherHandStack = player.getItemInHand(otherHand);
 
-        if (!igniterStack.is(Tags.Items.TOOLS_IGNITER))
-        {
-            return;
-        }
+        boolean eventHandIgniter = eventHandStack.is(Tags.Items.TOOLS_IGNITER);
+        boolean otherHandIgniter = otherHandStack.is(Tags.Items.TOOLS_IGNITER);
 
-        /*
-         * Extinguish if sneaking
-         */
-        if (event.getEntity().isShiftKeyDown())
-        {
-            if (!lamp.isInfiniteFuel(lampStack))
-            {
-                if(lamp.isLit(lampStack)) {
-                    lamp.extinguish(lampStack);
+        boolean hasIgniter = eventHandIgniter || otherHandIgniter;
 
-                    event.getLevel().playSound(
-                            null,
-                            event.getPos(),
-                            SoundEvents.FIRE_EXTINGUISH,
-                            event.getEntity().getSoundSource(),
-                            1f,
-                            1f
-                    );
-                }
+        boolean lit = stack.getOrDefault(ModDataComponents.LIT.get(), false);
+
+        // =====================================================
+        // EXTINGUISH
+        // =====================================================
+        if (player.isShiftKeyDown()) {
+
+            if (lit && otherHandStack.isEmpty()) {
+
+                stack.set(ModDataComponents.LIT.get(), false);
+
+                level.playSound(
+                        null,
+                        player.blockPosition(),
+                        SoundEvents.FIRE_EXTINGUISH,
+                        player.getSoundSource(),
+                        1f,
+                        1f
+                );
+
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
             }
 
             return;
         }
 
-        /*
-         * Light lamp
-         */
-        if (!lamp.isLit(lampStack) && lamp.canLight(lampStack))
-        {
-            lamp.light(lampStack);
+        // =====================================================
+        // LIGHT
+        // =====================================================
+        if (!lit && hasIgniter) {
 
-            event.getLevel().playSound(
+            stack.set(ModDataComponents.LIT.get(), true);
+
+            level.playSound(
                     null,
-                    event.getPos(),
+                    player.blockPosition(),
                     SoundEvents.FLINTANDSTEEL_USE,
-                    event.getEntity().getSoundSource(),
+                    player.getSoundSource(),
                     1f,
                     1f
             );
 
-            /*
-             * Damage flint and steel
-             */
-            if (igniterStack.isDamageableItem())
-            {
-                igniterStack.hurtAndBreak(
-                        1,
-                        (ServerPlayer) event.getEntity(),
-                        event.getEntity().getEquipmentSlotForItem(igniterStack)
-                );
+            if (player instanceof ServerPlayer serverPlayer) {
+
+                ItemStack igniter =
+                        eventHandIgniter ? eventHandStack : otherHandStack;
+
+                if (igniter.isDamageableItem()) {
+                    igniter.hurtAndBreak(
+                            1,
+                            serverPlayer,
+                            player.getEquipmentSlotForItem(igniter)
+                    );
+                }
             }
+
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
         }
     }
 }

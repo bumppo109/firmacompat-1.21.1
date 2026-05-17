@@ -8,6 +8,7 @@ import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -306,6 +307,16 @@ public class BuiltinLang extends LanguageProvider {
             //TODO - fluid?
         }
 
+        for(Metal metal : Metal.values()){
+            if(metal.allParts()){
+                Block block = ModBlocks.COMPAT_LANTERNS.get(metal).get();
+                add(block.getDescriptionId(), getBlockDisplayName(block));
+                add(block.getDescriptionId() + ".filled", getBlockDisplayName(block));
+            }
+        }
+        add(ModItems.UNFINISHED_LANTERN.asItem(), "Unfinished Lantern");
+        add(ModBlocks.LANTERN.get(), "Lantern");
+        add(ModBlocks.LANTERN.get().getDescriptionId() + ".filled", "Lantern");
 
 
         //Other Items
@@ -320,7 +331,7 @@ public class BuiltinLang extends LanguageProvider {
         add(ModItems.QUARTZ_BRICK.get().getDescriptionId(), "Quartz Brick");
         add(ModItems.PRISMARINE_BRICK.get().getDescriptionId(), "Prismarine Brick");
         add(ModItems.UNFIRED_POT.get().getDescriptionId(), "Unfired Simple Pot");
-        add(ModItems.NETHERITE_SCRAP_INGOT.get().getDescriptionId(), "Netherite Scrap Ingot");
+        add(ModItems.POOR_NETHERITE_INGOT.get().getDescriptionId(), "Poor Netherite Ingot");
 
         //Firmalife
             for(CompatWood wood : CompatWood.VALUES){
@@ -348,7 +359,6 @@ public class BuiltinLang extends LanguageProvider {
                     add(chromiteOreBlock.getDescriptionId(), getBlockDisplayName(chromiteOreBlock));
                 }
             }
-
 
         //RNR
             for(CompatRock rock : CompatRock.VALUES){

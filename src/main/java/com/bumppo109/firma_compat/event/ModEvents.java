@@ -5,6 +5,7 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.eerussianguy.firmalife.common.blockentities.FLBlockEntities;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -182,6 +183,12 @@ public class ModEvents {
         modifyBlockEntityType(TFCBlockEntities.TRAPPED_CHEST.get(), Stream.of(ModBlocks.COMPAT_TRAPPED_CHEST.get()), event);
 
         modifyBlockEntityType(TFCBlockEntities.LAMP.get(), Stream.of(ModBlocks.LANTERN.get()), event);
+
+        for(Metal metal : Metal.values()){
+            if(metal.allParts()){
+                modifyBlockEntityType(TFCBlockEntities.LAMP.get(), Stream.of(ModBlocks.COMPAT_LANTERNS.get(metal).get()), event);
+            }
+        }
 
         if(ModList.get().isLoaded("firmalife")){
             modifyBlockEntityType(

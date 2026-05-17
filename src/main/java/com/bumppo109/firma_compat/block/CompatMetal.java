@@ -361,7 +361,7 @@ public enum CompatMetal implements StringRepresentable, ModRegistryMetal {
                     () -> null
             ),
             CompatMetal.POOR_NETHERITE, new CompatMetal.MetalSet(
-                    () -> ModItems.NETHERITE_SCRAP_INGOT.get(), // Deferred → lazy lambda!
+                    () -> ModItems.POOR_NETHERITE_INGOT.get(), // Deferred → lazy lambda!
                     () -> null,
                     () -> null,
                     () -> null,

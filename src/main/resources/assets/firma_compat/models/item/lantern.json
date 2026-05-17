@@ -6,7 +6,7 @@
   "overrides": [
     {
       "predicate": {
-        "lit": 1
+        "firma_compat:lit": 1
       },
       "model": "minecraft:item/lantern"
     }

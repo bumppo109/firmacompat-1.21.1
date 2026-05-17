@@ -76,6 +76,7 @@ import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -155,6 +156,8 @@ public class CompatTFCEntities {
     public static <E extends Entity> CompatTFCEntities.Id<E> register(String name, EntityType.Builder<E> builder) {
         return register(name, builder, true);
     }
+
+
 
     public static <E extends Entity> CompatTFCEntities.Id<E> register(String name, EntityType.Builder<E> builder, boolean serialize) {
         String id = name.toLowerCase(Locale.ROOT);

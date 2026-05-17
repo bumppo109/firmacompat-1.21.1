@@ -16,6 +16,7 @@ import net.dries007.tfc.common.blocks.DecorationBlockHolder;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.wood.Wood;
+import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,6 +31,7 @@ import net.minecraft.tags.TagEntry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -82,6 +84,24 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         ;
 
         tag(LAMPS).add(ModBlocks.LANTERN.get());
+
+        for(Metal metal : Metal.values()) {
+            if(metal.allParts()){
+                tag(LAMPS).add(ModBlocks.COMPAT_LANTERNS.get(metal).get());
+                tag(MINEABLE_WITH_PICKAXE).add(ModBlocks.COMPAT_LANTERNS.get(metal).get());
+            }
+        }
+
+        tag(HEAT_PASSABLE)
+                .add(Blocks.COPPER_GRATE)
+                .add(Blocks.EXPOSED_COPPER_GRATE)
+                .add(Blocks.WEATHERED_COPPER_GRATE)
+                .add(Blocks.OXIDIZED_COPPER_GRATE)
+                .add(Blocks.WAXED_COPPER_GRATE)
+                .add(Blocks.WAXED_EXPOSED_COPPER_GRATE)
+                .add(Blocks.WAXED_WEATHERED_COPPER_GRATE)
+                .add(Blocks.WAXED_OXIDIZED_COPPER_GRATE)
+        ;
 
         tag(Tags.Blocks.CHESTS_WOODEN)
                 .add(ModBlocks.COMPAT_CHEST.get())

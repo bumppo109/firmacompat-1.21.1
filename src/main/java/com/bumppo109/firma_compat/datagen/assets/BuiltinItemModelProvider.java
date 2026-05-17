@@ -42,6 +42,8 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
         basicItem(glowBerryJar);
         basicItem(glowBerryJarUnsealed);
 
+        basicItem(ModItems.UNFINISHED_LANTERN.get());
+
 
         for (CompatWood wood : CompatWood.VALUES) {
             var woodMap = ModBlocks.WOODS.get(wood);

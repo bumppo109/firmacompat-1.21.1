@@ -17,6 +17,7 @@ import net.dries007.tfc.common.recipes.ingredients.NotRottenIngredient;
 import net.dries007.tfc.common.recipes.outputs.MealModifier;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -833,6 +834,23 @@ public interface ModCraftingRecipes extends ModRecipes
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, Items.CUT_RED_SANDSTONE, Items.CHISELED_RED_SANDSTONE);
 
         //Metal
+        recipe()
+                .input(ModItems.UNFINISHED_LANTERN.get())
+                .input(TFCItems.LAMP_GLASS.get())
+                .shapeless(ModBlocks.LANTERN.get().asItem());
+
+        for(Metal metal : Metal.values()){
+            if(metal.allParts()){
+                Item unfinishedItem = TFCItems.METAL_ITEMS.get(metal).get(Metal.ItemType.UNFINISHED_LAMP).get();
+                Item finishedLamp = ModBlocks.COMPAT_LANTERNS.get(metal).get().asItem();
+
+                recipe()
+                        .input(unfinishedItem)
+                        .input(TFCItems.LAMP_GLASS.get())
+                        .shapeless(finishedLamp);
+            }
+        }
+
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, Items.COPPER_BLOCK, Items.CHISELED_COPPER);
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, Items.EXPOSED_COPPER, Items.EXPOSED_CHISELED_COPPER);
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, Items.WEATHERED_COPPER, Items.WEATHERED_CHISELED_COPPER);

@@ -3,6 +3,7 @@ package com.bumppo109.firma_compat.datagen;
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.bumppo109.firma_compat.FirmaCompatHelpers;
 import com.bumppo109.firma_compat.block.CompatMetal;
+import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.item.ModItems;
 import net.dries007.tfc.TerraFirmaCraft;
 import net.dries007.tfc.common.component.heat.HeatCapability;
@@ -12,6 +13,7 @@ import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.data.FluidHeat;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.WeatheringCopper;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -32,6 +35,7 @@ public class BuiltinItemHeat extends DataManagerProvider<HeatDefinition> impleme
 
     public final List<MeltingRecipe> meltingRecipes = new ArrayList<>();
     private final CompletableFuture<?> before;
+    public static List<String> copperType = List.of("copper", "cut_copper", "cut_copper_stairs", "cut_copper_slab", "chiseled_copper", "copper_bulb", "copper_door", "copper_grate", "copper_trapdoor");
 
     public BuiltinItemHeat(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup, CompletableFuture<?> before)
     {
@@ -51,14 +55,60 @@ public class BuiltinItemHeat extends DataManagerProvider<HeatDefinition> impleme
         FirmaCompatHelpers.fakeDataManager(FluidHeat.MANAGER, Map.of(
                 Metal.COPPER.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.COPPER).getSource(), 1080, 0.008571429f),
                 Metal.CAST_IRON.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.CAST_IRON).getSource(), 1535, 0.008571429f),
-                Metal.GOLD.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.GOLD).getSource(), 1060, 0.005f)
+                Metal.GOLD.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.GOLD).getSource(), 1060, 0.008571429f)
+                /*
+                Metal.BISMUTH_BRONZE.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.BISMUTH_BRONZE).getSource(), 985, 0.008571429f),
+                Metal.BLACK_BRONZE.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.BLACK_BRONZE).getSource(), 1070, 0.008571429f),
+                Metal.BLACK_STEEL.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.BLACK_STEEL).getSource(), 1485, 0.008571429f),
+                Metal.BLUE_STEEL.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.BLUE_STEEL).getSource(), 1540, 0.008571429f),
+                Metal.BRONZE.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.BRONZE).getSource(), 950, 0.008571429f),
+                Metal.RED_STEEL.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.RED_STEEL).getSource(), 1540, 0.008571429f),
+                Metal.STEEL.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.STEEL).getSource(), 1540, 0.008571429f),
+                Metal.WROUGHT_IRON.getSerializedName(), new FluidHeat(TFCFluids.METALS.get(Metal.WROUGHT_IRON).getSource(), 1535, 0.008571429f)
+
+                 */
         ));
 
         //food
         add(Items.KELP, 1.0f);
 
+        copperType.forEach(type -> {
+            for(WeatheringCopper.WeatherState weatherState : WeatheringCopper.WeatherState.values()){
+                String idStr;
+                String waxIdStr;
+                if(weatherState.equals(WeatheringCopper.WeatherState.UNAFFECTED)){
+                    if(type.equals("copper")){
+                        idStr = "copper_block";
+                        waxIdStr = "waxed_copper_block";
+                    } else {
+                        idStr = type;
+                        waxIdStr = "waxed_" + type;
+                    }
+                } else {
+                    idStr = weatherState.getSerializedName() + "_" + type;
+                    waxIdStr = "waxed_" + weatherState.getSerializedName() + "_" + type;
+                }
+
+                Item item = Objects.requireNonNull(BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace(idStr)));
+                Item waxedItem = Objects.requireNonNull(BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace(waxIdStr)));
+                switch (type) {
+                    case "copper_door", "copper_trapdoor" -> add(idStr, Ingredient.of(item), Metal.COPPER, 200);
+                    case "cut_copper_stairs" -> add(idStr, Ingredient.of(item), Metal.COPPER, 75);
+                    case "cut_copper_slab" -> add(idStr, Ingredient.of(item), Metal.COPPER, 50);
+                    default -> add(idStr, Ingredient.of(item), Metal.COPPER, 100);
+                }
+                switch (type) {
+                    case "copper_door", "copper_trapdoor" -> add(waxIdStr, Ingredient.of(waxedItem), Metal.COPPER, 200);
+                    case "cut_copper_stairs" -> add(waxIdStr, Ingredient.of(waxedItem), Metal.COPPER, 75);
+                    case "cut_copper_slab" -> add(waxIdStr, Ingredient.of(waxedItem), Metal.COPPER, 50);
+                    default -> add(waxIdStr, Ingredient.of(waxedItem), Metal.COPPER, 100);
+                }
+            }
+        });
+
+
         //TODO - add copper
-        add("copper_door", Ingredient.of(Items.COPPER_DOOR), Metal.COPPER, 200);
+
         add("chain", Ingredient.of(Items.CHAIN), Metal.CAST_IRON, 6);
         add("iron_nugget", Ingredient.of(Items.IRON_NUGGET), Metal.CAST_IRON, 10);
         add("gold_nugget", Ingredient.of(Items.GOLD_NUGGET), Metal.GOLD, 10);

@@ -7,6 +7,7 @@ import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.fluid.ModFluids;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
+import com.bumppo109.firma_compat.util.ModDataComponents;
 import net.dries007.tfc.client.ClientEventHandler;
 import net.dries007.tfc.client.RenderHelpers;
 import net.dries007.tfc.client.extensions.FluidRendererExtension;
@@ -19,6 +20,7 @@ import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.ChestBlockItem;
 import net.dries007.tfc.util.Helpers;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.client.model.CodModel;
 import net.minecraft.client.model.SquidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -81,6 +83,14 @@ public class FirmaCompatClient {
         ModBlocks.WOODS.values().forEach(map -> {
             Stream.of(TWIG, BARREL, SCRIBING_TABLE, SEWING_TABLE, SHELF, ENCASED_AXLE, CLUTCH, GEAR_BOX).forEach(type -> ItemBlockRenderTypes.setRenderLayer(map.get(type).get(), cutout));
         });
+
+        registerLampLitProperty(ModBlocks.LANTERN.get());
+
+        for(Metal metal : Metal.values()){
+            if(metal.allParts()){
+                registerLampLitProperty(ModBlocks.COMPAT_LANTERNS.get(metal).get());
+            }
+        }
 
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LANTERN.get(), cutout);
 
@@ -394,6 +404,13 @@ public class FirmaCompatClient {
         registerChestItemRenderer(event, ModBlocks.COMPAT_CHEST);
         registerChestItemRenderer(event, ModBlocks.COMPAT_TRAPPED_CHEST);
 
+    }
+
+    private static void registerLampLitProperty(ItemLike item) {
+        ItemProperties.register(item.asItem(), ResourceLocation.fromNamespaceAndPath(FirmaCompat.MODID, "lit"),
+                (stack, level, entity, seed) ->
+                        stack.getOrDefault(ModDataComponents.LIT, false) ? 1.0F : 0.0F
+        );
     }
 
     private static final ResourceLocation SEALED = Helpers.identifier("sealed");
