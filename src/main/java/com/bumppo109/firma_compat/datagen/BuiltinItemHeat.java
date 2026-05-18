@@ -131,7 +131,7 @@ public class BuiltinItemHeat extends DataManagerProvider<HeatDefinition> impleme
             }
         });
 
-        addAndMelt(Items.NETHERITE_SCRAP, CompatMetal.POOR_NETHERITE, 10);
+        addAndMelt(Items.NETHERITE_SCRAP, CompatMetal.POOR_NETHERITE, 25);
 
         for (Map.Entry<CompatMetal, CompatMetal.MetalSet> entry : METAL_SETS.entrySet()) {
             CompatMetal metal = entry.getKey();

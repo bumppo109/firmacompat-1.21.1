@@ -5,6 +5,7 @@ import com.bumppo109.firma_compat.block.CompatWood;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.entity.CompatTFCEntities;
 import com.bumppo109.firma_compat.fluid.ModFluids;
+import com.bumppo109.firma_compat.integration.dynamic_light.DynamicLighHandler;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.util.ModDataComponents;
@@ -72,6 +73,9 @@ public class FirmaCompatClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
+
+        DynamicLighHandler.initDynamicLight();
+
         // Render Types
         final RenderType solid = RenderType.solid();
         final RenderType cutout = RenderType.cutout();

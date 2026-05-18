@@ -46,6 +46,7 @@ public interface ModCraftingRecipes extends ModRecipes
     {
         remove(
                 "bread",
+                "crafter",
                 "sugar_from_sugar_cane",
                 "sugar_from_honey_bottle",
                 "raw_iron_block",

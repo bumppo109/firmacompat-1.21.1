@@ -28,6 +28,21 @@ public class BuiltinLang extends LanguageProvider {
         add("fluid.firma_compat.metal.netherite", "Molten Netherite");
         add("fluid.firma_compat.metal.poor_netherite", "Molten Poor Netherite");
 
+        //Gems Realm Compat
+        add("item_type.firma_compat.rod", "%s Rod");
+        add("item_type.firma_compat.double_ingot", "%s Double Ingot");
+        add("item_type.firma_compat.sheet", "%s Sheet");
+        add("item_type.firma_compat.double_sheet", "%s Double Sheet");
+        add("item_type.firma_compat.pickaxe_head", "%s Pickaxe Head");
+        add("item_type.firma_compat.axe_head", "%s Axe Head");
+        add("item_type.firma_compat.shovel_head", "%s Shovel Head");
+        add("item_type.firma_compat.hoe_head", "%s Hoe Head");
+        add("item_type.firma_compat.sword_blade", "%s Sword Blade");
+        add("item_type.firma_compat.unfinished_helmet", "%s Unfinished Helmet");
+        add("item_type.firma_compat.unfinished_chestplate", "%s Unfinished Chestplate");
+        add("item_type.firma_compat.unfinished_leggings", "%s Unfinished Leggings");
+        add("item_type.firma_compat.unfinished_boots", "%s Unfinished Boots");
+
         //Wood Good Compat
         add("item_type.firma_compat.lumber", "%s Lumber");
         add("block_type.firma_compat.twig", "%s Twig");

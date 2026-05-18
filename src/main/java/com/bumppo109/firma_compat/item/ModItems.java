@@ -87,6 +87,9 @@ public class ModItems {
     public static final ItemId UNFINISHED_LANTERN = register("unfinished_lantern");
     public static final ItemId POOR_NETHERITE_INGOT = register("poor_netherite_ingot");
 
+    //IRON used for GemsRealm Module
+    public static final Map<CompatMetal.ItemType, ItemId> IRON_STUFF = Helpers.mapOf(CompatMetal.ItemType.class, type -> register("iron_" + type.name()));
+
     //Fluid Buckets
     public static final Map<CompatMetal, ItemId> METAL_FLUID_BUCKETS = Helpers.mapOf(CompatMetal.class, metal ->
             register("bucket/metal/" + metal.name(), () -> new BucketItem(ModFluids.METALS.get(metal).getSource(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)))

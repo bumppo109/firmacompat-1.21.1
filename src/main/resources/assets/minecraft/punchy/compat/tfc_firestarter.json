@@ -1,15 +1,13 @@
 {
-  "customGroups": [
-    {
-      "name": "tfc_firestarter",
-      "items": [
-        "tfc:firestarter"
-      ]
-    }
-  ],
-  "item": {
+  "itemSpecific": {
     "tfc_firestarter": {
       "kind": "INGREDIENT",
+      "customAnimation": [
+        {
+          "type": "useItem",
+          "name": "set_fire"
+        }
+      ],
       "transforms": {
         "right": {
           "scale": 1.0,

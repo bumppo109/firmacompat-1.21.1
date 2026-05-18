@@ -60,9 +60,9 @@ public class BuiltinFauna extends DataManagerProvider<CompatFauna> {
         add(CompatFaunas.OCTOPOTEUTHIS, b -> b.maxBrightness(0).distanceBelowSeaLevel(33));
         add(CompatFaunas.PIG, b -> b.temperature(5, 30).minGroundwater(250));
         add(CompatFaunas.COW, b -> b.temperature(5, 30).minGroundwater(250));
-        add(CompatFaunas.GOAT, b -> b.temperature(-40, 25));
-        add(CompatFaunas.YAK, b -> b.maxTemperature(-5).minGroundwater(250));
-        add(CompatFaunas.ALPACA, b -> b.temperature(-8, 20).minGroundwater(250));
+        add(CompatFaunas.GOAT, b -> b.temperature(-40, 25).minElevation(100));
+        add(CompatFaunas.YAK, b -> b.maxTemperature(-5).minGroundwater(250).minElevation(80));
+        add(CompatFaunas.ALPACA, b -> b.temperature(-8, 12).minGroundwater(250).minElevation(80));
         add(CompatFaunas.SHEEP, b -> b.temperature(0, 35).minGroundwater(250));
         add(CompatFaunas.MUSK_OX, b -> b.temperature(-25, 0).minGroundwater(250));
         add(CompatFaunas.CHICKEN, b -> b.minTemperature(14).minGroundwater(250));

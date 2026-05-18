@@ -154,7 +154,9 @@ dependencies {
     //1.21-2.11.24
     //implementation "curse.maven:every-compat-628539:7436223"
     //1.21-2.11.25
-    implementation "curse.maven:every-compat-628539:7528817"
+    //implementation "curse.maven:every-compat-628539:7528817"
+    //1.21-2.11.40
+    implementation "curse.maven:every-compat-628539:8017083"
 
     //Stone Zone - 1.21.211.6
     //implementation "curse.maven:stone-zone-1154622:7339708"
@@ -162,6 +164,9 @@ dependencies {
     //implementation "curse.maven:stone-zone-1154622:7439162"
     //1.21-2.11.8
     implementation "curse.maven:stone-zone-1154622:7534582"
+
+    //Gems Realm 2.11.3
+    implementation "curse.maven:gems-realm-1289099:8020040"
 
     //TerraFirmaCraft 1.21.1-4.0.17
     //implementation "curse.maven:terrafirmacraft-302973:7452541"
@@ -205,8 +210,10 @@ dependencies {
     //cinchsmissingblocks 2.2
     implementation "curse.maven:cinchs-missing-blocks-1338020:7427693"
 
+    //punchy 2.5.5b
+    implementation "curse.maven:punchy-1374153:8104498"
     //punchy 2.3
-    implementation "curse.maven:punchy-1374153:7567680"
+    //implementation "curse.maven:punchy-1374153:7567680"
 
     //TODO - testing with Regions Unexplored
 

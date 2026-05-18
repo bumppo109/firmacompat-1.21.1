@@ -93,7 +93,7 @@ public class FirmaCompat {
 
         NeoForge.EVENT_BUS.register(this);
 
-        this.modIntegration(modEventBus);
+        this.modIntegration();
         modEventBus.addListener(this::addCreative);
 
         FirmaCompatConfig.register(modContainer);
@@ -107,7 +107,7 @@ public class FirmaCompat {
         }
     }
 
-    private void modIntegration(IEventBus forgeBus) {
+    private void modIntegration() {
         isSereneLoaded = ModList.get().isLoaded("sereneseasons");
         isLSOLoaded = ModList.get().isLoaded("legendarysurvivaloverhaul");
         isFirmalifeLoaded = ModList.get().isLoaded("firmalife");

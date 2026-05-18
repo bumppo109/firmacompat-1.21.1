@@ -72,7 +72,7 @@ public class FirmaLampEvents {
         // =====================================================
         // LIGHT
         // =====================================================
-        if (!lit && hasIgniter) {
+        if (!lit && hasIgniter && ((FirmaLampItem) stack.getItem()).hasFuel(stack)) {
 
             stack.set(ModDataComponents.LIT.get(), true);
 

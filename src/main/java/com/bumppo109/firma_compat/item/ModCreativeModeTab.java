@@ -6,6 +6,7 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -140,6 +141,12 @@ public class ModCreativeModeTab {
             var bucket = ModItems.METAL_FLUID_BUCKETS.get(metal);
             if (bucket != null) {
                 accept(event, bucket);
+            }
+        }
+        accept(event, ModBlocks.LANTERN);
+        for (Metal metal : Metal.values()) {
+            if(metal.allParts()){
+                accept(event, ModBlocks.COMPAT_LANTERNS.get(metal));
             }
         }
 

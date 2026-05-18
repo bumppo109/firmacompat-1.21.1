@@ -1,14 +1,14 @@
 {
   "type": "tfc:blast_furnace",
+  "catalyst": {
+    "tag": "c:ingots/gold"
+  },
   "fluid": {
-    "ingredient": "firma_compat:metal/poor_netherite",
-    "amount": 1
+    "amount": 1,
+    "fluid": "firma_compat:metal/poor_netherite"
   },
   "result": {
-    "fluid": "firma_compat:metal/netherite",
-    "amount": 1
-  },
-  "catalyst": {
-    "tag": "forge:ingots/gold"
+    "amount": 1,
+    "id": "firma_compat:metal/netherite"
   }
 }
