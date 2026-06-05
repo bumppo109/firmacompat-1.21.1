@@ -31,7 +31,6 @@ public class SereneClimateModel implements ClimateModel {
             Season.SubSeason subSeason =
                     SeasonHelper.getSeasonState(level).getSubSeason();
 
-            //TODO - need better seasonal adj., the Serene Seasons Config is too irregular
             float seasonalAdjustment = SereneSeasonsHelper.getSereneSeasonalAdjustment(subSeason);
 
             /*
@@ -47,6 +46,6 @@ public class SereneClimateModel implements ClimateModel {
 
     @Override
     public float getAverageRainfall(LevelReader level, BlockPos pos) {
-        return level.getBiome(pos).value().getPrecipitationAt(pos) != Biome.Precipitation.NONE ? 300.0F : 0.0F;
+        return VanillaClimateHelper.getRainfall(level, pos);
     }
 }

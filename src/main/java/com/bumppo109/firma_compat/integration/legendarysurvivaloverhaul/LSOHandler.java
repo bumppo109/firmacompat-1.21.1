@@ -15,7 +15,7 @@ public class LSOHandler {
             TemperatureModifierRegistry.MODIFIERS.register("tfc_time_modifier", TFCTimeModifier::new);
             TemperatureModifierRegistry.MODIFIERS.register("tfc_altitude_modifier", TFCAltitudeModifier::new);
 
-            LOGGER.info("Registered custom TFCCliamteModelModifier with LSO");
+            LOGGER.info("Registered custom TFCClimateModelModifier with LSO");
         } catch (Exception e) {
             LOGGER.error("Failed to register custom LSO modifier", e);
         }

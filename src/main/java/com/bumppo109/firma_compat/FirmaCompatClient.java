@@ -8,7 +8,7 @@ import com.bumppo109.firma_compat.fluid.ModFluids;
 import com.bumppo109.firma_compat.integration.dynamic_light.DynamicLighHandler;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
-import com.bumppo109.firma_compat.util.ModDataComponents;
+import com.bumppo109.firma_compat.data.ModDataComponents;
 import net.dries007.tfc.client.ClientEventHandler;
 import net.dries007.tfc.client.RenderHelpers;
 import net.dries007.tfc.client.extensions.FluidRendererExtension;
@@ -54,6 +54,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import static com.bumppo109.firma_compat.FirmaCompat.isDynamicLightLoaded;
 import static com.bumppo109.firma_compat.block.CompatWood.BlockType.*;
 import static com.bumppo109.firma_compat.block.CompatWood.BlockType.BARREL;
 import static com.bumppo109.firma_compat.block.CompatWood.BlockType.CLUTCH;
@@ -74,7 +75,9 @@ public class FirmaCompatClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
 
-        DynamicLighHandler.initDynamicLight();
+        if(isDynamicLightLoaded){
+            DynamicLighHandler.initDynamicLight();
+        }
 
         // Render Types
         final RenderType solid = RenderType.solid();

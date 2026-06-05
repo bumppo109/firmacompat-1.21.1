@@ -8,7 +8,9 @@
     "TerraFirmaCraftModifierMixin",
     "LegendarySurvivalOverhaulMixin",
     "PlayerInfoMixin",
-    "LevelRendererExtensionMixin"
+    "LevelRendererExtensionMixin",
+    "BiomeNoiseMixin",
+    "ForestFeatureMixin"
   ],
   "injectors": {
     "defaultRequire": 1

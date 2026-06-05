@@ -105,6 +105,7 @@ public class ModTags {
 
         public static final TagKey<EntityType<?>> REMOVE_VANILLA_MOBS = createTag("remove_vanilla_mobs");
         public static final TagKey<EntityType<?>> COMPAT_TFC_ENTITIES = createTag("compat_tfc_entities");
+        public static final TagKey<EntityType<?>> CAN_SURVIVE_SALT_WATER = createTag("can_survive_salt_water");
 
     }
 }

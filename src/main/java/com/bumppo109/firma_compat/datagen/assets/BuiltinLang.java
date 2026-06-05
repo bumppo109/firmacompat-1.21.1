@@ -28,6 +28,8 @@ public class BuiltinLang extends LanguageProvider {
         add("fluid.firma_compat.metal.netherite", "Molten Netherite");
         add("fluid.firma_compat.metal.poor_netherite", "Molten Poor Netherite");
 
+        add("entity.minecraft.villager.firma_compat.compat_farmer", "Farmer");
+
         //Gems Realm Compat
         add("item_type.firma_compat.rod", "%s Rod");
         add("item_type.firma_compat.double_ingot", "%s Double Ingot");

@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "tfc:gem/amethyst",
@@ -13,7 +13,7 @@
         "villager_experience": 5
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 400,
         "sell": {
           "item": "tfc:gem/emerald",
@@ -23,7 +23,7 @@
         "villager_experience": 5
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 300,
         "sell": {
           "item": "tfc:gem/topaz",
@@ -33,7 +33,7 @@
         "villager_experience": 5
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 600,
         "sell": {
           "item": "tfc:gem/diamond",
@@ -43,7 +43,7 @@
         "villager_experience": 10
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 350,
         "sell": {
           "item": "tfc:gem/sapphire",
@@ -53,7 +53,7 @@
         "villager_experience": 5
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1200,
         "sell": {
           "item": "tfc:glue",
@@ -64,7 +64,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 10000,
         "sell": {
           "item": "sculk_sensor",
@@ -73,7 +73,7 @@
         "max_uses": 2
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 200,
         "sell": {
           "item": "gunpowder",
@@ -82,7 +82,7 @@
         "max_uses": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 800,
         "sell": {
           "item": "tfc:gem/pyrite",
@@ -92,7 +92,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1000,
         "sell": {
           "item": "tfc:powder/lapis_lazuli",

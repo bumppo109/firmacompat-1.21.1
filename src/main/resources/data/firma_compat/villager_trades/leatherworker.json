@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 300,
         "buy": {
           "item": "tfc:powder/lime",
@@ -13,7 +13,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 200,
         "buy": {
           "item": "tfc:small_raw_hide",
@@ -22,7 +22,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 600,
         "sell": {
           "item": "minecraft:leather_helmet",
@@ -32,7 +32,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 800,
         "sell": {
           "item": "minecraft:leather_leggings",
@@ -44,7 +44,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 800,
         "buy": {
           "item": "tfc:medium_raw_hide",
@@ -53,7 +53,7 @@
         "max_uses": 12
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 800,
         "buy": {
           "item": "minecraft:leather",
@@ -62,7 +62,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "minecraft:leather_chestplate",
@@ -72,7 +72,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 300,
         "sell": {
           "item": "minecraft:leather_boots",
@@ -84,7 +84,7 @@
     ],
     "journeyman": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 600,
         "buy": {
           "item": "tfc:large_raw_hide",
@@ -93,7 +93,7 @@
         "max_uses": 10
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1200,
         "sell": {
           "item": "minecraft:saddle",
@@ -103,7 +103,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 900,
         "sell": {
           "item": "minecraft:leather_horse_armor",
@@ -115,7 +115,7 @@
     ],
     "expert": [
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 800,
         "allow_treasure": false,
         "level": 20,
@@ -126,7 +126,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 1000,
         "allow_treasure": false,
         "level": 20,
@@ -137,7 +137,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 900,
         "allow_treasure": false,
         "level": 20,
@@ -148,7 +148,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 700,
         "allow_treasure": false,
         "level": 20,
@@ -161,7 +161,7 @@
     ],
     "master": [
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 1500,
         "allow_treasure": true,
         "level": 30,
@@ -172,7 +172,7 @@
         "villager_experience": 30
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 1200,
         "allow_treasure": true,
         "level": 30,
@@ -183,7 +183,7 @@
         "villager_experience": 30
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2500,
         "sell": {
           "item": "minecraft:name_tag",

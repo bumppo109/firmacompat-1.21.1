@@ -17,7 +17,7 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.firmalife.CompatFLItems;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
-import com.bumppo109.firma_compat.util.ModDataComponents;
+import com.bumppo109.firma_compat.data.ModDataComponents;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
@@ -42,6 +42,7 @@ public class FirmaCompat {
     public static final String MODID = "firma_compat";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static boolean isEclipticLoaded = false;
     public static boolean isSereneLoaded = false;
     public static boolean isLSOLoaded = false;
     public static boolean isFirmalifeLoaded = false;
@@ -108,6 +109,7 @@ public class FirmaCompat {
     }
 
     private void modIntegration() {
+        isEclipticLoaded = ModList.get().isLoaded("eclipticseasons");
         isSereneLoaded = ModList.get().isLoaded("sereneseasons");
         isLSOLoaded = ModList.get().isLoaded("legendarysurvivaloverhaul");
         isFirmalifeLoaded = ModList.get().isLoaded("firmalife");

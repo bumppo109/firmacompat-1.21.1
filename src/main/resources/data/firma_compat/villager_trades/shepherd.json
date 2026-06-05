@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 250,
         "buy": {
           "item": "tfc:wool",
@@ -12,7 +12,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 400,
         "sell": {
           "item": "tfc:wool_yarn",
@@ -22,7 +22,7 @@
         "villager_experience": 10
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 300,
         "sell": {
           "item": "tfc:metal/shears/bronze",
@@ -34,7 +34,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 450,
         "buy": {
           "item": "tfc:wool_yarn",
@@ -43,7 +43,7 @@
         "max_uses": 12
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 700,
         "sell": {
           "item": "tfc:wool_cloth",
@@ -53,7 +53,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "minecraft:white_bed",
@@ -65,7 +65,7 @@
     ],
     "journeyman": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 600,
         "buy": {
           "item": "tfc:wool_cloth",
@@ -74,7 +74,7 @@
         "max_uses": 10
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 800,
         "sell": {
           "item": "minecraft:white_wool",
@@ -84,7 +84,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 900,
         "sell": {
           "item": "minecraft:white_carpet",
@@ -96,7 +96,7 @@
     ],
     "expert": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1200,
         "sell": {
           "item": "tfc:wool_cloth",
@@ -106,7 +106,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 600,
         "sell": {
           "item": "minecraft:painting",
@@ -118,7 +118,7 @@
     ],
     "master": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2000,
         "sell": {
           "item": "tfc:wool_yarn",
@@ -128,7 +128,7 @@
         "villager_experience": 25
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1500,
         "sell": {
           "item": "minecraft:enchanted_book",

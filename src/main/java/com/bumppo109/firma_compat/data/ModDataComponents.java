@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.util;
+package com.bumppo109.firma_compat.data;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import com.mojang.serialization.Codec;

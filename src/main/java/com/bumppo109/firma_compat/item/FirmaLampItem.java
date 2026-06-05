@@ -1,6 +1,6 @@
 package com.bumppo109.firma_compat.item;
 
-import com.bumppo109.firma_compat.util.ModDataComponents;
+import com.bumppo109.firma_compat.data.ModDataComponents;
 import net.dries007.tfc.common.blocks.devices.LampBlock;
 import net.dries007.tfc.common.fluids.FluidHelpers;
 import net.dries007.tfc.common.items.LampBlockItem;

@@ -191,12 +191,16 @@ dependencies {
     implementation("curse.maven:puzzles-lib-495476:7140307")
 
     //ArborFirma afc-2.0.5-1.21.1
-    implementation "curse.maven:arborfirmacraft-877545:7314761"
+    //implementation "curse.maven:arborfirmacraft-877545:7314761"
+    implementation "curse.maven:arborfirmacraft-877545:7757203"
 
     //Serene Seasons 1.21.1-10.1.0.3
     implementation "curse.maven:serene-seasons-291874:6182596"
     //GlitchCore 1.21.1-2.1.0.0
     implementation "curse.maven:glitchcore-955399:5660740"
+
+    //Ecliptic Seasons
+    implementation "curse.maven:ecliptic-seasons-1118306:8137748"
 
     //Legendary Suvival Overhaul 1.21.1-2.4.1
     implementation "curse.maven:legendary-survival-overhaul-840254:7469871"
@@ -214,6 +218,12 @@ dependencies {
     implementation "curse.maven:punchy-1374153:8104498"
     //punchy 2.3
     //implementation "curse.maven:punchy-1374153:7567680"
+
+    //Tree Physics 2.0
+    implementation "curse.maven:tree-physics-1522010:8182793"
+    //Sable 1.2.2
+    implementation "curse.maven:sable-1312371:8007005"
+
 
     //TODO - testing with Regions Unexplored
 

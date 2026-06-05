@@ -1,6 +1,8 @@
 package com.bumppo109.firma_compat.util.climate;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.integration.ecliptic.EclipticSeasonsClimateModel;
+import com.bumppo109.firma_compat.integration.ecliptic.EclipticSeasonsLSOClimateModel;
 import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
 import com.bumppo109.firma_compat.util.chunkData.ClimateData;
 import com.bumppo109.firma_compat.util.chunkData.ClimateSyncPacket;
@@ -42,7 +44,15 @@ public class ClimateEventHandler {
 
         if (event.getModel() instanceof BiomeBasedClimateModel) {
 
-            event.setModel(VanillaClimateModel.INSTANCE);
+            if(FirmaCompat.isEclipticLoaded && FirmaCompat.isLSOLoaded){
+                event.setModel(EclipticSeasonsLSOClimateModel.INSTANCE);
+            } else if (FirmaCompat.isEclipticLoaded){
+                event.setModel(EclipticSeasonsClimateModel.INSTANCE);
+            } else if (isSereneLoaded) {
+                event.setModel(SereneClimateModel.INSTANCE);
+            } else {
+                event.setModel(VanillaClimateModel.INSTANCE);
+            }
 
             FirmaCompat.LOGGER.info(
                     "Applied Compat Climate Model for dimension: {}",

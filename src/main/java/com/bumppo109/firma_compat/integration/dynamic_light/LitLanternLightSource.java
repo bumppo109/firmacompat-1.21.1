@@ -1,6 +1,6 @@
 package com.bumppo109.firma_compat.integration.dynamic_light;
 
-import com.bumppo109.firma_compat.util.ModDataComponents;
+import com.bumppo109.firma_compat.data.ModDataComponents;
 import dev.lambdaurora.lambdynlights.api.item.ItemLightSource;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

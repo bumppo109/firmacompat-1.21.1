@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1500,
         "sell": {
           "item": "tfc:metal/helmet/copper",
@@ -13,7 +13,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2000,
         "sell": {
           "item": "tfc:metal/chestplate/copper",
@@ -23,7 +23,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1750,
         "sell": {
           "item": "tfc:metal/greaves/copper",
@@ -33,7 +33,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1300,
         "sell": {
           "item": "tfc:metal/greaves/copper",
@@ -45,7 +45,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1900,
         "sell": {
           "item": "tfc:metal/helmet/bronze",
@@ -55,7 +55,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2500,
         "sell": {
           "item": "tfc:metal/chestplate/bronze",
@@ -65,7 +65,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2200,
         "sell": {
           "item": "tfc:metal/greaves/bronze",
@@ -75,7 +75,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1600,
         "sell": {
           "item": "tfc:metal/greaves/bronze",
@@ -87,7 +87,7 @@
     ],
     "journeyman": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 3500,
         "sell": {
           "item": "tfc:metal/helmet/wrought_iron",
@@ -97,7 +97,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 4500,
         "sell": {
           "item": "tfc:metal/chestplate/wrought_iron",
@@ -107,7 +107,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 4000,
         "sell": {
           "item": "tfc:metal/greaves/wrought_iron",
@@ -117,7 +117,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 3000,
         "sell": {
           "item": "tfc:metal/greaves/wrought_iron",
@@ -129,7 +129,7 @@
     ],
     "expert": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 6000,
         "sell": {
           "item": "tfc:metal/helmet/steel",
@@ -139,7 +139,7 @@
         "villager_experience": 25
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 8000,
         "sell": {
           "item": "tfc:metal/chestplate/steel",
@@ -149,7 +149,7 @@
         "villager_experience": 30
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 7000,
         "sell": {
           "item": "tfc:metal/greaves/steel",
@@ -159,7 +159,7 @@
         "villager_experience": 30
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 5200,
         "sell": {
           "item": "tfc:metal/greaves/steel",
@@ -171,7 +171,7 @@
     ],
     "master": [
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 3600,
         "allow_treasure": false,
         "level": 30,
@@ -182,7 +182,7 @@
         "villager_experience": 40
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 3000,
         "allow_treasure": false,
         "level": 30,
@@ -193,7 +193,7 @@
         "villager_experience": 40
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 3400,
         "allow_treasure": false,
         "level": 30,
@@ -204,7 +204,7 @@
         "villager_experience": 40
       },
       {
-        "type": "numismatic-overhaul:enchant_item",
+        "type": "numismaticoverhaul:enchant_item",
         "base_price": 5000,
         "allow_treasure": false,
         "level": 30,

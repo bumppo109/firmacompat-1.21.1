@@ -12,6 +12,7 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
+import com.eerussianguy.beneath.common.blocks.BeneathBlocks;
 import com.eerussianguy.firmalife.common.items.FLItems;
 import com.mojang.serialization.Codec;
 import com.therighthon.rnr.common.block.RNRBlocks;
@@ -78,6 +79,7 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
     ModLoadedCondition flLoaded = new ModLoadedCondition("firmalife");
     ModLoadedCondition rnrLoaded = new ModLoadedCondition("rnr");
     ModLoadedCondition cinchLoaded = new ModLoadedCondition("cinchsmissingblocks");
+    ModLoadedCondition beneathLoaded = new ModLoadedCondition("beneath");
 
     final Codec<Unit> emptyRecipeCodec = Codec.STRING.fieldOf("type")
             .codec()
@@ -598,6 +600,15 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
 
         add("cinchsmissingblocks/polished_calcite", polishedCalciteRecipe, cinchLoaded);
         add("cinchsmissingblocks/polished_dripstone", polishedDripstoneRecipe, cinchLoaded);
+
+        //Beneath
+        recipe()
+                .input('A', ModItems.LUMBER.get(CompatWood.CRIMSON).get())
+                .input('B', ModItems.LUMBER.get(CompatWood.WARPED).get())
+                .input('C', Items.COMPOSTER)
+                .pattern("ACA", "AAA", "BBB")
+                .shaped(BeneathBlocks.UNPOSTER.get().asItem());
+
     }
 
     @Override

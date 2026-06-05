@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 400,
         "buy": {
           "item": "tfc:powder/salt",
@@ -12,7 +12,7 @@
         "max_uses": 6
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 420,
         "buy": {
           "item": "tfc:food/chicken",
@@ -21,7 +21,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 200,
         "buy": {
           "item": "tfc:food/venison",
@@ -30,7 +30,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 300,
         "buy": {
           "item": "tfc:food/pork",
@@ -39,7 +39,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "tfc:food/cooked_venison",
@@ -51,7 +51,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 150,
         "buy": {
           "item": "coal",
@@ -60,7 +60,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "tfc:powder/salt",
@@ -70,7 +70,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 400,
         "sell": {
           "item": "tfc:food/cooked_chicken",
@@ -79,7 +79,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 400,
         "sell": {
           "item": "tfc:food/cooked_pork",
@@ -91,7 +91,7 @@
     ],
     "journeyman": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 400,
         "buy": {
           "item": "tfc:food/beef",
@@ -101,7 +101,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 300,
         "sell": {
           "item": "tfc:food/cooked_beef",
@@ -111,7 +111,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "tfc:food/cooked_mutton",
@@ -122,7 +122,7 @@
     ],
     "expert": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 600,
         "buy": {
           "item": "sweet_berries",
@@ -130,7 +130,7 @@
         }
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 400,
         "sell": {
           "item": "tfc:food/cooked_mutton",
@@ -140,7 +140,7 @@
         "villager_experience": 8
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 800,
         "sell": {
           "item": "tfc:food/cooked_beef",
@@ -152,7 +152,7 @@
     ],
     "master": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 10000,
         "sell": {
           "item": "tfc:metal/knife/steel",
@@ -162,7 +162,7 @@
         "villager_experience": 30
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 2000,
         "sell": {
           "item": "tfc:powder/salt",

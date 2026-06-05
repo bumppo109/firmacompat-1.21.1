@@ -2,7 +2,6 @@
   "values": [
     "minecraft:cat",
     "minecraft:chicken",
-    "minecraft:cod",
     "minecraft:cow",
     "minecraft:donkey",
     "minecraft:frog",
@@ -12,7 +11,6 @@
     "minecraft:ocelot",
     "minecraft:pig",
     "minecraft:rabbit",
-    "minecraft:salmon",
     "minecraft:sheep",
     "minecraft:squid",
     "minecraft:tadpole",
@@ -25,6 +23,8 @@
     "minecraft:panda",
     "minecraft:polar_bear",
     "minecraft:pufferfish",
-    "minecraft:wolf"
+    "minecraft:wolf",
+    "minecraft:cod",
+    "minecraft:salmon"
   ]
 }

@@ -1,6 +1,6 @@
 package com.bumppo109.firma_compat.loot;
 
-import com.bumppo109.firma_compat.util.ModDataComponents;
+import com.bumppo109.firma_compat.data.ModDataComponents;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.dries007.tfc.common.blockentities.LampBlockEntity;

@@ -3,7 +3,7 @@
   "trades": {
     "novice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 200,
         "buy": {
           "item": "tfc:seeds/wheat",
@@ -12,7 +12,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 200,
         "buy": {
           "item": "tfc:seeds/oat",
@@ -21,7 +21,7 @@
         "max_uses": 16
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 350,
         "sell": {
           "item": "tfc:food/wheat_flour",
@@ -31,7 +31,7 @@
         "villager_experience": 10
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 350,
         "sell": {
           "item": "tfc:food/oat_flour",
@@ -43,7 +43,7 @@
     ],
     "apprentice": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 250,
         "buy": {
           "item": "tfc:food/wheat_grain",
@@ -52,7 +52,7 @@
         "max_uses": 12
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 250,
         "buy": {
           "item": "tfc:food/oat_grain",
@@ -61,7 +61,7 @@
         "max_uses": 12
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 500,
         "sell": {
           "item": "tfc:food/barley_flour",
@@ -73,7 +73,7 @@
     ],
     "journeyman": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 300,
         "buy": {
           "item": "tfc:food/barley_grain",
@@ -82,7 +82,7 @@
         "max_uses": 10
       },
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 220,
         "buy": {
           "item": "tfc:food/cabbage",
@@ -91,7 +91,7 @@
         "max_uses": 12
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 450,
         "sell": {
           "item": "tfc:food/rye_flour",
@@ -101,7 +101,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 600,
         "sell": {
           "item": "tfc:food/barley_dough",
@@ -113,7 +113,7 @@
     ],
     "expert": [
       {
-        "type": "numismatic-overhaul:buy_stack",
+        "type": "numismaticoverhaul:buy_stack",
         "price": 350,
         "buy": {
           "item": "tfc:food/rye_grain",
@@ -123,7 +123,7 @@
         "villager_experience": 15
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 800,
         "sell": {
           "item": "tfc:food/wheat_flour",
@@ -133,7 +133,7 @@
         "villager_experience": 20
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 700,
         "sell": {
           "item": "tfc:food/oat_flour",
@@ -145,7 +145,7 @@
     ],
     "master": [
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1200,
         "sell": {
           "item": "tfc:food/barley_flour",
@@ -155,7 +155,7 @@
         "villager_experience": 25
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1500,
         "sell": {
           "item": "tfc:food/rye_flour",
@@ -165,7 +165,7 @@
         "villager_experience": 25
       },
       {
-        "type": "numismatic-overhaul:sell_stack",
+        "type": "numismaticoverhaul:sell_stack",
         "price": 1000,
         "sell": {
           "item": "minecraft:enchanted_book",

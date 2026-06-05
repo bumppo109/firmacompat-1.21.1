@@ -1,6 +1,8 @@
 package com.bumppo109.firma_compat.util.climate;
 
 import com.bumppo109.firma_compat.FirmaCompat;
+import com.bumppo109.firma_compat.integration.ecliptic.EclipticSeasonsClimateModel;
+import com.bumppo109.firma_compat.integration.ecliptic.EclipticSeasonsLSOClimateModel;
 import com.bumppo109.firma_compat.integration.sereneseasons.SereneClimateModel;
 import io.netty.buffer.ByteBuf;
 import net.dries007.tfc.util.Helpers;
@@ -23,6 +25,8 @@ public class ModClimateModels {
             DeferredRegister.create(KEY, FirmaCompat.MODID);
 
     // Your custom model entry
+    public static final Id<EclipticSeasonsClimateModel> ECLIPTIC_MODEL = register("ecliptic", EclipticSeasonsClimateModel.STREAM_CODEC);
+    public static final Id<EclipticSeasonsLSOClimateModel> ECLIPTIC_LSO_MODEL = register("ecliptic_lso", EclipticSeasonsLSOClimateModel.STREAM_CODEC);
     public static final Id<SereneClimateModel> SERENE_MODEL = register("serene", SereneClimateModel.STREAM_CODEC);
     public static final Id<VanillaClimateModel> VANILLA_MODEL = register("vanilla", VanillaClimateModel.STREAM_CODEC);
 

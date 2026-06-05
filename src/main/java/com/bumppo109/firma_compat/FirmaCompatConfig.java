@@ -29,6 +29,8 @@ public class FirmaCompatConfig {
         public final ModConfigSpec.DoubleValue tempShift;
         public final ModConfigSpec.DoubleValue rainScale;
 
+        public final ModConfigSpec.DoubleValue oceanDepthScale;
+
         public Common(ModConfigSpec.Builder builder) {
 
             builder.push("animals");
@@ -120,6 +122,22 @@ public class FirmaCompatConfig {
                             250.0,
                             0.0,
                             Double.MAX_VALUE
+                    );
+
+            builder.pop();
+
+            builder.push("world");
+
+            oceanDepthScale = builder
+                    .comment(
+                            "Depth scale for ocean depth",
+                            "Default: 2"
+                    )
+                    .defineInRange(
+                            "oceanDepthScale",
+                            2.0,
+                            0.0,
+                            4.0
                     );
 
             builder.pop();

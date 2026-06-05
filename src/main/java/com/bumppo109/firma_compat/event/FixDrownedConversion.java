@@ -24,8 +24,7 @@ public class FixDrownedConversion {
     public static void handleSaltWaterBreathing(LivingBreatheEvent event) {
         LivingEntity entity = event.getEntity();
 
-        // Early exit: only care about zombies and drowned
-        if (!(entity instanceof Zombie || entity instanceof Drowned)) return;
+        if(!(entity.getType().is(ModTags.Entities.CAN_SURVIVE_SALT_WATER) || entity instanceof Zombie)) return;
 
         // Quick check: skip if not in fluid at all
         if (!entity.isInWater() && !entity.isInFluidType(TFCFluids.SALT_WATER.getSource().getFluidType())) {
@@ -35,54 +34,31 @@ public class FixDrownedConversion {
         BlockPos eyePos = BlockPos.containing(entity.getEyePosition());
         FluidState eyeFluid = entity.level().getFluidState(eyePos);
 
-        // Only act if eye is in TFC salt water (use your tag for consistency)
         if (!eyeFluid.is(ModTags.Fluids.WATERLOGGING_WATER)) {
             return;
         }
 
-        // Drowned: full immunity in salt water
-        if (entity instanceof Drowned) {
-            event.setCanBreathe(true);
-            event.setRefillAirAmount(entity.getMaxAirSupply()); // instant full refill
-            event.setConsumeAirAmount(0); // no depletion even if canBreathe=false
-            return;
+        //Drowned Conversion
+        if(entity instanceof Zombie){
+            Zombie zombie = (Zombie) entity;
+
+            // Skip if zombie has water breathing or can breathe underwater
+            if (zombie.canBreatheUnderwater() || zombie.hasEffect(MobEffects.WATER_BREATHING)) {
+                event.setCanBreathe(true);
+                event.setRefillAirAmount(4); // fast refill like vanilla out-of-water
+                event.setConsumeAirAmount(0);
+                return;
+            }
+
+            // Normal drowning: consume air, apply damage later via vanilla
+            event.setCanBreathe(false);
+            event.setConsumeAirAmount(1);      // 1 per tick = 20 per second (vanilla rate)
+            event.setRefillAirAmount(0);
         }
 
-        // Zombie: simulate drowning
-        Zombie zombie = (Zombie) entity;
-
-        // Skip if zombie has water breathing or can breathe underwater
-        if (zombie.canBreatheUnderwater() || zombie.hasEffect(MobEffects.WATER_BREATHING)) {
-            event.setCanBreathe(true);
-            event.setRefillAirAmount(4); // fast refill like vanilla out-of-water
-            event.setConsumeAirAmount(0);
-            return;
-        }
-
-        // Normal drowning: consume air, apply damage later via vanilla
-        event.setCanBreathe(false);
-        event.setConsumeAirAmount(1);      // 1 per tick = 20 per second (vanilla rate)
-        event.setRefillAirAmount(0);
+        // Default: full immunity in salt water
+        event.setCanBreathe(true);
+        event.setRefillAirAmount(entity.getMaxAirSupply()); // instant full refill
+        event.setConsumeAirAmount(0); // no depletion even if canBreathe=false
     }
-    /**
-     * Fallback / reinforcement: zero damage in Pre too.
-     * This catches any damage that slips through HurtEvent.
-     */
-    /*
-    @SubscribeEvent
-    public static void drownedImmune(LivingDamageEvent.Pre event) {
-        LivingEntity entity = event.getEntity();
-
-        if (!(entity instanceof Drowned)) return;
-        if (!event.getSource().is(net.minecraft.world.damagesource.DamageTypes.DROWN)) return;
-
-        BlockPos eye = BlockPos.containing(entity.getEyePosition());
-        FluidState fluid = entity.level().getFluidState(eye);
-
-        if (fluid.is(ModTags.Fluids.WATERLOGGING_WATER)) {
-            event.setNewDamage(0.0F);
-        }
-    }
-
-     */
 }
