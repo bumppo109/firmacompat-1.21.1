@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "afc"
+    }
+  ],
   "type": "afc:tree_tapping",
   "input_block": [
     "minecraft:birch_log",

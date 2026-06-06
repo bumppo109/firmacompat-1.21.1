@@ -121,6 +121,16 @@ public interface ModCraftingRecipes extends ModRecipes
                 "stone_bricks_from_stone_stonecutting",
                 "stone_pressure_plate",
                 "stone_button",
+                "tuff_bricks",
+                "tuff_bricks_from_tuff_stonecutting",
+                "tuff_brick_stairs_from_tuff_stonecutting",
+                "tuff_brick_slab_from_tuff_stonecutting",
+                "tuff_brick_wall_from_tuff_stonecutting",
+                "chiseled_tuff",
+                "chiseled_tuff_from_tuff_stonecutting",
+                "chiseled_tuff_bricks",
+                "chiseled_tuff_bricks_from_tuff_stonecutting",
+                "polished_tuff",
                 "deepslate_bricks",
                 "cobbled_deepslate",
                 "chiseled_deepslate",
@@ -876,6 +886,14 @@ public interface ModCraftingRecipes extends ModRecipes
                 .source(0, 2)
                 .shaped(Blocks.COPPER_BLOCK, 8);
         recipe()
+                .input('S', ingredientOf(Metal.GOLD, Metal.ItemType.SHEET))
+                .input('W', ItemTags.PLANKS)
+                .input('H', TFCTags.Items.TOOLS_HAMMER)
+                .pattern(" SH", "SWS", " S ")
+                .damageInputs()
+                .source(0, 2)
+                .shaped(Blocks.GOLD_BLOCK, 8);
+        recipe()
                 .input('B', Blocks.COPPER_BLOCK)
                 .pattern("BBB")
                 .shaped(TFCBlocks.METALS.get(Metal.COPPER).get(Metal.BlockType.BLOCK_SLAB), 6);
@@ -991,6 +1009,11 @@ public interface ModCraftingRecipes extends ModRecipes
                 .pattern("BBB", " C ", " B ")
                 .shaped(Items.LECTERN);
         recipe()
+                .input('B', Items.BOOK)
+                .input('C', Items.CHISELED_BOOKSHELF)
+                .pattern("BBB", "BBB", "C  ")
+                .shaped(Items.BOOKSHELF);
+        recipe()
                 .input('B', ModTags.Items.COMPAT_LUMBER)
                 .input('C', Tags.Items.RODS_WOODEN)
                 .pattern("BBB", "CCC", "BBB")
@@ -1015,6 +1038,11 @@ public interface ModCraftingRecipes extends ModRecipes
                 .input('X', Items.TRIPWIRE_HOOK)
                 .pattern("LX ")
                 .shaped(Items.TRAPPED_CHEST);
+        recipe()
+                .input('L', TFCItems.ORES.get(Ore.AMETHYST).get())
+                .pattern("LL ", "LL ")
+                .shaped(Items.AMETHYST_BLOCK);
+
     }
 
     /**
