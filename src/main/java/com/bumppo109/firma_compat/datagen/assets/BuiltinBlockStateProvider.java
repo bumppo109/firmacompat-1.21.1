@@ -16,6 +16,7 @@ import net.dries007.tfc.common.blocks.devices.SluiceBlock;
 import net.dries007.tfc.common.blocks.rock.LooseRockBlock;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
+import net.dries007.tfc.common.blocks.rock.RockSpikeBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -72,15 +73,6 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
                 .withExistingParent(("glow_berries_jar_unsealed_item"), modLoc("block/template/jar_no_lid_item"))
                 .texture("1", glowBerryJarTexture)
                 .texture("2", modLoc("block/template/jar_no_lid"));
-
-        for (Rock rock : Rock.values()){
-            Block hardCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
-            ModelFile hardCobbledModel = models().withExistingParent("compat_hardened_" + rock.getSerializedName() + "_cobble", mcLoc("block/cube_all"))
-                    .texture("all", modLoc("block/template/tfc_cobble/" + rock.getSerializedName()));
-
-            //blockstate and model files are not generated
-            //simpleBlockItem(hardCobbleBlock, hardCobbledModel);
-        }
 
         for (CompatWood wood : CompatWood.VALUES) {
             String woodName = wood.getSerializedName();
@@ -840,6 +832,7 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
             Block hardenedBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.HARDENED).get();
             Block looseCobbleBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE_COBBLE).get();
             Block hardenedCobbleBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.HARDENED_COBBLE).get();
+            Block spikeBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.SPIKE).get();
 
             Block rawBlock = switch (rockName) {
                 case "dripstone" -> Blocks.DRIPSTONE_BLOCK;
@@ -941,6 +934,24 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
 
             simpleBlock(looseCobbleBlock, looseCobbledModel);
             simpleBlock(hardenedCobbleBlock, hardenedCobbledModel);
+
+            ModelFile spikeBaseModel = models().withExistingParent(("block/spike/" + rockName + "_base"), modLoc("block/template/spike_base"))
+                    .texture("texture", rockTexture)
+                    .texture("particle", rockTexture);
+            ModelFile spikeMiddleModel = models().withExistingParent(("block/spike/" + rockName + "_middle"), modLoc("block/template/spike_middle"))
+                    .texture("texture", rockTexture)
+                    .texture("particle", rockTexture);
+            ModelFile spikeTipModel = models().withExistingParent(("block/spike/" + rockName + "_tip"), modLoc("block/template/spike_tip"))
+                    .texture("texture", rockTexture)
+                    .texture("particle", rockTexture);
+
+            getVariantBuilder(spikeBlock).partialState()
+                    .partialState().with(RockSpikeBlock.PART, RockSpikeBlock.Part.BASE)
+                    .modelForState().modelFile(spikeBaseModel).addModel()
+                    .partialState().with(RockSpikeBlock.PART, RockSpikeBlock.Part.MIDDLE)
+                    .modelForState().modelFile(spikeMiddleModel).addModel()
+                    .partialState().with(RockSpikeBlock.PART, RockSpikeBlock.Part.TIP)
+                    .modelForState().modelFile(spikeTipModel).addModel();
 
             if(ModList.get().isLoaded("firmalife")){
                 for(Ore.Grade grade : Ore.Grade.values()){

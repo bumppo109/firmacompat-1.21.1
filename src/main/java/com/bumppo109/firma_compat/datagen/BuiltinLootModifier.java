@@ -6,9 +6,6 @@ import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.item.ModItems;
 import com.bumppo109.firma_compat.loot_modifiers.ItemRemoverLootModifier;
 import com.bumppo109.firma_compat.loot_modifiers.ItemSwapModifier;
-import com.eerussianguy.beneath.common.blocks.BeneathBlocks;
-import com.eerussianguy.beneath.common.blocks.Stem;
-import com.eerussianguy.beneath.common.items.BeneathItems;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.wood.Wood;
@@ -46,20 +43,6 @@ public class BuiltinLootModifier extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        //beneath dependent swaps
-        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.LOG).get().asItem(), Items.WARPED_STEM, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), Items.STRIPPED_WARPED_STEM, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.WOOD).get().asItem(), Items.WARPED_HYPHAE, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.WARPED).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), Items.STRIPPED_WARPED_HYPHAE, new ModLoadedCondition("beneath"));
-
-        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.LOG).get().asItem(), Items.CRIMSON_STEM, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.STRIPPED_LOG).get().asItem(), Items.STRIPPED_CRIMSON_STEM, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.WOOD).get().asItem(), Items.CRIMSON_HYPHAE, new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.WOODS.get(Stem.CRIMSON).get(Wood.BlockType.STRIPPED_WOOD).get().asItem(), Items.STRIPPED_CRIMSON_HYPHAE, new ModLoadedCondition("beneath"));
-
-        swap(BeneathBlocks.BLACKSTONE_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.BLACKSTONE).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
-        swap(BeneathBlocks.NETHER_PEBBLE.get().asItem(), ModBlocks.ROCK_BLOCKS.get(CompatRock.NETHERRACK).get(CompatRock.BlockType.LOOSE).get().asItem(), new ModLoadedCondition("beneath"));
-
         //chest
         swap(Items.CHEST, ModBlocks.COMPAT_CHEST.get().asItem());
         swap(Items.TRAPPED_CHEST, ModBlocks.COMPAT_TRAPPED_CHEST.get().asItem());

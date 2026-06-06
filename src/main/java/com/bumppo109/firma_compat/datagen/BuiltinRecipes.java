@@ -12,7 +12,6 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
-import com.eerussianguy.beneath.common.blocks.BeneathBlocks;
 import com.eerussianguy.firmalife.common.items.FLItems;
 import com.mojang.serialization.Codec;
 import com.therighthon.rnr.common.block.RNRBlocks;
@@ -155,8 +154,6 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
         add(new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_DIRT.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
         add("clay_grass_block", new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_GRASS_BLOCK.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
         add("clay_podzol", new LandslideRecipe(BlockIngredient.of(ModBlocks.CLAY_PODZOL.get()), ModBlocks.CLAY_DIRT.get().defaultBlockState()));
-        add("snow_block", new LandslideRecipe(BlockIngredient.of(Blocks.SNOW_BLOCK), Blocks.POWDER_SNOW.defaultBlockState()));
-        add("powder_snow", new LandslideRecipe(BlockIngredient.of(Blocks.POWDER_SNOW), Blocks.POWDER_SNOW.defaultBlockState()));
 
         for(CompatRock rock : CompatRock.VALUES){
             Block looseCobbleBlock = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE_COBBLE).get();
@@ -601,15 +598,6 @@ public class BuiltinRecipes extends RecipeProvider implements ModRecipes,
 
         add("cinchsmissingblocks/polished_calcite", polishedCalciteRecipe, cinchLoaded);
         add("cinchsmissingblocks/polished_dripstone", polishedDripstoneRecipe, cinchLoaded);
-
-        //Beneath
-        recipe()
-                .input('A', ModItems.LUMBER.get(CompatWood.CRIMSON).get())
-                .input('B', ModItems.LUMBER.get(CompatWood.WARPED).get())
-                .input('C', Items.COMPOSTER)
-                .pattern("ACA", "AAA", "BBB")
-                .shaped(BeneathBlocks.UNPOSTER.get().asItem());
-
     }
 
     @Override

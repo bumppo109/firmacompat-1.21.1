@@ -6,6 +6,7 @@ import net.dries007.tfc.common.Lore;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.LooseRockBlock;
 import net.dries007.tfc.common.blocks.rock.RockDisplayCategory;
+import net.dries007.tfc.common.blocks.rock.RockSpikeBlock;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemLore;
@@ -84,6 +85,7 @@ public enum CompatRock implements ModRegistryRock {
         LOOSE_COBBLE((rock, self) -> new Block(properties(rock).strength(rock.category().hardness(5.5f), 10).requiresCorrectToolForDrops()), false),
         HARDENED_COBBLE((rock, self) -> new Block(properties(rock).strength(rock.category().hardness(6.5f), 10).requiresCorrectToolForDrops()), false),
         LOOSE((rock, self) -> new LooseRockBlock(properties(rock).strength(0.05f, 0.0f).noCollission()), false),
+        SPIKE((rock, self) -> new RockSpikeBlock(properties(rock).strength(rock.category().hardness(4.0F), 10.0F).requiresCorrectToolForDrops().lightLevel(TFCBlocks.lavaLoggedBlockEmission())), false),
         ;
 
         public static final BlockType[] VALUES = values();

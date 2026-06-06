@@ -8,12 +8,14 @@ import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import static com.bumppo109.firma_compat.block.ModBlocks.GRADED_ORES;
@@ -43,6 +45,12 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
         basicItem(glowBerryJarUnsealed);
 
         basicItem(ModItems.UNFINISHED_LANTERN.get());
+
+        for (Rock rock : Rock.values()){
+            Block hardCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
+            //blockstate and model files are not generated
+            simpleBlockItem(hardCobbleBlock);
+        }
 
 
         for (CompatWood wood : CompatWood.VALUES) {
@@ -145,6 +153,7 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
             Block hardenedBlock = rockMap.get(CompatRock.BlockType.HARDENED).get();
             Block looseCobbleBlock = rockMap.get(CompatRock.BlockType.LOOSE_COBBLE).get();
             Block hardenedCobbleBlock = rockMap.get(CompatRock.BlockType.HARDENED_COBBLE).get();
+            Block spikeBlock = rockMap.get(CompatRock.BlockType.SPIKE).get();
 
             //loose
             basicItem(looseBlock.asItem());
@@ -153,6 +162,8 @@ public class BuiltinItemModelProvider extends ItemModelProvider {
             simpleBlockItem(hardenedBlock);
             simpleBlockItem(looseCobbleBlock);
             simpleBlockItem(hardenedCobbleBlock);
+
+            withExistingParent(blockPathName(spikeBlock), modLoc("block/spike/" + rock.getSerializedName() + "_base"));
 
             // Rock ores (non-graded)
             var oreMap = ORES.get(rock);

@@ -74,7 +74,6 @@ public interface ModAnvilRecipes extends ModRecipes
 
 
         anvil(Metal.COPPER, Metal.ItemType.SHEET, Items.COPPER_TRAPDOOR, 1, false, DRAW_THIRD_LAST, DRAW_SECOND_LAST, BEND_LAST);
-        anvil(Metal.COPPER, Metal.ItemType.SHEET, Items.COPPER_DOOR, 1, false, DRAW_NOT_LAST, PUNCH_NOT_LAST, HIT_LAST);
         anvil(Metal.CAST_IRON, Metal.ItemType.INGOT, Items.CHAIN, 16, DRAW_NOT_LAST, HIT_ANY);
 
         anvil(Metal.CAST_IRON, Metal.ItemType.INGOT, ModItems.UNFINISHED_LANTERN.get(), 1, DRAW_THIRD_LAST, BEND_SECOND_LAST, BEND_LAST);

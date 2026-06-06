@@ -152,6 +152,8 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         addAllCompatRocks(CompatRock.BlockType.HARDENED, BlockTags.MINEABLE_WITH_PICKAXE);
         addAllCompatRocks(CompatRock.BlockType.LOOSE, STONES_LOOSE);
         addAllCompatRocks(CompatRock.BlockType.LOOSE, CAN_BE_SNOW_PILED);
+        addAllCompatRocks(CompatRock.BlockType.SPIKE, STONES_SPIKE);
+        addAllCompatRocks(CompatRock.BlockType.SPIKE, BlockTags.MINEABLE_WITH_PICKAXE);
 
         tag(ANVILS).add(ModBlocks.PRIMITIVE_ANVIL.get());
 

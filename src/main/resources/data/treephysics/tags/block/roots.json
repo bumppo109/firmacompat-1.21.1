@@ -9,6 +9,8 @@
     { "id": "tfc:rooted_dirt/alfisol", "required": false },
     { "id": "tfc:rooted_dirt/mollisol", "required": false },
 
+    { "id": "tfc:tree_roots", "required": false },
+
     { "id": "tfc:muddy_roots/entisol", "required": false },
     { "id": "tfc:muddy_roots/ardisol", "required": false },
     { "id": "tfc:muddy_roots/oxisol", "required": false },

@@ -123,6 +123,7 @@ public interface ModCraftingRecipes extends ModRecipes
                 "stone_button",
                 "tuff_bricks",
                 "tuff_bricks_from_tuff_stonecutting",
+                "tuff_bricks_from_polished_tuff_stonecutting",
                 "tuff_brick_stairs_from_tuff_stonecutting",
                 "tuff_brick_slab_from_tuff_stonecutting",
                 "tuff_brick_wall_from_tuff_stonecutting",
@@ -310,6 +311,7 @@ public interface ModCraftingRecipes extends ModRecipes
                 "spruce_sign",
                 "spruce_hanging_sign",
                 "chiseled_stone_bricks_stone_from_stonecutting",
+                "deepslate_bricks_from_polished_deepslate_stonecutting",
                 "deepslate_brick_wall_from_cobbled_deepslate_stonecutting",
                 "deepslate_tile_slab_from_cobbled_deepslate_stonecutting",
                 "deepslate_tile_stairs_from_cobbled_deepslate_stonecutting",
@@ -558,12 +560,6 @@ public interface ModCraftingRecipes extends ModRecipes
                     .shaped(wood.pressurePlate());
         }
         //Bamboo
-        recipe()
-                .input('L', Items.BAMBOO)
-                .input('X', TFCItems.WOOL_YARN)
-                .pattern("LLL", "LXL", "LLL")
-                .shaped(Items.BAMBOO_BLOCK);
-
         recipe().to2x2(ModItems.BAMBOO_LUMBER, Items.BAMBOO_PLANKS, 1);
 
         recipe()

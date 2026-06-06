@@ -130,6 +130,9 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                         if(type == CompatRock.BlockType.LOOSE_COBBLE || type == CompatRock.BlockType.HARDENED_COBBLE){
                             dropSelf(block);
                         }
+                        if(type.equals(CompatRock.BlockType.SPIKE)){
+                            addSpikeLoot(block, rock);
+                        }
                     }
                 }
             }
@@ -385,6 +388,20 @@ public class BuiltinLootTableProvider extends LootTableProvider {
             );
         }
 
+        private void addSpikeLoot(Block spikeBlock, CompatRock rock) {
+            Item loose = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE).get().asItem();
+
+            add(spikeBlock, LootTable.lootTable()
+                    .withPool(lootPool()
+                            .name("loot_pool")
+                            .setRolls(ConstantValue.exactly(1))
+                            .add(LootItem.lootTableItem(loose)
+                                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 4))))
+                            .when(survivesExplosion())
+                    )
+            );
+        }
+
         /**
          * Adds a loot table for a drying bricks block that drops:
          * - drying_bricks/<soil> when not dried (based on count)
@@ -478,7 +495,8 @@ public class BuiltinLootTableProvider extends LootTableProvider {
                         return type == CompatRock.BlockType.LOOSE
                                 || type == CompatRock.BlockType.HARDENED
                                 || type == CompatRock.BlockType.LOOSE_COBBLE
-                                || type == CompatRock.BlockType.HARDENED_COBBLE;
+                                || type == CompatRock.BlockType.HARDENED_COBBLE
+                                || type == CompatRock.BlockType.SPIKE;
                     })
                     .map(entry -> entry.getValue().get());
 

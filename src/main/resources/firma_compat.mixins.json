@@ -10,6 +10,7 @@
     "PlayerInfoMixin",
     "LevelRendererExtensionMixin",
     "BiomeNoiseMixin",
+    "BuriedTreasurePieceMixin",
     "ForestFeatureMixin",
     "legendarysurvivaloverhaul.LegendarySurvivalOverhaulMixin"
   ],
