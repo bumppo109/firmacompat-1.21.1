@@ -22,6 +22,7 @@ import com.therighthon.rnr.common.recipe.MattockRecipe;
 import net.cinchtail.cinchsmissingblocks.CinchsMissingBlocks;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.items.Food;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.player.ChiselMode;

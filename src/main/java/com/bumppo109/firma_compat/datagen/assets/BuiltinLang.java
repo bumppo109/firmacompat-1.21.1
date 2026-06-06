@@ -7,7 +7,9 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatItems;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.util.Metal;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -197,6 +199,12 @@ public class BuiltinLang extends LanguageProvider {
         add(glowBerryJar, getItemDisplayName(glowBerryJar));
         add(glowBerryJarUnsealed, getItemDisplayName(glowBerryJarUnsealed));
         add(glowBerryJam, getItemDisplayName(glowBerryJam));
+
+        for(Rock rock : Rock.values()){
+            Block hardCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
+
+            add(hardCobbleBlock, "Hardened " + cleanUpString(rock.getSerializedName()) + " Cobble");
+        }
 
         // Wood Related
         Block chestBlock = ModBlocks.COMPAT_CHEST.get();

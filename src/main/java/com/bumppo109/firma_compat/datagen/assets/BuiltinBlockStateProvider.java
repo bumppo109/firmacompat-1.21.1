@@ -9,11 +9,13 @@ import com.bumppo109.firma_compat.integration.firmalife.CompatFLBlocks;
 import com.bumppo109.firma_compat.integration.rnr.CompatRNR;
 import com.bumppo109.firma_compat.integration.rnr.RNRCompatBlocks;
 import com.eerussianguy.firmalife.common.blocks.*;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.devices.BarrelBlock;
 import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
 import net.dries007.tfc.common.blocks.devices.SluiceBlock;
 import net.dries007.tfc.common.blocks.rock.LooseRockBlock;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -70,6 +72,15 @@ public class BuiltinBlockStateProvider extends BlockStateProvider {
                 .withExistingParent(("glow_berries_jar_unsealed_item"), modLoc("block/template/jar_no_lid_item"))
                 .texture("1", glowBerryJarTexture)
                 .texture("2", modLoc("block/template/jar_no_lid"));
+
+        for (Rock rock : Rock.values()){
+            Block hardCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
+            ModelFile hardCobbledModel = models().withExistingParent("compat_hardened_" + rock.getSerializedName() + "_cobble", mcLoc("block/cube_all"))
+                    .texture("all", modLoc("block/template/tfc_cobble/" + rock.getSerializedName()));
+
+            //blockstate and model files are not generated
+            //simpleBlockItem(hardCobbleBlock, hardCobbledModel);
+        }
 
         for (CompatWood wood : CompatWood.VALUES) {
             String woodName = wood.getSerializedName();

@@ -1,4 +1,4 @@
-package com.bumppo109.firma_compat.mixin;
+package com.bumppo109.firma_compat.mixin.legendarysurvivaloverhaul;
 
 import com.bumppo109.firma_compat.FirmaCompat;
 import net.neoforged.bus.api.IEventBus;

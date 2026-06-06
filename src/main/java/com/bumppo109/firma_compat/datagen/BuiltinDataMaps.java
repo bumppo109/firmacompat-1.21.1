@@ -3,6 +3,8 @@ package com.bumppo109.firma_compat.datagen;
 import com.bumppo109.firma_compat.block.CompatRock;
 import com.bumppo109.firma_compat.block.ModBlocks;
 import com.bumppo109.firma_compat.data.ModDataMaps;
+import net.dries007.tfc.common.blocks.TFCBlocks;
+import net.dries007.tfc.common.blocks.soil.SoilBlockType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -56,6 +58,7 @@ public class BuiltinDataMaps extends DataMapProvider
         addOreReplace(Blocks.DEEPSLATE_EMERALD_ORE, Blocks.DEEPSLATE);
         addOreReplace(Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.DEEPSLATE);
         addOreReplace(Blocks.DEEPSLATE_LAPIS_ORE, Blocks.DEEPSLATE);
+
     }
 
     private void addHardened(Block raw, Block hardened) {
@@ -66,6 +69,7 @@ public class BuiltinDataMaps extends DataMapProvider
                 false                                                   // replace = false
         );
     }
+
     private void addOreReplace(Block ore, Block replace) {
         // Option A – cleanest: use ResourceKey / Holder + ResourceLocation value
         builder(ModDataMaps.VANILLA_ORE_REPLACEMENT).add(

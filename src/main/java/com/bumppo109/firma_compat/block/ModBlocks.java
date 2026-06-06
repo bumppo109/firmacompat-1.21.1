@@ -13,6 +13,7 @@ import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.devices.DryingBricksBlock;
 import net.dries007.tfc.common.blocks.devices.LampBlock;
 import net.dries007.tfc.common.blocks.rock.AqueductBlock;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.rock.RockAnvilBlock;
 import net.dries007.tfc.common.blocks.soil.FarmlandBlock;
 import net.dries007.tfc.common.blocks.wood.TFCChestBlock;
@@ -62,6 +63,11 @@ public class ModBlocks {
                             .blockEntity(TFCBlockEntities.LAMP)),
             block -> new FirmaLampItem(block, new Item.Properties().stacksTo(1))
     );
+
+    public static final Map<Rock, Id<Block>> COMPAT_HARDENED_COBBLE =
+            Helpers.mapOf(Rock.class,rock -> register("compat_hardened_" + rock.getSerializedName() + "_cobble",
+                            () -> new Block(BlockBehaviour.Properties.ofFullCopy(TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.COBBLE).get())))
+            );
 
     public static final Map<Metal, Id<LampBlock>> COMPAT_LANTERNS =
             Helpers.mapOf(

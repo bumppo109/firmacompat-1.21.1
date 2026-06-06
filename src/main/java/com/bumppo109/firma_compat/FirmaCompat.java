@@ -42,6 +42,7 @@ public class FirmaCompat {
     public static final String MODID = "firma_compat";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    public static boolean isTreePhysicsLoaded = false;
     public static boolean isEclipticLoaded = false;
     public static boolean isSereneLoaded = false;
     public static boolean isLSOLoaded = false;
@@ -109,6 +110,7 @@ public class FirmaCompat {
     }
 
     private void modIntegration() {
+        isTreePhysicsLoaded = ModList.get().isLoaded("treephysics");
         isEclipticLoaded = ModList.get().isLoaded("eclipticseasons");
         isSereneLoaded = ModList.get().isLoaded("sereneseasons");
         isLSOLoaded = ModList.get().isLoaded("legendarysurvivaloverhaul");

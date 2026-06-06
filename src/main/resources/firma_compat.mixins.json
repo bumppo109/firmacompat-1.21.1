@@ -1,16 +1,17 @@
 {
   "required": true,
   "package": "com.bumppo109.firma_compat.mixin",
+  "plugin": "com.bumppo109.firma_compat.mixin.MixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "SimpleWaterloggedBlockMixin",
     "DrinkableMixin",
     "TerraFirmaCraftModifierMixin",
-    "LegendarySurvivalOverhaulMixin",
     "PlayerInfoMixin",
     "LevelRendererExtensionMixin",
     "BiomeNoiseMixin",
-    "ForestFeatureMixin"
+    "ForestFeatureMixin",
+    "legendarysurvivaloverhaul.LegendarySurvivalOverhaulMixin"
   ],
   "injectors": {
     "defaultRequire": 1

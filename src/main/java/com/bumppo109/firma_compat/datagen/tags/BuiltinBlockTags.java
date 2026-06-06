@@ -15,6 +15,7 @@ import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.DecorationBlockHolder;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.IdHolder;
@@ -110,6 +111,13 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         tag(PET_SITS_ON)
                 .add(ModBlocks.COMPAT_CHEST.get())
                 .add(ModBlocks.COMPAT_TRAPPED_CHEST.get());
+
+        for(Rock rock : Rock.values()){
+            Block hardCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
+
+            tag(Tags.Blocks.COBBLESTONES_NORMAL).add(hardCobbleBlock);
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(hardCobbleBlock);
+        }
 
         //Wood
         addAllTFCWoods(Wood.BlockType.TWIG, ModTags.Blocks.TWIGS);

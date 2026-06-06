@@ -20,12 +20,6 @@ public final class RootedSoilHelper
 
         BlockState current = level.getBlockState(soilPos);
 
-        FirmaCompat.LOGGER.info(
-                "Found soil {} at {}",
-                BuiltInRegistries.BLOCK.getKey(current.getBlock()),
-                soilPos
-        );
-
         Block rooted = Blocks.AIR;
 
         for(SoilBlockType.Variant variant : SoilBlockType.Variant.values()){

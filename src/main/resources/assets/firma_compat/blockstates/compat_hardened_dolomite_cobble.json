@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "firma_compat:block/compat_hardened_dolomite_cobble"
+    }
+  }
+}

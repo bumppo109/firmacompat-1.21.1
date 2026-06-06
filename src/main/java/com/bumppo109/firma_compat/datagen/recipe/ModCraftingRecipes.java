@@ -7,6 +7,7 @@ import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.DecorationBlockHolder;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.dries007.tfc.common.component.food.FoodData;
 import net.dries007.tfc.common.items.Food;
@@ -609,6 +610,16 @@ public interface ModCraftingRecipes extends ModRecipes
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.DIORITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.DIORITE).get(CompatRock.BlockType.LOOSE).get().asItem());
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.DRIPSTONE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.DRIPSTONE).get(CompatRock.BlockType.LOOSE).get().asItem());
         recipe().useTool(TFCTags.Items.TOOLS_CHISEL, ModItems.CALCITE_BRICK, ModBlocks.ROCK_BLOCKS.get(CompatRock.CALCITE).get(CompatRock.BlockType.LOOSE).get().asItem());
+
+        for(Rock rock : Rock.values()){
+            Block hardenedCobbleBlock = ModBlocks.COMPAT_HARDENED_COBBLE.get(rock).get();
+
+            recipe()
+                    .input('L', TFCBlocks.ROCK_BLOCKS.get(rock).get(Rock.BlockType.LOOSE).get().asItem())
+                    .input('X', TFCItems.MORTAR)
+                    .pattern("LXL", "XLX", "LXL")
+                    .shaped(hardenedCobbleBlock, 4);
+        }
 
         for(CompatRock rock : CompatRock.VALUES){
                 Item looseItem = ModBlocks.ROCK_BLOCKS.get(rock).get(CompatRock.BlockType.LOOSE).get().asItem();
