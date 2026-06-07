@@ -2,6 +2,7 @@
     "values":[
         "tfc:lowlands",
         "tfc:salt_marsh",
-        "tfc:mud_flats"
+        "tfc:mud_flats",
+        "tfc:inverted_patterned_ground"
     ]
 }

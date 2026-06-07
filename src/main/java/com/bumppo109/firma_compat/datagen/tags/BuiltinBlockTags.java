@@ -148,6 +148,7 @@ public class BuiltinBlockTags extends TagsProvider<Block> implements ModAccessor
         addAllCompatWoods(CompatWood.BlockType.TWIG, ModTags.Blocks.TWIGS);
 
         //Rock
+        addAllCompatRocks(CompatRock.BlockType.HARDENED_COBBLE, ModTags.Blocks.HARDENED_COBBLESTONE);
         addAllCompatRocks(CompatRock.BlockType.HARDENED, STONES_HARDENED);
         addAllCompatRocks(CompatRock.BlockType.HARDENED, BlockTags.MINEABLE_WITH_PICKAXE);
         addAllCompatRocks(CompatRock.BlockType.LOOSE, STONES_LOOSE);
