@@ -21,6 +21,7 @@ import com.bumppo109.firma_compat.data.ModDataComponents;
 import com.bumppo109.firma_compat.util.climate.ModClimateModels;
 import com.bumppo109.firma_compat.worldgen.ModFeatures;
 import com.bumppo109.firma_compat.worldgen.placement.ModPlacement;
+import com.bumppo109.firma_compat.worldgen.processor.ModStructureProcessors;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -67,6 +68,7 @@ public class FirmaCompat {
         ModLootModifiers.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModPlacement.PLACEMENT_MODIFIERS.register(modEventBus);
+        ModStructureProcessors.register(modEventBus);
         ModClimateModels.TYPES.register(modEventBus);
 
         CompatTFCEntities.ENTITIES.register(modEventBus);
